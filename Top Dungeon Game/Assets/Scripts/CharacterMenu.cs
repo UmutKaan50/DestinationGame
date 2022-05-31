@@ -69,17 +69,22 @@ public class CharacterMenu : MonoBehaviour {
     public Sprite closedChestSprite; // sprite name: menu_0
     public Sprite openedChestSprite; // sprite name: chest_1
     private Image currentImage; // The function above acted as we can't assign public Image object inside of it.
+    public GameObject menuButton;
 
-    public void ChestSpriteAlteration() {
+    private void Awake() {
+        menuButton = GameObject.Find("MenuButton");
         currentImage = GameObject.Find("MenuButton").gameObject.GetComponent<Image>();
+    }
 
-        if (currentImage.sprite.name == "menu_0") {
-            currentImage.sprite = openedChestSprite;
-        } else {
-            currentImage.sprite = closedChestSprite;
-        }
+    public void ChestSpriteOpen() {
+        currentImage.sprite = openedChestSprite;
+        menuButton.GetComponent<Button>().interactable = false;
 
+    }
 
+    public void ChestSpriteClose() {
+        menuButton.GetComponent<Button>().interactable = true;
+        currentImage.sprite = closedChestSprite;
     }
 
 }

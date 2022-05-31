@@ -634,7 +634,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 669583809}
         m_TargetAssemblyTypeName: CharacterMenu, Assembly-CSharp
-        m_MethodName: ChestSpriteAlteration
+        m_MethodName: ChestSpriteOpen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   - {fileID: 1557822297, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   - {fileID: 1965254589, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   weaponPrices: 1e0000004600000082000000c80000001801000090010000
-  xpTable: 
+  xpTable: 050000000a0000001100000019000000220000002c00000037000000420000005000000064000000
   player: {fileID: 317973734}
   weapon: {fileID: 240954423}
   floatingTextManager: {fileID: 1309075390}
@@ -1779,6 +1779,7 @@ MonoBehaviour:
   xpBar: {fileID: 396988699}
   closedChestSprite: {fileID: -1365746617, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   openedChestSprite: {fileID: 1390240646, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
+  menuButton: {fileID: 0}
 --- !u!1 &675530545
 GameObject:
   m_ObjectHideFlags: 0
@@ -9448,7 +9449,7 @@ GameObject:
   - component: {fileID: 1094219813}
   - component: {fileID: 1094219812}
   m_Layer: 5
-  m_Name: BackgrounExit
+  m_Name: BackgroundExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9528,6 +9529,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: hide
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 669583809}
+        m_TargetAssemblyTypeName: CharacterMenu, Assembly-CSharp
+        m_MethodName: ChestSpriteClose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1094219813
