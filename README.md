@@ -22,3 +22,7 @@ Turn on the collider only when we are swinging the sword.
 Animator penceresinde hareket için tekerleğe bastırma seçeneği sunulmuş.
 We don't want exit time, we want something extremely fast.
 Canavarın saldırısında bir terslik var, ilgilenmeliyim.
+Sandık resimli butona bastığımız miktar kadar envanter görevi gören ekran kapansa bile bu miktardan bir eksik defa tekrardan açılıyor. 
+Gerekirse bu durumu halledebilirim.
+Sprite ismini kodda değiştirip tekrar kodda düzeltmem :D
+Kaldığım yer: butona bastığımızda resmin değişmesi lakin buton ve panel harici boşlukta geri düzelmemesi sorununu çözmek.

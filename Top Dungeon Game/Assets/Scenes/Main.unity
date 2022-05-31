@@ -632,6 +632,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 669583809}
+        m_TargetAssemblyTypeName: CharacterMenu, Assembly-CSharp
+        m_MethodName: ChestSpriteAlteration
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &296104147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1091,7 +1103,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 413770826}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 669583809}
+        m_TargetAssemblyTypeName: CharacterMenu, Assembly-CSharp
+        m_MethodName: OnArrowClick
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &413770826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1475,7 +1499,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2704e7d234830c74ebab8781d08ff65c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprites: []
+  playerSprites:
+  - {fileID: -599648581, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
+  - {fileID: -2095168438, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   weaponSprites:
   - {fileID: -1675228892, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   - {fileID: 787143700, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
@@ -1489,7 +1515,7 @@ MonoBehaviour:
   player: {fileID: 317973734}
   weapon: {fileID: 240954423}
   floatingTextManager: {fileID: 1309075390}
-  pesos: 15
+  pesos: 0
   experience: 0
 --- !u!4 &582701450
 Transform:
@@ -1751,6 +1777,8 @@ MonoBehaviour:
   characterSelectionSprite: {fileID: 1333599114}
   weaponSprite: {fileID: 425534412}
   xpBar: {fileID: 396988699}
+  closedChestSprite: {fileID: -1365746617, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
+  openedChestSprite: {fileID: 1390240646, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
 --- !u!1 &675530545
 GameObject:
   m_ObjectHideFlags: 0
@@ -11985,7 +12013,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1821877990}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 669583809}
+        m_TargetAssemblyTypeName: CharacterMenu, Assembly-CSharp
+        m_MethodName: OnArrowClick
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1821877990
 MonoBehaviour:
   m_ObjectHideFlags: 0

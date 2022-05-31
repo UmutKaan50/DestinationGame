@@ -17,34 +17,35 @@ public class CharacterMenu : MonoBehaviour {
     public void OnArrowClick(bool right) {
         if (right) {
             currentCharacterSelection++;
+            Debug.Log(currentCharacterSelection + " | " + GameManager.instance.playerSprites.Count);
 
-            if (currentCharacterSelection == GameManager.instance.playerSprites.Count) {
+            if (currentCharacterSelection == GameManager.instance.playerSprites.Count)
                 currentCharacterSelection = 0;
 
-                OnSelectionChange();
-            } else {
-                currentCharacterSelection--;
+            OnSelectionChange();
+        } else {
+            currentCharacterSelection--;
 
-                // If we went too far away:
-                if (currentCharacterSelection < 0) {
-                    currentCharacterSelection = GameManager.instance.playerSprites.Count - 1;
-                }
+            // If we went too far away:
+            if (currentCharacterSelection < 0)
+                currentCharacterSelection = GameManager.instance.playerSprites.Count - 1;
 
-                OnSelectionChange();
-            }
+
+            OnSelectionChange();
         }
 
     }
 
     public void OnSelectionChange() {
         characterSelectionSprite.sprite = GameManager.instance.playerSprites[currentCharacterSelection];
+        GameManager.instance.player.SwapSprite(currentCharacterSelection);
     }
 
     // Weapon Upgrade:
     public void OnUpgradeClick() {
-        if (GameManager.instance.TryUpgradeWeapon()) {
+        if (GameManager.instance.TryUpgradeWeapon())
             UpdateMenu();
-        }
+
     }
 
     // Upgrade the character information:
@@ -64,4 +65,21 @@ public class CharacterMenu : MonoBehaviour {
         xpText.text = "not implemented";
         xpBar.localScale = new Vector3(0.5f, 0, 0);
     }
+
+    public Sprite closedChestSprite; // sprite name: menu_0
+    public Sprite openedChestSprite; // sprite name: chest_1
+    private Image currentImage; // The function above acted as we can't assign public Image object inside of it.
+
+    public void ChestSpriteAlteration() {
+        currentImage = GameObject.Find("MenuButton").gameObject.GetComponent<Image>();
+
+        if (currentImage.sprite.name == "menu_0") {
+            currentImage.sprite = openedChestSprite;
+        } else {
+            currentImage.sprite = closedChestSprite;
+        }
+
+
+    }
+
 }

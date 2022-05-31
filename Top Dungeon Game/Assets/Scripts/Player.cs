@@ -10,4 +10,7 @@ public class Player : Mover {
 
         UpdateMotor(new Vector3 (x, y, 0));
     }
+    public void SwapSprites(int index) {
+        GetComponent<SpriteRenderer>().sprite = GameManager.instance.playerSprites[index];
+    }
 }
