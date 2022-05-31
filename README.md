@@ -25,4 +25,5 @@ Canavarın saldırısında bir terslik var, ilgilenmeliyim.
 Sandık resimli butona bastığımız miktar kadar envanter görevi gören ekran kapansa bile bu miktardan bir eksik defa tekrardan açılıyor. 
 Gerekirse bu durumu halledebilirim.
 Sprite ismini kodda değiştirip tekrar kodda düzeltmem :D
-Kaldığım yer: butona bastığımızda resmin değişmesi lakin buton ve panel harici boşlukta geri düzelmemesi sorununu çözmek.
+Xp'nin kaldığı yerden devam etmesi meselesini 6:00:00'dan hemen öncesini çözdüm mü çözemedim mi emin değilim.
+
