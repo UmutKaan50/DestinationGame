@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 99
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1490,10 +1490,10 @@ TextureImporter:
       torch_1: -868813964
       wall_9: 1102463933
       torch_5: -1715712445
-      pillar_0_1: 1304113196
+      floor_0: -1260386432
       player_1: -2095168438
       weapon_0: -1675228892
-      floor_0: -1260386432
+      pillar_0_1: 1304113196
       weapon_1: 787143700
       wall_2: 1043725847
       wall_6: -1013058247
