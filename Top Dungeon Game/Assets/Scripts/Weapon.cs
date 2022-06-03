@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Weapon : Collideable {
     // Damage struct:
-    public int[] damagePoint = { 1, 2, 3, 4, 5, 6, 7 };
-    public float[] pushForce = { 2.0f, 2.3f, 2.6f, 3.0f, 3.5f, 4.1f, 4.8f };
+    private int[] damagePoint = { 1, 2, 3, 4, 5, 6, 7 };
+    private float[] pushForce = { 2.0f, 2.3f, 2.6f, 3.0f, 3.5f, 4.1f, 4.8f };
 
     // Upgrade:
     public int weaponlevel = 0;
@@ -40,16 +40,16 @@ public class Weapon : Collideable {
 
     protected override void OnCollide(Collider2D coll) {
         if (coll.tag == "Fighter") {
-            if (coll.name == "Player") {
+            if (coll.name == "Player")
                 return;
-            }
 
-            Damage dmg = new Damage {
+            Debug.Log("Weapon level: " + weaponlevel);
+            Damage dmg = new Damage {                
                 damageAmount = damagePoint[weaponlevel],
                 origin = transform.position,
                 pushForce = pushForce[weaponlevel]
             };
-
+            
             coll.SendMessage("RecieveDamage", dmg);
 
         }

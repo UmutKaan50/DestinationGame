@@ -8,11 +8,16 @@ public class GameManager : MonoBehaviour {
     private void Awake() {
         if (GameManager.instance != null) {
             Destroy(gameObject);
+            Destroy(player.gameObject);
+            Destroy(floatingTextManager);
+            Destroy(hud);
+            Destroy(menu);
             return;
         }
         instance = this;
         SceneManager.sceneLoaded += LoadState;
-        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        //DontDestroyOnLoad(gameObject);
     }
 
     // Resources:
@@ -25,6 +30,9 @@ public class GameManager : MonoBehaviour {
     public Player player;
     public Weapon weapon;
     public FloatingTextManager floatingTextManager;
+    public RectTransform hitpointBar;
+    public GameObject hud;
+    public GameObject menu;
     // Logic: 
     public int pesos;
     public int experience;
@@ -46,6 +54,11 @@ public class GameManager : MonoBehaviour {
         // Unless player can efford:
         return false;
     }
+    // Hitpoint bar:
+    public void OnHitpointChange() {
+        float ratio = (float)player.hitpoint / (float)player.maxHitpoint;
+        hitpointBar.localScale = new Vector3(1, ratio, 1);
+    }    
 
 
     // Experience system:
@@ -83,6 +96,10 @@ public class GameManager : MonoBehaviour {
         Debug.Log("level up!");
         player.OnLevelUp();
     }
+    public void OnSceneLoaded(Scene s, LoadSceneMode mode) {
+        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+    }
+
     // Save state:
     /*
     INT preferredSkin
@@ -102,6 +119,8 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetString("SaveState", s);
     }
     public void LoadState(Scene s, LoadSceneMode mode) {
+        SceneManager.sceneLoaded -= LoadState;
+
         if (!PlayerPrefs.HasKey("SaveState")) {
             return;
         }
@@ -117,9 +136,6 @@ public class GameManager : MonoBehaviour {
         // Change the weapon level: 
         weapon.SetWeaponLevel(int.Parse(data[3]));
 
-        Debug.Log("LoadState");
-
-        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
     }
 
 }

@@ -27,4 +27,8 @@ Gerekirse bu durumu halledebilirim.
 Sprite ismini kodda değiştirip tekrar kodda düzeltmem :D
 Xp'nin kaldığı yerden devam etmesi meselesini 6:00:00'dan hemen öncesini çözdüm mü çözemedim mi emin değilim.
 6:02:14 esnasında meydana gelen hata durumu bana oynadığım bir oyundan tanıdık geldi.
+IndexOutOfBounds hatası Weapon classındaki damagePoint ve pushForce dizilerini public yapmam ve editörde bir şekilde bu dizilerin içlerinin boş olmasından
+kaynaklıymış. Private'a dönüştürmem sorunu ortadan kaldırdı. :)
+Event system git gel sonrasında kayboluyor.
+Health bar azalmıyor.
 

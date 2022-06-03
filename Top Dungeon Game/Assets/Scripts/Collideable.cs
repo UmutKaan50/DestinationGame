@@ -11,7 +11,7 @@ public class Collideable : MonoBehaviour {
     protected virtual void Start() {
         boxCollider = GetComponent<BoxCollider2D>();
     
-    }
+    } 
 
     protected virtual void Update() {
         // Collision work:
