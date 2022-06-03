@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour {
     public void OnLevelUp() {
         Debug.Log("level up!");
         player.OnLevelUp();
+        OnHitpointChange();
     }
     public void OnSceneLoaded(Scene s, LoadSceneMode mode) {
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;

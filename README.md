@@ -31,4 +31,3 @@ IndexOutOfBounds hatası Weapon classındaki damagePoint ve pushForce dizilerini
 kaynaklıymış. Private'a dönüştürmem sorunu ortadan kaldırdı. :)
 Event system git gel sonrasında kayboluyor.
 Health bar azalmıyor.
-

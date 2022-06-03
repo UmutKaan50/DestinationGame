@@ -1441,6 +1441,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: boss_0
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5a05f94a70153479cfbce368ea6a36
+      internalID: -1102668792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e71a17eb4a7e0704187f64a216fa64ba
+      internalID: -193068418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1481,6 +1523,7 @@ TextureImporter:
       chest_1: 1390240646
       enemy_0: 1543906504
       pillar_1_1: -543586381
+      boss_0: -1102668792
       pillar_0_0: -951071625
       wall_8: -516427457
       weapon_5: 1557822297
@@ -1490,10 +1533,11 @@ TextureImporter:
       torch_1: -868813964
       wall_9: 1102463933
       torch_5: -1715712445
-      floor_0: -1260386432
+      pillar_0_1: 1304113196
       player_1: -2095168438
       weapon_0: -1675228892
-      pillar_0_1: 1304113196
+      enemy_1: -193068418
+      floor_0: -1260386432
       weapon_1: 787143700
       wall_2: 1043725847
       wall_6: -1013058247
