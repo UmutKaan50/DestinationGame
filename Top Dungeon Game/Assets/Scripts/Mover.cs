@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Mover : Fighter {
+    private Vector3 originalSize;
+
     protected BoxCollider2D boxCollider;
-    private Vector3 moveDelta;
-    private RaycastHit2D hit;
-    protected float ySpeed = 0.75f;
-    protected float xSpeed = 1.0f;
+    protected Vector3 moveDelta;
+    protected RaycastHit2D hit;
+    public float ySpeed = 0.75f;
+    public float xSpeed = 1.0f;
 
     protected virtual void Start() {
+        originalSize = transform.localScale;
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
@@ -18,9 +21,9 @@ public class Mover : Fighter {
         moveDelta = new Vector3(input.x * xSpeed, input.y * ySpeed, 0); 
         // Swap sprite direction, whether you're going right or left:
         if (moveDelta.x > 0) {
-            transform.localScale = Vector3.one;
-        } else {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = originalSize;
+        } else if (moveDelta.x < 0){
+            transform.localScale = new Vector3(originalSize.x * -1, originalSize.y, originalSize.z); 
         }
         // Add push vector, if any:
         moveDelta += pushDirection;

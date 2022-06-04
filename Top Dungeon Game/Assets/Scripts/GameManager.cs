@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
     public Weapon weapon;
     public FloatingTextManager floatingTextManager;
     public RectTransform hitpointBar;
+    public Animator deathMenuAnim;
     public GameObject hud;
     public GameObject menu;
     // Logic: 
@@ -109,6 +110,13 @@ public class GameManager : MonoBehaviour {
     INT weaponLevel
      
      */
+    // Death menu and respawn:
+    public void Respawn() {
+        deathMenuAnim.SetTrigger("Hide");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
+        player.Respawn( );
+    }
+
     public void SaveState() {
         string s = "";
 

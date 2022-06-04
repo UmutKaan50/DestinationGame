@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 145067628}
   - component: {fileID: 145067629}
   - component: {fileID: 145067630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: enemy_1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +365,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 827272651}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &145067628
 SpriteRenderer:
@@ -445,8 +445,8 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damage: 0
-  pushForce: 0
+  damage: 1
+  pushForce: 5
 --- !u!61 &145067630
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -631,8 +631,8 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damage: 1
-  pushForce: 3
+  damage: 3
+  pushForce: 6
 --- !u!61 &267663122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -672,7 +672,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 827272651}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &303818476
 GameObject:
@@ -9440,9 +9440,10 @@ GameObject:
   - component: {fileID: 827272651}
   - component: {fileID: 827272650}
   - component: {fileID: 827272652}
-  m_Layer: 0
+  - component: {fileID: 827272653}
+  m_Layer: 9
   m_Name: boss_0
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9511,10 +9512,10 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 267663123}
   - {fileID: 1390519085}
   - {fileID: 145067627}
   - {fileID: 1822273790}
-  - {fileID: 267663123}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9533,7 +9534,9 @@ MonoBehaviour:
   hitpoint: 10
   maxHitpoint: 10
   pushRecoverySpeed: 0.2
-  xpValue: 1
+  ySpeed: 0.375
+  xSpeed: 0.5
+  xpValue: 10
   triggerLenght: 1
   chaseLenght: 5
   filter:
@@ -9554,11 +9557,37 @@ MonoBehaviour:
   - 1.75
   - 2.5
   - -2.5
-  distance: 0.35
+  distance: 0.3
   fireballs:
   - {fileID: 1390519085}
   - {fileID: 145067627}
   - {fileID: 1822273790}
+--- !u!61 &827272653
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827272649}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.009192944, y: -0.019114587}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32323232, y: 0.32323232}
+    newSize: {x: 0.32323232, y: 0.32323232}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.182967, y: 0.18560714}
+  m_EdgeRadius: 0
 --- !u!1 &839001446
 GameObject:
   m_ObjectHideFlags: 0
@@ -16785,7 +16814,7 @@ GameObject:
   - component: {fileID: 1390519086}
   - component: {fileID: 1390519087}
   - component: {fileID: 1390519088}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: enemy_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16805,7 +16834,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 827272651}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1390519086
 SpriteRenderer:
@@ -16885,8 +16914,8 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damage: 0
-  pushForce: 0
+  damage: 1
+  pushForce: 5
 --- !u!61 &1390519088
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17571,7 +17600,7 @@ GameObject:
   - component: {fileID: 1822273791}
   - component: {fileID: 1822273792}
   - component: {fileID: 1822273793}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: enemy_1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17591,7 +17620,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 827272651}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1822273791
 SpriteRenderer:
@@ -17671,8 +17700,8 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damage: 0
-  pushForce: 0
+  damage: 1
+  pushForce: 5
 --- !u!61 &1822273793
 BoxCollider2D:
   m_ObjectHideFlags: 0
