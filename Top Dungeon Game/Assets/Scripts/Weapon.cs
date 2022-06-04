@@ -30,11 +30,19 @@ public class Weapon : Collideable {
 
     protected override void Update() {
         base.Update();
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            if (Time.time - lastSwing > cooldown) {
-                lastSwing = Time.time;
-                Swing();
-            }
+        //if (Input.GetKeyDown(KeyCode.Space)) {
+        //    if (Time.time - lastSwing > cooldown) {
+        //        lastSwing = Time.time;
+        //        Swing();
+        //    }
+        //}
+
+    }
+
+    public void BasicAttack() {
+        if (Time.time - lastSwing > cooldown) {
+            lastSwing = Time.time;
+            Swing();
         }
     }
 

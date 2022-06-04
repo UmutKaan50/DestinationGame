@@ -81,23 +81,40 @@ public class CharacterMenu : MonoBehaviour {
 
     public Sprite closedChestSprite; // sprite name: menu_0
     public Sprite openedChestSprite; // sprite name: chest_1
-    private Image currentImage; // The function above acted as we can't assign public Image object inside of it.
+    private Image currentChestImage; // The function above acted as we can't assign public Image object inside of it.
     public GameObject menuButton;
+    public Image currentAttackButtonImage;
+    public Sprite attackButtonDownSprite;
+    public Sprite attackButtonUpSprite;
+
 
     private void Awake() {
         menuButton = GameObject.Find("MenuButton");
-        currentImage = GameObject.Find("MenuButton").gameObject.GetComponent<Image>();
+        currentChestImage = GameObject.Find("MenuButton").gameObject.GetComponent<Image>();
+
+
     }
 
     public void ChestSpriteOpen() {
-        currentImage.sprite = openedChestSprite;
+        currentChestImage.sprite = openedChestSprite;
         menuButton.GetComponent<Button>().interactable = false;
 
     }
 
     public void ChestSpriteClose() {
         menuButton.GetComponent<Button>().interactable = true;
-        currentImage.sprite = closedChestSprite;
+        currentChestImage.sprite = closedChestSprite;
     }
+    private IEnumerator coroutineAttackButtonSprite;
 
+    public void AttackButtonDownSprite() {
+        currentAttackButtonImage.sprite = attackButtonDownSprite;
+        coroutineAttackButtonSprite = AttackButtonSpriteChange(0.8f);
+        StartCoroutine(coroutineAttackButtonSprite);
+    }
+    
+    private IEnumerator AttackButtonSpriteChange(float waitTime) {
+        yield return new WaitForSeconds(waitTime);
+        currentAttackButtonImage.sprite = attackButtonUpSprite;
+    }
 }

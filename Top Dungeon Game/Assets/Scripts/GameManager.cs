@@ -133,17 +133,18 @@ public class GameManager : MonoBehaviour {
         if (!PlayerPrefs.HasKey("SaveState")) {
             return;
         }
+        // Like loading previous session:
 
-        string[] data = PlayerPrefs.GetString("SaveState").Split('|');
-        // 0|10|15|2
-        // Change player skin
-        pesos = int.Parse(data[1]);
-        // Experience:
-        experience = int.Parse(data[2]);
-        if (GetCurrentLevel() != 1) 
-            player.SetLevel(GetCurrentLevel());
-        // Change the weapon level: 
-        weapon.SetWeaponLevel(int.Parse(data[3]));
+        //string[] data = PlayerPrefs.GetString("SaveState").Split('|');
+        //// 0|10|15|2
+        //// Change player skin
+        //pesos = int.Parse(data[1]);
+        //// Experience:
+        //experience = int.Parse(data[2]);
+        //if (GetCurrentLevel() != 1)
+        //    player.SetLevel(GetCurrentLevel());
+        //// Change the weapon level: 
+        //weapon.SetWeaponLevel(int.Parse(data[3]));
 
     }
 
