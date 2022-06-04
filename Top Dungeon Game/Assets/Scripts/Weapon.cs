@@ -59,6 +59,7 @@ public class Weapon : Collideable {
             };
             
             coll.SendMessage("RecieveDamage", dmg);
+            SoundManager.instance.isHittingEnemy = true;
 
         }
 

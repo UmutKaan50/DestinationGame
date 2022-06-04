@@ -6,7 +6,12 @@ public class SoundManager : MonoBehaviour {
     public AudioSource audioSource;
     public AudioClip walking;
     public AudioClip attackingAir;
+    public AudioClip attackingEnemy;
+    public AudioClip attackingWall;
     public static SoundManager instance;
+
+    public bool isHittingEnemy = false;
+    public bool isHittingWall = false;
     private void Awake() {
         if (SoundManager.instance != null) {
             return;
@@ -16,6 +21,11 @@ public class SoundManager : MonoBehaviour {
 
     }
     public void AttackingAir() {
-        audioSource.PlayOneShot(attackingAir);
+        if (isHittingEnemy) {
+            audioSource.PlayOneShot(attackingEnemy);
+            isHittingEnemy = false;
+        } else {
+            audioSource.PlayOneShot(attackingAir);
+        }
     }
 }

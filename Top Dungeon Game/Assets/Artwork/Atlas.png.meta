@@ -1450,7 +1450,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1471,7 +1471,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1479,6 +1479,27 @@ TextureImporter:
       bones: []
       spriteID: e71a17eb4a7e0704187f64a216fa64ba
       internalID: -193068418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quest_npc_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc1af11ac25715641afe8d6aa75369e0
+      internalID: -1567107622
       vertices: []
       indices: 
       edges: []
@@ -1528,6 +1549,7 @@ TextureImporter:
       wall_8: -516427457
       weapon_5: 1557822297
       menu_0: -1365746617
+      quest_npc_0: -1567107622
       floor_6: 2100049415
       crate_0: -1145661454
       torch_1: -868813964
