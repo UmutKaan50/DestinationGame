@@ -114,6 +114,5 @@ public class Player : Mover {
         lastImmune = Time.time;
         pushDirection = Vector3.zero;
     }
-    
-    
+
 }

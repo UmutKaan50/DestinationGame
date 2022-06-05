@@ -406,7 +406,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1650603631
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -193068418, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9487,7 +9487,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1650603631
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1102668792, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -15688,6 +15688,9 @@ MonoBehaviour:
   closedChestSprite: {fileID: -1365746617, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   openedChestSprite: {fileID: 1390240646, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   menuButton: {fileID: 0}
+  currentAttackButtonImage: {fileID: 0}
+  attackButtonDownSprite: {fileID: 0}
+  attackButtonUpSprite: {fileID: 0}
 --- !u!224 &1060773412
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16875,7 +16878,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1650603631
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -193068418, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -17661,7 +17664,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1650603631
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -193068418, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

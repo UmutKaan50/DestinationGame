@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1563089941
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1574188577, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.16161616, y: 0.16161616}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -140,3 +140,5 @@ MonoBehaviour:
     maxNormalAngle: 0
   emptyChest: {fileID: 1390240646, guid: 8beac271ea40a7c4e9afbf81c7d3c424, type: 3}
   pesosAmount: 5
+  audioSource: {fileID: 0}
+  pickUp: {fileID: 0}
