@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour {
     public AudioClip attackingEnemy;
     public AudioClip attackingWall;
     public AudioClip pickingUpMoney;
+    public AudioClip buttonTap;
+    public AudioClip softButtonTap;
     public static SoundManager instance;
 
     public bool isHittingEnemy = false;

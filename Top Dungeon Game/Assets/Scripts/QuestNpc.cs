@@ -38,9 +38,13 @@ public class QuestNpc : Collideable {
         }
     }
 
+    public void SoundManagerPlay(AudioClip audioClip) {
+        SoundManager.instance.audioSource.PlayOneShot(audioClip);
+    }
     public void CloseQuestAssurancePanel() {
         isQuestAssurancePanelOpened = false;
         assuranceQuestionAnimator.SetTrigger("hide");
+        SoundManagerPlay(SoundManager.instance.buttonTap);
     }
 
     public void OpenMathQuestPanel() {
@@ -48,6 +52,7 @@ public class QuestNpc : Collideable {
         //isQuestAssurancePanelOpened = false;
         assuranceQuestionAnimator.SetTrigger("hide");
         mathQuestAnimator.SetTrigger("show");
+        SoundManagerPlay(SoundManager.instance.buttonTap);
     }
 
 
