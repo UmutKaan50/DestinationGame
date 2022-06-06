@@ -11,6 +11,10 @@ public class SoundManager : MonoBehaviour {
     public AudioClip pickingUpMoney;
     public AudioClip buttonTap;
     public AudioClip softButtonTap;
+    // Temp audioclips for checking the result of calculation:
+    public AudioClip tempMathsTrue;
+    public AudioClip tempMathsFalse;
+
     public static SoundManager instance;
 
     public bool isHittingEnemy = false;

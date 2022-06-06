@@ -1900,6 +1900,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &393317414
 GameObject:
   m_ObjectHideFlags: 0
@@ -3019,7 +3024,7 @@ Animator:
   m_GameObject: {fileID: 556757961}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82b25c92be014ea43a78939eb45ce827, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3245,6 +3250,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &599461658
 GameObject:
   m_ObjectHideFlags: 0
@@ -3460,6 +3470,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &627516228
 GameObject:
   m_ObjectHideFlags: 0
@@ -12575,7 +12590,7 @@ GameObject:
   - component: {fileID: 1065705530}
   m_Layer: 5
   m_Name: Try
-  m_TagString: Untagged
+  m_TagString: ProcessButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12697,6 +12712,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &1066234975
 GameObject:
   m_ObjectHideFlags: 0
@@ -12914,6 +12934,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &1080238155
 GameObject:
   m_ObjectHideFlags: 0
@@ -13520,6 +13545,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &1183055605
 GameObject:
   m_ObjectHideFlags: 0
@@ -13628,11 +13658,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1629522007}
-  - {fileID: 1894731890}
-  - {fileID: 1523150274}
-  - {fileID: 1720428955}
   - {fileID: 1894585139}
+  - {fileID: 1894731890}
+  - {fileID: 1629522007}
+  - {fileID: 1720428955}
+  - {fileID: 1523150274}
   m_Father: {fileID: 994272297}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13803,6 +13833,8 @@ MonoBehaviour:
   pickingUpMoney: {fileID: 8300000, guid: ba901c59ac8d11546a041d1c4ea8e2ee, type: 3}
   buttonTap: {fileID: 8300000, guid: e237aefa7c479eb4eabcd7c095261492, type: 3}
   softButtonTap: {fileID: 8300000, guid: 53a774b588fc2e54f870d27140c9589e, type: 3}
+  tempMathsTrue: {fileID: 8300000, guid: a7d5df7b1e7ccfc4faea9f164edea13f, type: 3}
+  tempMathsFalse: {fileID: 8300000, guid: 01c86e607e58ed3429acab2872f7b70c, type: 3}
   isHittingEnemy: 0
   isHittingWall: 0
 --- !u!1 &1191788518
@@ -14146,6 +14178,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &1257990089
 GameObject:
   m_ObjectHideFlags: 0
@@ -14897,6 +14934,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &1523150273
 GameObject:
   m_ObjectHideFlags: 0
@@ -14911,7 +14953,7 @@ GameObject:
   - component: {fileID: 1523150275}
   - component: {fileID: 1523150278}
   m_Layer: 5
-  m_Name: Button (Legacy) (10)
+  m_Name: emptyButton4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14931,7 +14973,7 @@ RectTransform:
   m_Children:
   - {fileID: 1191788519}
   m_Father: {fileID: 1185532605}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15032,9 +15074,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb2c7e4266c2ee4f9526885f805f34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSolved: 0
+  isTried: 0
+  requiredNumber: 9
+  requiredDigit: 1
+  playersTry: 0
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  firstDigit: 0
+  secondDigit: 0
+  firstSelected: 0
+  secondSelected: 0
   isPressed: 0
+  lockPanel: {fileID: 556757961}
 --- !u!1 &1528826126
 GameObject:
   m_ObjectHideFlags: 0
@@ -15405,6 +15457,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &1557520373
 GameObject:
   m_ObjectHideFlags: 0
@@ -15535,7 +15592,7 @@ GameObject:
   - component: {fileID: 1563557875}
   m_Layer: 5
   m_Name: Del
-  m_TagString: Untagged
+  m_TagString: ProcessButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15657,6 +15714,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &1598207214
 GameObject:
   m_ObjectHideFlags: 0
@@ -16350,7 +16412,7 @@ GameObject:
   - component: {fileID: 1629522008}
   - component: {fileID: 1629522011}
   m_Layer: 5
-  m_Name: Button (Legacy) (17)
+  m_Name: emptyButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16370,7 +16432,7 @@ RectTransform:
   m_Children:
   - {fileID: 1680976432}
   m_Father: {fileID: 1185532605}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16471,9 +16533,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb2c7e4266c2ee4f9526885f805f34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSolved: 0
+  isTried: 0
+  requiredNumber: 4
+  requiredDigit: 1
+  playersTry: 0
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  firstDigit: 0
+  secondDigit: 0
+  firstSelected: 0
+  secondSelected: 0
   isPressed: 0
+  lockPanel: {fileID: 556757961}
 --- !u!1 &1635951285
 GameObject:
   m_ObjectHideFlags: 0
@@ -18627,6 +18699,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701080325}
   m_CullTransparentMesh: 1
+--- !u!1 &1715048496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1715048497}
+  - component: {fileID: 1715048498}
+  m_Layer: 5
+  m_Name: MathsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1715048497
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715048496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2103679490}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1715048498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715048496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d82d2029df5bb4aad558f12acd7040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
+  unitedNumber: 0
+  unselectedEmptyButtons:
+  - {fileID: 1894585138}
+  - {fileID: 1894731889}
+  - {fileID: 1629522006}
+  - {fileID: 1720428954}
+  - {fileID: 1523150273}
+  selectedEmptyButtons: []
 --- !u!1 &1720428954
 GameObject:
   m_ObjectHideFlags: 0
@@ -18641,7 +18774,7 @@ GameObject:
   - component: {fileID: 1720428956}
   - component: {fileID: 1720428959}
   m_Layer: 5
-  m_Name: Button (Legacy) (6)
+  m_Name: emptyButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18762,9 +18895,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb2c7e4266c2ee4f9526885f805f34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSolved: 0
+  isTried: 0
+  requiredNumber: 8
+  requiredDigit: 1
+  playersTry: 0
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  firstDigit: 0
+  secondDigit: 0
+  firstSelected: 0
+  secondSelected: 0
   isPressed: 0
+  lockPanel: {fileID: 556757961}
 --- !u!1 &1745629970
 GameObject:
   m_ObjectHideFlags: 0
@@ -21139,6 +21282,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &1894585138
 GameObject:
   m_ObjectHideFlags: 0
@@ -21153,7 +21301,7 @@ GameObject:
   - component: {fileID: 1894585140}
   - component: {fileID: 1894585143}
   m_Layer: 5
-  m_Name: Button (Legacy) (2)
+  m_Name: emptyButton0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21173,7 +21321,7 @@ RectTransform:
   m_Children:
   - {fileID: 396534848}
   m_Father: {fileID: 1185532605}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21274,9 +21422,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb2c7e4266c2ee4f9526885f805f34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSolved: 0
+  isTried: 0
+  requiredNumber: 3
+  requiredDigit: 1
+  playersTry: 0
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  firstDigit: 0
+  secondDigit: 0
+  firstSelected: 0
+  secondSelected: 0
   isPressed: 0
+  lockPanel: {fileID: 556757961}
 --- !u!1 &1894731889
 GameObject:
   m_ObjectHideFlags: 0
@@ -21291,7 +21449,7 @@ GameObject:
   - component: {fileID: 1894731891}
   - component: {fileID: 1894731894}
   m_Layer: 5
-  m_Name: Button (Legacy) (14)
+  m_Name: emptyButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21412,9 +21570,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb2c7e4266c2ee4f9526885f805f34a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSolved: 0
+  isTried: 0
+  requiredNumber: 4
+  requiredDigit: 1
+  playersTry: 0
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  firstDigit: 0
+  secondDigit: 0
+  firstSelected: 0
+  secondSelected: 0
   isPressed: 0
+  lockPanel: {fileID: 556757961}
 --- !u!1 &1930121065
 GameObject:
   m_ObjectHideFlags: 0
@@ -22284,6 +22452,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalButtonSprite: {fileID: 2017580033, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
   pressedButtonSprite: {fileID: 1864529955, guid: 3fa0eff0f357eae49a3068ecc4004adf, type: 3}
+  buttonValueText: {fileID: 0}
+  firstNumber: 0
+  firstSelected: 0
+  secondNumber: 0
+  secondSelected: 0
 --- !u!1 &2069342774
 GameObject:
   m_ObjectHideFlags: 0
@@ -22624,6 +22797,7 @@ RectTransform:
   - {fileID: 994272297}
   - {fileID: 457716806}
   - {fileID: 556757962}
+  - {fileID: 1715048497}
   m_Father: {fileID: 1557520377}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
