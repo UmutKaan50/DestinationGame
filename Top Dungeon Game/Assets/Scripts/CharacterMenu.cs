@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterMenu : MonoBehaviour {
     // Text fields:
-    public Text levelText, hitpointText, pesosText, upgradeCostText, xpText;
+    public Text levelText, hitpointText, moneyText, upgradeCostText, xpText;
 
     // Logic:
     private int currentCharacterSelection = 0;
@@ -43,9 +43,10 @@ public class CharacterMenu : MonoBehaviour {
 
     // Weapon Upgrade:
     public void OnUpgradeClick() {
-        if (GameManager.instance.TryUpgradeWeapon())
+        if (GameManager.instance.TryUpgradeWeapon()) {
+            SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.buySound);
             UpdateMenu();
-
+        }
     }
 
     // Upgrade the character information:
@@ -60,7 +61,7 @@ public class CharacterMenu : MonoBehaviour {
         // Meta:
         levelText.text = GameManager.instance.GetCurrentLevel().ToString();
         hitpointText.text = GameManager.instance.player.hitpoint.ToString();
-        pesosText.text = GameManager.instance.pesos.ToString();
+        moneyText.text = GameManager.instance.money.ToString();
         // Xp bar:
         int currLevel = GameManager.instance.GetCurrentLevel();
         if (currLevel == GameManager.instance.xpTable.Count) {
@@ -83,6 +84,7 @@ public class CharacterMenu : MonoBehaviour {
     public Sprite openedChestSprite; // sprite name: chest_1
     private Image currentChestImage; // The function above acted as we can't assign public Image object inside of it.
     public GameObject menuButton;
+    public GameObject attackButton;
     public Image currentAttackButtonImage;
     public Sprite attackButtonDownSprite;
     public Sprite attackButtonUpSprite;
@@ -96,25 +98,33 @@ public class CharacterMenu : MonoBehaviour {
     }
 
     public void ChestSpriteOpen() {
+        SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.chestOpen);
         currentChestImage.sprite = openedChestSprite;
         menuButton.GetComponent<Button>().interactable = false;
 
     }
 
     public void ChestSpriteClose() {
+        SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.chestClose);
         menuButton.GetComponent<Button>().interactable = true;
         currentChestImage.sprite = closedChestSprite;
     }
     private IEnumerator coroutineAttackButtonSprite;
 
     public void AttackButtonDownSprite() {
+        SoundManager.instance.AttackingAirLogic();
         currentAttackButtonImage.sprite = attackButtonDownSprite;
-        coroutineAttackButtonSprite = AttackButtonSpriteChange(0.8f);
+        coroutineAttackButtonSprite = AttackButtonSpriteChange(0.7f);
         StartCoroutine(coroutineAttackButtonSprite);
     }
     
     private IEnumerator AttackButtonSpriteChange(float waitTime) {
+        //attackButton.SetActive(false);
+        attackButton.GetComponent<Button>().interactable = false;
         yield return new WaitForSeconds(waitTime);
+        attackButton.GetComponent<Button>().interactable = true;
+        //attackButton.SetActive(true);
         currentAttackButtonImage.sprite = attackButtonUpSprite;
+
     }
 }

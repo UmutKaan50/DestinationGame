@@ -14,7 +14,7 @@ public class Weapon : Collideable {
 
     // Swing:
     private Animator anim;
-    private float cooldown = 0.5f;
+    private float cooldown = 0.7f;
     private float lastSwing;
 
     private void Awake() {

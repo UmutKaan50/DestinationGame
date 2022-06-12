@@ -13,6 +13,7 @@ public class HealingFountain : Collideable {
         if (Time.time - lastHeal > healCooldown) {
             lastHeal = Time.time;
             GameManager.instance.player.Heal(healingAmount);
+            SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.healing, 0.1f);
 
         }
     }

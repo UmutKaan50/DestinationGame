@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : Mover {
     // Experience:
     public int xpValue = 1;
-
     // Logic:
     public float triggerLenght = 1;
     public float chaseLenght = 5;
@@ -65,6 +64,7 @@ public class Enemy : Mover {
     }
 
     protected override void Death() {
+        SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.skeletonDeath);
         Destroy(gameObject);
         // I should figure out how does rows below work even if Destroy(GameObject) command is given.
         GameManager.instance.GrantXp(xpValue);

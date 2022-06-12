@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player : Mover {
     private SpriteRenderer spriteRenderer;
     private bool isAlive = true;
-
+    public bool hasKey = false;
     private bool isMoving;
     private bool isVerticalMoving;
     private bool isHorizontalMoving;
@@ -17,6 +17,11 @@ public class Player : Mover {
     private float verticalMove;
 
     public AudioSource audioSource;
+    public Portal portal;
+    public void SetHasKey() {
+        hasKey = true;
+        portal.SetCanTransfer();
+    }
     protected override void Start() {
         base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -33,8 +38,8 @@ public class Player : Mover {
     protected override void Death() {
         isAlive = false;
         GameManager.instance.deathMenuAnim.SetTrigger("Show");
-    }
 
+    }
     public void WalkSound() {
         SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.walking);
     }

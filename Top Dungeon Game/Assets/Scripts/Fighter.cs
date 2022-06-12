@@ -9,7 +9,7 @@ public class Fighter : MonoBehaviour {
     public float pushRecoverySpeed = 0.2f;
 
     // Immunity:
-    protected float immuneTime = 1.0f;
+    protected float immuneTime = 0.7f;
     protected float lastImmune;
 
     // Push:
@@ -18,13 +18,17 @@ public class Fighter : MonoBehaviour {
     // All fighters can recieve damage and die.
 
     protected virtual void RecieveDamage(Damage dmg) {
-        if(Time.time - lastImmune > immuneTime) {
+        // Make player immune, not enemy:
+        if (Time.time - lastImmune > immuneTime) {
             lastImmune = Time.time;
             hitpoint -= dmg.damageAmount;
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
 
-            GameManager.instance.ShowText(dmg.damageAmount.ToString(), 25, Color.red, transform.position, Vector3.zero, 0.5f);
-           
+            if (gameObject.name == "Player") {
+                GameManager.instance.ShowText(dmg.damageAmount.ToString(), 18, Color.red, transform.position, Vector3.zero, 0.2f);
+            } else {
+                GameManager.instance.ShowText(dmg.damageAmount.ToString(), 22, Color.yellow, transform.position, Vector3.zero, 0.2f);
+            }
 
             if (hitpoint <= 0) {
                 hitpoint = 0;
@@ -34,7 +38,7 @@ public class Fighter : MonoBehaviour {
     }
 
     protected virtual void Death() {
-        
+
     }
 
 }

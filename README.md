@@ -33,3 +33,7 @@ Event system git gel sonrasında kayboluyor.
 Health bar azalmıyor.
 Coroutinelerin uygulanışını bir nebze dahi olsa hatırladım.
 Hem parent hem de child objenin içindeki componentlara erişimimiz mümkün.
+İskeletin ölme sesi işi çözülemedi henüz.
+1 sn hasar almama durumu söz konusu.
+Animasyonda has exit time'ı nereye konumlandırdığın önemli. Şu durumdan şu duruma geçerken animasyonun tamamını oynat manasına geliyor sanırım.
+Uyguladığım durumda alt alta iki trigger çağırmıştım. 

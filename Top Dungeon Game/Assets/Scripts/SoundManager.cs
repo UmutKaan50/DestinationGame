@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour {
     public AudioSource audioSource;
+    public AudioClip teleport;
     public AudioClip walking;
     public AudioClip attackingAir;
     public AudioClip attackingEnemy;
@@ -11,6 +12,12 @@ public class SoundManager : MonoBehaviour {
     public AudioClip pickingUpMoney;
     public AudioClip buttonTap;
     public AudioClip softButtonTap;
+    public AudioClip healing;
+    public AudioClip chestClose;
+    public AudioClip chestOpen;
+    public AudioClip buySound;
+    public AudioClip skeletonDeath;
+    public AudioClip keyPickUp;
     // Temp audioclips for checking the result of calculation:
     public AudioClip tempMathsTrue;
     public AudioClip tempMathsFalse;
@@ -27,7 +34,7 @@ public class SoundManager : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
 
     }
-    public void AttackingAir() {
+    public void AttackingAirLogic() {
         if (isHittingEnemy) {
             audioSource.PlayOneShot(attackingEnemy);
             isHittingEnemy = false;

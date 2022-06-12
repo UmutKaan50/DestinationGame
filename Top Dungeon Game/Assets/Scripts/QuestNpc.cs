@@ -55,5 +55,11 @@ public class QuestNpc : Collideable {
         SoundManagerPlay(SoundManager.instance.buttonTap);
     }
 
+    public void CloseMathQuestPanel() {
+        isMathQuestAssurancePanelOpened =false;
+        isQuestAssurancePanelOpened = false;
+        mathQuestAnimator.SetTrigger("hide");
+    }
+
 
 }

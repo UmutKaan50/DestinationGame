@@ -1492,7 +1492,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1500,6 +1500,27 @@ TextureImporter:
       bones: []
       spriteID: dc1af11ac25715641afe8d6aa75369e0
       internalID: -1567107622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GreenBoss
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 45
+        width: 29
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fecd6691ccbf049419a85596fb13b627
+      internalID: -213737803
       vertices: []
       indices: 
       edges: []
@@ -1561,6 +1582,7 @@ TextureImporter:
       enemy_1: -193068418
       floor_0: -1260386432
       weapon_1: 787143700
+      GreenBoss: -213737803
       wall_2: 1043725847
       wall_6: -1013058247
       healingFountain_2: 548292453

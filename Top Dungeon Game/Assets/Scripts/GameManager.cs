@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
     public GameObject hud;
     public GameObject menu;
     // Logic: 
-    public int pesos;
+    public int money;
     public int experience;
     // Floating text:
     public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration) {
@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour {
         if (weaponPrices.Count <= weapon.weaponlevel) {
             return false;
         }
-        if (pesos >= weaponPrices[weapon.weaponlevel]) {
-            pesos -= weaponPrices[weapon.weaponlevel];
+        if (money >= weaponPrices[weapon.weaponlevel]) {
+            money -= weaponPrices[weapon.weaponlevel];
             weapon.UpgradeWeapon();
             return true;
         }
@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour {
     // Save state:
     /*
     INT preferredSkin
-    INT pesos
+    INT money
     INT experience
     INT weaponLevel
      
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour {
         string s = "";
 
         s += "0" + "|";
-        s += pesos.ToString() + "|";
+        s += money.ToString() + "|";
         s += experience.ToString() + "|"; ;
         s += weapon.weaponlevel.ToString();
 
@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour {
         //string[] data = PlayerPrefs.GetString("SaveState").Split('|');
         //// 0|10|15|2
         //// Change player skin
-        //pesos = int.Parse(data[1]);
+        //money = int.Parse(data[1]);
         //// Experience:
         //experience = int.Parse(data[2]);
         //if (GetCurrentLevel() != 1)
