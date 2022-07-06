@@ -14,14 +14,18 @@ GameManager will be matched the one in the instance, first GameManager that it f
 
 In coding there is always multiple solutions to go about(?)
 
-The size of the weapon's boxcollider2d component is directly related to game's difficulty
-Oyuncunun elindeki silahın boxcollider2d bileşeninin boyutları oyunun zorluk seviyesi ile doğrudan ilişkili.
-Silahımız ile isabet edeceğimiz yer objenin bir etiketi olması gerekli. Etiket her biri için ayrı olmalıdır.
-Anlatılana iyi kulak ver. Dinlemediğim bir anda belki de en kritik cümleyi kaçırabilirim.
-3:27:21 esnasında weapon_0 objesinin isminin görünmesinin nedeni playerin çocuğu olması ve kodda gereken şartları playerın sağlaması sanırım.
+The size of the weapon's boxcollider2d component is directly related to game's difficulty.
+
+The hit with our weapon should be a tag of the object. Each object has to have different tag.
+
+You must be full ears while watching/listening something. Otherwise you may miss a critical part of the topic.
+
+The reason why in 32721 weapon_0's name is shown is that it's child of player object and player object satisfies the prerequisites I guess.
+
 We can't have multi inheritence with C#
-3:50:00'de kaldım.
-Kayan metnin boyutundan kaynaklı olarak +1xp yazısını görüntüleyememe sorunuyla karşılaştım.
+
+I had an viewing issue of "+1xp" text about the size of floating text. 
+
 Push recovery speed değişkeni benim düşündüğümün tam tersi şekilde tesir ediyor, bu durumu çözümlemeliyim.
 Turn on the collider only when we are swinging the sword.
 Animator penceresinde hareket için tekerleğe bastırma seçeneği sunulmuş.
