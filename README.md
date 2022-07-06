@@ -1,6 +1,7 @@
-# TopDungeonGame notes:
----
-Concepts: Sprite renderer, sorting layer; Project settings, pyhsics 2d, queries start in colliders, 
+# Top Dungeon Game notes
+### Concepts:
+
+Sprite renderer, sorting layer; Project settings, pyhsics 2d, queries start in colliders, 
 
 We have to use late update for everything camerawise.
 
@@ -26,19 +27,34 @@ We can't have multi inheritence with C#
 
 I had an viewing issue of "+1xp" text about the size of floating text. 
 
-Push recovery speed değişkeni benim düşündüğümün tam tersi şekilde tesir ediyor, bu durumu çözümlemeliyim.
+Push recovery speed variable has reverse effect of what I've thought. I should analyze it. 
+
 Turn on the collider only when we are swinging the sword.
-Animator penceresinde hareket için tekerleğe bastırma seçeneği sunulmuş.
+
+Animator window has tire mouse click for movement.
+
 We don't want exit time, we want something extremely fast.
-Canavarın saldırısında bir terslik var, ilgilenmeliyim.
-Sandık resimli butona bastığımız miktar kadar envanter görevi gören ekran kapansa bile bu miktardan bir eksik defa tekrardan açılıyor. 
-Gerekirse bu durumu halledebilirim.
-Sprite ismini kodda değiştirip tekrar kodda düzeltmem :D
-Xp'nin kaldığı yerden devam etmesi meselesini 6:00:00'dan hemen öncesini çözdüm mü çözemedim mi emin değilim.
-6:02:14 esnasında meydana gelen hata durumu bana oynadığım bir oyundan tanıdık geldi.
-IndexOutOfBounds hatası Weapon classındaki damagePoint ve pushForce dizilerini public yapmam ve editörde bir şekilde bu dizilerin içlerinin boş olmasından
-kaynaklıymış. Private'a dönüştürmem sorunu ortadan kaldırdı. :)
-Event system git gel sonrasında kayboluyor.
-Health bar azalmıyor.
-Coroutinelerin uygulanışını bir nebze dahi olsa hatırladım.
-Hem parent hem de child objenin içindeki componentlara erişimimiz mümkün.
+
+Final boss attack in reverse rotation, I should analyze it.
+
+Button with chest sprite acts as how many times we've pressed it even the closed animation triggers. One less than this amount as I see.
+
+I did changed sprite's name and fixed it in code as well. :D
+
+I'm not sure if I've solved xp's continue issue in 60000.
+
+60214's problem felt similar to me from another game I've played.
+
+IndexOutOfBound error happened because I made Weapon class's damagePoint and pushForce arrays public and in the editor and this arrays was empty. 
+Making them private solved the issue. :)
+
+Event system disappears after enter and leave.(?)
+
+Had an issue about health bar, it didn't decrease.
+
+I remembered how coroutines applicationn was made even a little.
+
+Don't forget that we can reach both parent and child object's compenents.
+
+
+
