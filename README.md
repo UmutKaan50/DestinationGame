@@ -1,16 +1,20 @@
-# TopDungeonGame esnasında aldığım notlarım:
-
-Fixed resolution: 800x600
-Sprite renderer, sorting layer;
-Project settings, pyhsics 2d, queries start in colliders, 
-We have to use late update for everything camerawise.
-Selecting multiple tiles can be easiliy using ctrl + lmb
-Make sure you implemented tutorial correctly in every aspect of it.
-He says make bigger level.
-Class + F12 | ctrl + lmb class
-GameManager will be matched the one in the instance, first GameManager that it finds. (?)
-In coding there is always multiple solutions to go about(?)
+# TopDungeonGame notes:
 ---
+Concepts: Sprite renderer, sorting layer; Project settings, pyhsics 2d, queries start in colliders, 
+
+We have to use late update for everything camerawise.
+
+Selecting multiple tiles can be easiliy using ctrl + lmb
+
+Make sure you implemented tutorial correctly in every aspect of it.
+
+Class + F12 | ctrl + lmb class
+
+GameManager will be matched the one in the instance, first GameManager that it finds. (?)
+
+In coding there is always multiple solutions to go about(?)
+
+The size of the weapon's boxcollider2d component is directly related to game's difficulty
 Oyuncunun elindeki silahın boxcollider2d bileşeninin boyutları oyunun zorluk seviyesi ile doğrudan ilişkili.
 Silahımız ile isabet edeceğimiz yer objenin bir etiketi olması gerekli. Etiket her biri için ayrı olmalıdır.
 Anlatılana iyi kulak ver. Dinlemediğim bir anda belki de en kritik cümleyi kaçırabilirim.
