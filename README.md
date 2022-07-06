@@ -1,4 +1,5 @@
 # TopDungeonGame esnasında aldığım notlarım:
+
 Fixed resolution: 800x600
 Sprite renderer, sorting layer;
 Project settings, pyhsics 2d, queries start in colliders, 
