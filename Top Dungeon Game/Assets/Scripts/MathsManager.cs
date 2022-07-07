@@ -60,8 +60,7 @@ public class MathsManager : MonoBehaviour {
                 selectedEmptyButtons.Add(unselectedEmptyButton);
                 continue;
             }
-            //unselectedEmptyButton.GetComponent<AnswerButton>().
-
+            //unselectedEmptyButton.GetComponent<AnswerButton
         }
 
         foreach (var selectedEmptyButton in selectedEmptyButtons) {
@@ -69,6 +68,8 @@ public class MathsManager : MonoBehaviour {
             if (!selectedEmptyButton.GetComponent<AnswerButton>().isPressed) {
                 selectedEmptyButtons.Remove(selectedEmptyButton);
                 unselectedEmptyButtons.Add(selectedEmptyButton);
+                // Test succeded : )
+                newText = "";
             }
         }
 
@@ -80,7 +81,9 @@ public class MathsManager : MonoBehaviour {
 
     public GameObject selectedButton;
     public void Control(string numberText) {
-
+        if (numberText == "Try") {
+            return;
+        }
         newText = numberText;
 
         //foreach (GameObject obj in unselectedEmptyButtons) {
@@ -112,7 +115,7 @@ public class MathsManager : MonoBehaviour {
                 TryButton.instance.isHidden = false;
                 tryButtonAnimator.SetTrigger("show");
                 tryButtonAnimator.SetTrigger("stop");
-                
+
             }
         }
 
@@ -129,7 +132,11 @@ public class MathsManager : MonoBehaviour {
             passQuestionAnimator.SetTrigger("hide");
             SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.keyPickUp);
             player.SetHasKey();
+            QuestNpc.instance.clickLockingPanel.SetActive(false);
+            return;
         }
+        SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.failedAttempt);
+
     }
 
     /* // Previous finish call:

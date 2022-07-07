@@ -11,7 +11,7 @@ public class Player : Mover {
     private bool isVerticalMoving;
     private bool isHorizontalMoving;
 
-    public Joystick joystick;
+    // public Joystick joystick;
 
     private float horizontalMove;
     private float verticalMove;
@@ -44,27 +44,29 @@ public class Player : Mover {
         SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.walking);
     }
     private void FixedUpdate() {
-        //float x = Input.GetAxisRaw("Horizontal");
-        //float y = Input.GetAxisRaw("Vertical");
 
-        if(joystick.Horizontal >= .2f) {
-            horizontalMove = xSpeed;
+        float horizontalMove = Input.GetAxisRaw("Horizontal");
+        float verticalMove = Input.GetAxisRaw("Vertical");
 
-        } else if (joystick.Horizontal <= -.2f) {
-            horizontalMove = -xSpeed;
-        } else {
-            horizontalMove = 0f;
-            isHorizontalMoving = false;
-        }
+        // With joystick:
+        //if(joystick.Horizontal >= .2f) {
+        //    horizontalMove = xSpeed;
 
-        if (joystick.Vertical >= .2f) {
-            verticalMove = ySpeed;
-        } else if (joystick.Vertical <= -.2f) {
-            verticalMove = -ySpeed;
-        } else {
-            verticalMove = 0f;
-            isVerticalMoving = false;
-        }
+        //} else if (joystick.Horizontal <= -.2f) {
+        //    horizontalMove = -xSpeed;
+        //} else {
+        //    horizontalMove = 0f;
+        //    isHorizontalMoving = false;
+        //}
+
+        //if (joystick.Vertical >= .2f) {
+        //    verticalMove = ySpeed;
+        //} else if (joystick.Vertical <= -.2f) {
+        //    verticalMove = -ySpeed;
+        //} else {
+        //    verticalMove = 0f;
+        //    isVerticalMoving = false;
+        //}
 
 
         if (verticalMove == 0 && horizontalMove == 0) {

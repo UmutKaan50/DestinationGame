@@ -37,3 +37,6 @@ Hem parent hem de child objenin içindeki componentlara erişimimiz mümkün.
 1 sn hasar almama durumu söz konusu.
 Animasyonda has exit time'ı nereye konumlandırdığın önemli. Şu durumdan şu duruma geçerken animasyonun tamamını oynat manasına geliyor sanırım.
 Uyguladığım durumda alt alta iki trigger çağırmıştım. 
+Assurance panelindeki "+" ve "-" butonlarını değiştirebilirim.
+Game view'da ekran çözünürlüğünü değiştirdiğimizde scene view'da da değişiklik oluyor.
+HUD ismini verdiğim canvasın sort orderını 0, QuestCanvas ismini verdiğim canvasın sort orderının 1 yaptım ki click locking ismini verdiğim paneli kullanabileyim.

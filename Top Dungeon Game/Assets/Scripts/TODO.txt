@@ -1,0 +1,3 @@
+Assurance question panel will be changed with an interact button. After clicking interact button player will face with assurance question or directly puzzle.
+
+Prefer local variables instead of global ones in required fields.

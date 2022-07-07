@@ -10,27 +10,30 @@ public class AnswerButton : MonoBehaviour {
     public bool isTried = false;
 
     public int requiredNumber;
-    public int requiredDigit;
+    //public int requiredDigit;
     public int playersTry;
 
     public Sprite normalButtonSprite;
     public Sprite pressedButtonSprite;
 
-    public int firstDigit;
-    public int secondDigit;
+    //public int firstDigit;
+    //public int secondDigit;
 
-    public bool firstSelected;
-    public bool secondSelected;
+    //public bool firstSelected;
+    //public bool secondSelected;
 
     public bool isPressed = false;
     public GameObject lockPanel;
 
     private void FixedUpdate() {
-        if (requiredNumber.ToString() == GetComponentInChildren<Text>().text.ToString()) {
-            isSolved = true;
-        }
-        if (int.Parse(GetComponentInChildren<Text>().text.ToString()) < 10 && int.Parse(GetComponentInChildren<Text>().text.ToString()) >= 0) {
-            isTried = true;
+        if (GetComponentInChildren<Text>().text.ToString() != "") {
+
+            if (requiredNumber.ToString() == GetComponentInChildren<Text>().text.ToString()) {
+                isSolved = true;
+            }
+            if (int.Parse(GetComponentInChildren<Text>().text.ToString()) < 10 && int.Parse(GetComponentInChildren<Text>().text.ToString()) >= 0) {
+                isTried = true;
+            }
         }
     }
 
@@ -46,6 +49,7 @@ public class AnswerButton : MonoBehaviour {
     // Changing button sprite based on tap:
     public void ButtonSpriteAlteration() {
         // I selected 4.4f for more realistic experience.
+        // I couldn't handle when button press process happens consecutively.
         if (isPressed == false) {
             isPressed = true;
             GetComponent<Button>().image.sprite = pressedButtonSprite;

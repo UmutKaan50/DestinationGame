@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour {
     }
     public void OnLevelUp() {
         Debug.Log("level up!");
+        SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.levelUp);
         player.OnLevelUp();
         OnHitpointChange();
     }

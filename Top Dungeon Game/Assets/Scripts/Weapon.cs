@@ -30,21 +30,26 @@ public class Weapon : Collideable {
 
     protected override void Update() {
         base.Update();
-        //if (Input.GetKeyDown(KeyCode.Space)) {
-        //    if (Time.time - lastSwing > cooldown) {
-        //        lastSwing = Time.time;
-        //        Swing();
-        //    }
-        //}
-
-    }
-
-    public void BasicAttack() {
-        if (Time.time - lastSwing > cooldown) {
-            lastSwing = Time.time;
-            Swing();
+        // Player attack state:
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            if (Time.time - lastSwing > cooldown) {
+                // Sound effect:
+                SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.attackingAir);
+                // Assigning last swing moment:
+                lastSwing = Time.time;
+                
+                Swing();
+            }
         }
+
     }
+
+    //public void BasicAttack() {
+    //    if (Time.time - lastSwing > cooldown) {
+    //        lastSwing = Time.time;
+    //        Swing();
+    //    }
+    //}
 
     protected override void OnCollide(Collider2D coll) {
         if (coll.tag == "Fighter") {
@@ -59,7 +64,7 @@ public class Weapon : Collideable {
             };
             
             coll.SendMessage("RecieveDamage", dmg);
-            SoundManager.instance.isHittingEnemy = true;
+            // SoundManager.instance.isHittingEnemy = true;
 
         }
 

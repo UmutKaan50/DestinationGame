@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour {
+
     public AudioSource audioSource;
     public AudioClip teleport;
     public AudioClip walking;
@@ -18,9 +19,11 @@ public class SoundManager : MonoBehaviour {
     public AudioClip buySound;
     public AudioClip skeletonDeath;
     public AudioClip keyPickUp;
+    public AudioClip failedAttempt;
     // Temp audioclips for checking the result of calculation:
     public AudioClip tempMathsTrue;
     public AudioClip tempMathsFalse;
+    public AudioClip levelUp;
 
     public static SoundManager instance;
 
@@ -34,12 +37,13 @@ public class SoundManager : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
 
     }
-    public void AttackingAirLogic() {
-        if (isHittingEnemy) {
-            audioSource.PlayOneShot(attackingEnemy);
-            isHittingEnemy = false;
-        } else {
-            audioSource.PlayOneShot(attackingAir);
-        }
-    }
+
+    //public void AttackingAirLogic() {
+    //    if (isHittingEnemy) {
+    //        audioSource.PlayOneShot(attackingEnemy);
+    //        isHittingEnemy = false;
+    //    } else {
+    //        audioSource.PlayOneShot(attackingAir);
+    //    }
+    //}
 }

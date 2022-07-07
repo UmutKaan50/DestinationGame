@@ -111,12 +111,12 @@ public class CharacterMenu : MonoBehaviour {
     }
     private IEnumerator coroutineAttackButtonSprite;
 
-    public void AttackButtonDownSprite() {
-        SoundManager.instance.AttackingAirLogic();
-        currentAttackButtonImage.sprite = attackButtonDownSprite;
-        coroutineAttackButtonSprite = AttackButtonSpriteChange(0.7f);
-        StartCoroutine(coroutineAttackButtonSprite);
-    }
+    //public void AttackButtonDownSprite() {
+
+    //    currentAttackButtonImage.sprite = attackButtonDownSprite;
+    //    coroutineAttackButtonSprite = AttackButtonSpriteChange(0.7f);
+    //    StartCoroutine(coroutineAttackButtonSprite);
+    //}
     
     private IEnumerator AttackButtonSpriteChange(float waitTime) {
         //attackButton.SetActive(false);
