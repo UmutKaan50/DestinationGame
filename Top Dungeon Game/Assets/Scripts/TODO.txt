@@ -6,3 +6,5 @@ Floating text will be well animated.
 
 Font should be better.
 
+README.txt will be updated.
+

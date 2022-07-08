@@ -34,27 +34,6 @@ Turn on the collider only when we are swinging the sword.
 Animator window has tire mouse click for movement.
 
 We don't want exit time, we want something extremely fast.
-<<<<<<< HEAD
-Canavarın saldırısında bir terslik var, ilgilenmeliyim.
-Sandık resimli butona bastığımız miktar kadar envanter görevi gören ekran kapansa bile bu miktardan bir eksik defa tekrardan açılıyor. 
-Gerekirse bu durumu halledebilirim.
-Sprite ismini kodda değiştirip tekrar kodda düzeltmem :D
-Xp'nin kaldığı yerden devam etmesi meselesini 6:00:00'dan hemen öncesini çözdüm mü çözemedim mi emin değilim.
-6:02:14 esnasında meydana gelen hata durumu bana oynadığım bir oyundan tanıdık geldi.
-IndexOutOfBounds hatası Weapon classındaki damagePoint ve pushForce dizilerini public yapmam ve editörde bir şekilde bu dizilerin içlerinin boş olmasından
-kaynaklıymış. Private'a dönüştürmem sorunu ortadan kaldırdı. :)
-Event system git gel sonrasında kayboluyor.
-Health bar azalmıyor.
-Coroutinelerin uygulanışını bir nebze dahi olsa hatırladım.
-Hem parent hem de child objenin içindeki componentlara erişimimiz mümkün.
-İskeletin ölme sesi işi çözülemedi henüz.
-1 sn hasar almama durumu söz konusu.
-Animasyonda has exit time'ı nereye konumlandırdığın önemli. Şu durumdan şu duruma geçerken animasyonun tamamını oynat manasına geliyor sanırım.
-Uyguladığım durumda alt alta iki trigger çağırmıştım. 
-Assurance panelindeki "+" ve "-" butonlarını değiştirebilirim.
-Game view'da ekran çözünürlüğünü değiştirdiğimizde scene view'da da değişiklik oluyor.
-HUD ismini verdiğim canvasın sort orderını 0, QuestCanvas ismini verdiğim canvasın sort orderının 1 yaptım ki click locking ismini verdiğim paneli kullanabileyim.
-=======
 
 Final boss attack in reverse rotation, I should analyze it.
 
@@ -77,6 +56,16 @@ I remembered how coroutines applicationn was made even a little.
 
 Don't forget that we can reach both parent and child object's compenents.
 
+Skeleton's death sfx issue didn't solved yet.
 
+1 second immunity(?)
 
->>>>>>> a7bd08a6641f2cb115d7cbb6ccd6ddd7089f4b03
+How you positioned has exit time is important. Play whole animation when transition happens in this place...
+
+I used to call two consecutive triggers at the same time.
+
+I can change "+" and "-" buttons in assurance panel if I'll continue using it.
+
+Changing resolution in game view effects scene view.
+
+I've changed canvas called "HUD"s sort order to 0, "QuestCanvas"s sort order to 1 so that I can use panel named "click locking".
