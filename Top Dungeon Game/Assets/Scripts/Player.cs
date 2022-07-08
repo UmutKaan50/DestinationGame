@@ -69,14 +69,14 @@ public class Player : Mover {
         //}
 
 
+        // Stopped:
         if (verticalMove == 0 && horizontalMove == 0) {
             isMoving = false;
-            Debug.Log("Stopped.");
             audioSource.Stop();
-        } else {
+        } else { // Walking:
             if(!audioSource.isPlaying)
             audioSource.Play();
-            Debug.Log("Walking.");
+            
             //SoundManager.instance.audioSource.clip = SoundManager.instance.walking;
             //SoundManager.instance.audioSource.loop = true;
             //SoundManager.instance.audioSource.Play();

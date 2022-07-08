@@ -35,16 +35,7 @@ public class QuestNpc : Collideable {
 
         player = GameObject.Find("Player");
 
-        // Assigning required position values into variables: 
-        npcCurrentX = transform.position.x;
-        npcCurrentY = transform.position.y;
-
-        playerCurrentX = player.transform.position.x;
-        playerCurrentY = player.transform.position.y;
-
-        // Determining the distance between required points:
-        xDistance = Mathf.Abs(npcCurrentX - playerCurrentX);
-        yDistance = Mathf.Abs(npcCurrentY - playerCurrentY);
+        
     }
 
 
@@ -55,7 +46,22 @@ public class QuestNpc : Collideable {
     }
 
     private void CalculateInteractDistance() {
-        if (xDistance < 0.2f || yDistance < 0.2f) {
+        // Calculating distance between player and npc that effects a panel animation:
+
+        // Assigning required position values into variables: 
+        npcCurrentX = transform.position.x;
+        npcCurrentY = transform.position.y;
+
+        playerCurrentX = player.transform.position.x;
+        playerCurrentY = player.transform.position.y;
+
+        // Determining the distance between required points:
+        xDistance = Mathf.Abs(npcCurrentX - playerCurrentX);
+        yDistance = Mathf.Abs(npcCurrentY - playerCurrentY);
+
+        float distance = Mathf.Sqrt(xDistance * xDistance + yDistance * yDistance);
+        Debug.Log("Distance: " + distance);
+        if (distance < 0.18f) {
             // Triggering animation and setting next cooldown:
             if (Time.time - lastShout > cooldown) {
                 lastShout = Time.time;
