@@ -69,3 +69,7 @@ I can change "+" and "-" buttons in assurance panel if I'll continue using it.
 Changing resolution in game view effects scene view.
 
 I've changed canvas called "HUD"s sort order to 0, "QuestCanvas"s sort order to 1 so that I can use panel named "click locking".
+
+In this project I've used pool technique for texts.
+
+

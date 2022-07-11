@@ -61,7 +61,7 @@ public class QuestNpc : Collideable {
 
         float distance = Mathf.Sqrt(xDistance * xDistance + yDistance * yDistance);
         Debug.Log("Distance: " + distance);
-        if (distance < 0.18f) {
+        if (distance < 0.18f && !isQuestAssurancePanelOpened) {
             // Triggering animation and setting next cooldown:
             if (Time.time - lastShout > cooldown) {
                 lastShout = Time.time;

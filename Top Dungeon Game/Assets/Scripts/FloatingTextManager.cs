@@ -40,6 +40,7 @@ public class FloatingTextManager : MonoBehaviour {
             txt.go = Instantiate(textPrefab);
             txt.go.transform.SetParent(textContainer.transform);
             txt.txt = txt.go.GetComponent<Text>();
+            // Other properties is assigned in FloatingText class.
 
             floatingTexts.Add(txt);
         }
