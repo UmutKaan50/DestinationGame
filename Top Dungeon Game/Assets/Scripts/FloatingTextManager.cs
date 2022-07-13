@@ -19,6 +19,8 @@ public class FloatingTextManager : MonoBehaviour {
     }
     public void Show(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration) {
 
+        // I want to perform animation after show method.
+
         FloatingText floatingText = GetFloatingText();
         Debug.Log(msg);
 
@@ -31,6 +33,11 @@ public class FloatingTextManager : MonoBehaviour {
         floatingText.duration = duration;
 
         floatingText.Show();
+
+        // In animation I've set text component inactive. I want to reactivate it.
+
+        Animator animator = textContainer.GetComponent<Animator>();
+        animator.Play("FloatingTextShowAndHide");
     }
     private FloatingText GetFloatingText() {
         FloatingText txt = floatingTexts.Find(t => !t.active);

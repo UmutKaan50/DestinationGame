@@ -10,4 +10,8 @@ README.txt will be updated.
 
 Floating text mechanic needs to be understood deeply so that I can make the changes necessary.
 
+Animation will be added into prefab.
+
+
+
 

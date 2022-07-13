@@ -26,6 +26,8 @@ public class Fighter : MonoBehaviour {
 
             if (gameObject.name == "Player") {
                 GameManager.instance.ShowText(dmg.damageAmount.ToString(), 18, Color.red, transform.position, Vector3.zero, 0.2f);
+                
+                
             } else {
                 GameManager.instance.ShowText(dmg.damageAmount.ToString(), 22, Color.yellow, transform.position, Vector3.zero, 0.2f);
             }
