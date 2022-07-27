@@ -1,0 +1,26 @@
+Assurance question panel will be changed with an interact button. After clicking interact button player will face with assurance question or directly puzzle.
+
+Prefer local variables instead of global ones in required fields.
+
+README.txt will be updated.
+
+Should be moved to readme.txt: Font scales under WrittenButtons object are set to 1.5.
+
+
+Other question panel will be configured. 
+
+Map will be both updated and extended.
+
+Sound effects and interactions will be updated.
+
+Sprite change(Skeleton animaton, dynamic sprite change) and health bar mechanic will be added.
+
+// I can make a small video about home + shift + end combination.
+
+// Continue checking Code Monkey's game development app on steam.
+
+KeyRequirementPanel's hide animation and combination of both show and hide animation needs to be configured.
+
+Should be moved to readme.txt: Transition duration is required for hiding animation I guess.
+
+Sound Effects need to be configured.
