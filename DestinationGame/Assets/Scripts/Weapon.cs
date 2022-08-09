@@ -96,6 +96,7 @@ public class Weapon : Collideable {
             //    SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.attackingAir);
             //}
 
+            // Lambda expression.
             FunctionTimer.Create(() => Debug.Log("Let's wait 0.8 seconds."), .8f);
         }
     }
