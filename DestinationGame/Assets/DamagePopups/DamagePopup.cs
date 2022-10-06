@@ -6,7 +6,7 @@ using CodeMonkey.Utils;
 
 public class DamagePopup : MonoBehaviour {
     // Create a damage popup:
-    public static DamagePopup Create(Vector3 position, int damageAmount, string colorCode, bool isLeftSide) {
+    public static DamagePopup Create(Vector3 position, string damageAmount, string colorCode, bool isLeftSide) {
         Transform damagePopupTransform = Instantiate(GameAssets.i.pfDamagePopup, position, Quaternion.identity);
 
         DamagePopup damagePopup = damagePopupTransform.GetComponent<DamagePopup>();
@@ -29,9 +29,9 @@ public class DamagePopup : MonoBehaviour {
     private void Awake() {
         textMesh = transform.GetComponent<TextMeshPro>();
     }
-    public void Setup(int damageAmount, string colorCode, bool isLeftSide) {
+    public void Setup(string damageAmount, string colorCode, bool isLeftSide) {
 
-        textMesh.SetText(damageAmount.ToString());
+        textMesh.SetText(damageAmount);
 
         textColor = UtilsClass.GetColorFromString(colorCode);
         textMesh.fontSize = .7f;

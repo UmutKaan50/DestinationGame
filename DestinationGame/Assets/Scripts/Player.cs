@@ -21,8 +21,15 @@ public class Player : Mover {
 
     [SerializeField]
     private float rayCastDistance;
-    private void FixedUpdate() {
 
+
+    private void FixedUpdate() {
+        PlayerMovement();
+        PlayerHit();
+       
+    }
+
+    private void PlayerHit() {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, rayCastDistance);
 
         if (hit.collider != null) {
@@ -31,8 +38,27 @@ public class Player : Mover {
             Debug.DrawLine(transform.position, transform.position + transform.right * rayCastDistance, Color.green);
         }
 
+
+    }
+
+    private void PlayerMovement() {
         float horizontalMove = Input.GetAxisRaw("Horizontal");
         float verticalMove = Input.GetAxisRaw("Vertical");
+
+        if (isAlive)
+            UpdateMotor(new Vector3(horizontalMove, verticalMove, 0));
+
+        // Stopped:
+        if (verticalMove == 0 && horizontalMove == 0) {
+            isMoving = false;
+            audioSource.Stop();
+        } else { // Walking:
+            if (!audioSource.isPlaying)
+                audioSource.Play();
+            //SoundManager.instance.audioSource.clip = SoundManager.instance.walking;
+            //SoundManager.instance.audioSource.loop = true;
+            //SoundManager.instance.audioSource.Play();
+        }
 
         // With joystick:
         //if(joystick.Horizontal >= .2f) {
@@ -53,27 +79,7 @@ public class Player : Mover {
         //    verticalMove = 0f;
         //    isVerticalMoving = false;
         //}
-
-
-        // Stopped:
-        if (verticalMove == 0 && horizontalMove == 0) {
-            isMoving = false;
-            audioSource.Stop();
-        } else { // Walking:
-            if(!audioSource.isPlaying)
-            audioSource.Play();
-            
-            //SoundManager.instance.audioSource.clip = SoundManager.instance.walking;
-            //SoundManager.instance.audioSource.loop = true;
-            //SoundManager.instance.audioSource.Play();
-
-
-        }
-
-        if (isAlive)
-        UpdateMotor(new Vector3(horizontalMove, verticalMove, 0));
     }
-
     protected override void Start() {
         base.Start();
         spriteRenderer = GetComponent<SpriteRenderer>();

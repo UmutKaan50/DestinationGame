@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour {
         instance = this;
         SceneManager.sceneLoaded += LoadState;
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        player = GameObject.Find("Player").GetComponent<Player>();
         //DontDestroyOnLoad(gameObject);
     }
 
@@ -131,23 +133,26 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetString("SaveState", s);
     }
     public void LoadState(Scene s, LoadSceneMode mode) {
-        SceneManager.sceneLoaded -= LoadState;
+        // SceneManager.sceneLoaded -= LoadState;
 
         if (!PlayerPrefs.HasKey("SaveState")) {
             return;
         }
+
+        
         // Like loading previous session:
 
-        //string[] data = PlayerPrefs.GetString("SaveState").Split('|');
-        //// 0|10|15|2
-        //// Change player skin
-        //money = int.Parse(data[1]);
-        //// Experience:
-        //experience = int.Parse(data[2]);
-        //if (GetCurrentLevel() != 1)
-        //    player.SetLevel(GetCurrentLevel());
-        //// Change the weapon level: 
-        //weapon.SetWeaponLevel(int.Parse(data[3]));
+        string[] data = PlayerPrefs.GetString("SaveState").Split('|');
+        // 0|10|15|2
+        // Change player skin
+        money = int.Parse(data[1]);
+        // Experience:
+        experience = int.Parse(data[2]);
+        if (GetCurrentLevel() != 1)
+            player.SetLevel(GetCurrentLevel());
+
+        // Change the weapon level: 
+        weapon.SetWeaponLevel(int.Parse(data[3]));
 
     }
 

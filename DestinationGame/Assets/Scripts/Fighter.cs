@@ -26,47 +26,64 @@ public class Fighter : MonoBehaviour {
             lastImmune = Time.time;
             hitpoint -= dmg.damageAmount;
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
+
+
+            bool isCriticalHit = Random.Range(0, 100) < 30;
+
+            bool isLeftSide;
+            bool isKillingBlow;
+
+            if (hitpoint <= 0) {
+                isKillingBlow = true;
+            } else {
+                isKillingBlow = false;
+            }
+
+            if (dmg.origin.x > gameObject.transform.position.x) {
+                // Damagepopup will go left.
+                isLeftSide = true;
+
+            } else {
+                // Damagepopup will go right.
+                isLeftSide = false;
+            }
+            // bool isTargetPlayer = GetComponent<Fighter>().name == "Player";
+            bool isTargetPlayer = gameObject.name == "Player";
+            bool isTargetSkeleton = gameObject.name == "SmallEnemy";
+            bool isTargetBoss = gameObject.name == "Boss";
+
+            // Here I've shown texts instead of playing sounds that tells which sounds are required:
+
+            Vector3 textPositionOffset = transform.position + new Vector3(.2f, .2f, 0);
+
+            string playerHitText = "player";
+            string skeletonHitText = "skeleton";
+            string bossHitText = "boss";
+            string otherHitText = "other";
+
+            if (isTargetPlayer) {
+                DamagePopup.Create(transform.position, dmg.damageAmount.ToString(), "FF2B00", isLeftSide); // FF2B00 is red.
+                DamagePopup.Create(textPositionOffset, playerHitText, "18DBB9", isLeftSide);
+
+            } else if (isTargetSkeleton) {
+                DamagePopup.Create(transform.position, dmg.damageAmount.ToString(), "FFC500", isLeftSide); // FFC500 is yellow.
+                DamagePopup.Create(textPositionOffset, skeletonHitText, "18DBB9", isLeftSide);
+
+            } else if (isTargetBoss) {
+                DamagePopup.Create(transform.position, dmg.damageAmount.ToString(), "FF2B00", isLeftSide);
+                DamagePopup.Create(textPositionOffset, bossHitText, "18DBB9", isLeftSide);
+
+            } else {
+                DamagePopup.Create(transform.position, dmg.damageAmount.ToString(), "FFC500", isLeftSide); 
+                DamagePopup.Create(textPositionOffset, otherHitText, "18DBB9", isLeftSide);
+
+            }
+
+            if (hitpoint <= 0) {
+                hitpoint = 0;
+                Death();
+            }
         }
-
-        bool isCriticalHit = Random.Range(0, 100) < 30;
-
-        bool isLeftSide;
-
-        if (dmg.origin.x > gameObject.transform.position.x) {
-            // Damagepopup will go left.
-            isLeftSide = true;
-
-        } else {
-            // Damagepopup will go right.
-            isLeftSide = false;
-        }
-        bool isPlayer = GetComponent<Fighter>().name == "Player";
-        
-
-        if (isPlayer) {
-            DamagePopup.Create(transform.position, dmg.damageAmount, "FF2B00", isLeftSide);
-            // Previously: GameManager.instance.ShowText(dmg.damageAmount.ToString(), 18, Color.red, transform.position, Vector3.zero, 0.2f);
-        } 
-        //else if () {
-        //    SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.attackingEnemy);
-        //    DamagePopup.Create(transform.position, dmg.damageAmount, "FFC500", isLeftSide);
-        //    //if () {
-
-        //    //}
-        //} else if () {
-        //    SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.crateHit);
-        //    DamagePopup.Create(transform.position, dmg.damageAmount, "FFC500", isLeftSide);
-        //}
-
-        //Previously: GameManager.instance.ShowText(dmg.damageAmount.ToString(), 22, Color.yellow, transform.position, Vector3.zero, 0.2f);
-
-        // Checking death condition:
-
-        if (hitpoint <= 0) {
-            hitpoint = 0;
-            Death();
-        }
-
     }
 
 

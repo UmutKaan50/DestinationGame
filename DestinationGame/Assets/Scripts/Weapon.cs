@@ -23,6 +23,7 @@ public class Weapon : Collideable {
         // Instead, you could've made spriteRenderer public and assign it in the inspector.
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
+
     protected override void Start() {
         // We keep base.Start() because we need to assign our boxcollider:
         base.Start();
@@ -57,10 +58,10 @@ public class Weapon : Collideable {
 
     protected override void OnCollide(Collider2D coll) {
         if (coll.tag == "Fighter") {
+            // The reason why we've used return below needs to be understood.
             if (coll.name == "Player")
                 return;
 
-            // Debug.Log("Weapon level: " + weaponlevel);
             Damage dmg = new Damage {
                 damageAmount = damagePoint[weaponlevel],
                 origin = transform.position,
@@ -69,41 +70,13 @@ public class Weapon : Collideable {
 
             coll.SendMessage("RecieveDamage", dmg);
 
+            if (coll.name.Contains("SmallEnemy")) {
+                Debug.Log("Small Enemy hit!");
+            }
 
-            // SoundManager.instance.isHittingEnemy = true;
-
-            int attackDamage = damagePoint[weaponlevel];
-            int targetHealth = coll.GetComponent<Fighter>().hitpoint;
-
-            bool killingBlow = attackDamage > targetHealth;
-
-
-
-            bool isSkeleton = coll.gameObject.GetComponent<Fighter>().name == "Skeleton";
-            bool isCrate = coll.gameObject.GetComponent<Fighter>().name == "Crate";
-            //if (isSkeleton) {
-                
-            //    if (killingBlow) {
-            //        SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.skeletonDeath);
-            //    }
-            //} else if (isCrate) {
-                
-            //    if (killingBlow) {
-            //        SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.crateBreak);
-
-            //    }
-            //} else { // Air:
-            //    SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.attackingAir);
-            //}
-
-            // Lambda expression.
-            FunctionTimer.Create(() => Debug.Log("Let's wait 0.8 seconds."), .8f);
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision) {
-
-    }
 
     private void Swing() {
         anim.SetTrigger("Swing");
