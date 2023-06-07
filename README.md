@@ -13,4 +13,4 @@ Try to reach destination while fighting with enemies, collecting coins and solvi
 
 ## [Play Destination Game!](https://play.unity.com/mg/other/webgl-builds-211000)
 
-This project has been made for my Software Engineering course. I sometimes update this project.
+This project has been made for my Software Engineering course. It'll be updated in time.
