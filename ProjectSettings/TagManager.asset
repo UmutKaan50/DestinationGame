@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Fighter
+  - QuestNpc
+  - ProcessButton
+  - Skeleton
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Blocking
+  - Actor
+  - New Character
+  - Enemy
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Floor
+    uniqueID: 2855914093
+    locked: 0
+  - name: Wall
+    uniqueID: 3030836671
+    locked: 0
+  - name: Interactable
+    uniqueID: 2731877355
+    locked: 0
+  - name: Actor
+    uniqueID: 1650603631
+    locked: 0
+  - name: Weapon
+    uniqueID: 716367725
+    locked: 0
+  - name: Top
+    uniqueID: 3986804977
+    locked: 0
+  - name: Ones That Are On Top Of Player
+    uniqueID: 1746924649
+    locked: 0
