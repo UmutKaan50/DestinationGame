@@ -7,49 +7,73 @@ using System;
 using UnityEngine.InputSystem;
 using Random = System.Random;
 
-namespace y01cu
-{
+namespace y01cu {
     /// <summary>
     /// FighterNew
     /// </summary>
-    public class FighterNew : MonoBehaviour
-    {
-        private string name;
+    public class FighterNew : MonoBehaviour {
+        public event Action OnRecieveDamage;
 
-        public float AttackingDamage { get; protected set; }
-        public float AttackingSpeed { get; protected set; }
-        public float AttackRange { get; protected set; }
+        protected string name;
 
-        public float CriticalAttackChance { get; protected set; }
-        public float CriticalAttackDamageMultiplier { get; protected set; }
+        protected int level;
 
-        public float MovementSpeed { get; protected set; }
+        protected float attackingDamage;
+        protected float attackCooldown;
+        protected float attackRange;
 
-        public float CastingSpeed { get; protected set; }
-        public float MagicDamage { get; protected set; }
+        protected float criticalAttackChance;
+        protected float criticalAttackDamageMultiplier;
 
-        public float Armour { get; protected set; }
-        public float MagicResistance { get; protected set; }
+        protected float movementSpeed;
 
-        public float CriticalMagicChance { get; protected set; }
-        public float CriticalMagicDamageMultiplier { get; protected set; }
+        protected float castingSpeed;
+        protected float magicDamage;
 
-        public float Hitpoint { get; protected set; }
+        protected float armour;
+        protected float magicResistance;
 
-        protected virtual void RecieveDamage(Damage damage)
-        {
+        protected float criticalMagicChance;
+        protected float criticalMagicDamageMultiplier;
+
+        protected float hitpoint;
+
+        // A function in which we set all of the attribute values
+        protected void SetInitialAttributeValues(float attackingDamage, float attackingSpeed, float attackRange,
+            float criticalAttackChance, float criticalAttackDamageMultiplier, float movementSpeed, float castingSpeed,
+            float magicDamage, float armour, float magicResistance, float criticalMagicChance,
+            float criticalMagicDamageMultiplier, float hitpoint) {
+            this.attackingDamage = attackingDamage;
+            this.attackCooldown = attackingSpeed;
+            this.attackRange = attackRange;
+            this.criticalAttackChance = criticalAttackChance;
+            this.criticalAttackDamageMultiplier = criticalAttackDamageMultiplier;
+            this.movementSpeed = movementSpeed;
+            this.castingSpeed = castingSpeed;
+            this.magicDamage = magicDamage;
+            this.armour = armour;
+            this.magicResistance = magicResistance;
+            this.criticalMagicChance = criticalMagicChance;
+            this.criticalMagicDamageMultiplier = criticalMagicDamageMultiplier;
+            this.hitpoint = hitpoint;
+        }
+
+        // protected void SetAttributeValues(float attacking)
+
+        protected void RecieveDamage(Damage damage) {
+            Debug.Log("Previous health of " + gameObject.name + " was " + hitpoint + ".");
+            Debug.Log(gameObject.name + " has recieved " + damage.attackDamageAmount + " attack damage and " +
+                      damage.magicDamageAmount + " magic damage.");
             float comingAttackDamageLoweredByArmour = damage.attackDamageAmount - armour;
             bool isComingAttackDamageZero = comingAttackDamageLoweredByArmour <= 0;
-            if (isComingAttackDamageZero)
-            {
+            if (isComingAttackDamageZero) {
                 int minimumDamage = 1;
                 comingAttackDamageLoweredByArmour = minimumDamage;
             }
 
             float comingMagicDamageLoweredByMagicResistance = damage.magicDamageAmount - magicResistance;
             bool isComingMagicDamageZero = comingMagicDamageLoweredByMagicResistance <= 0;
-            if (isComingMagicDamageZero)
-            {
+            if (isComingMagicDamageZero) {
                 int minimumDamage = 1;
                 comingMagicDamageLoweredByMagicResistance = minimumDamage;
             }
@@ -57,25 +81,24 @@ namespace y01cu
             float totalComingDamageLoweredByDefences =
                 comingAttackDamageLoweredByArmour + comingMagicDamageLoweredByMagicResistance;
             hitpoint -= totalComingDamageLoweredByDefences;
+            Debug.Log("Current health of " + gameObject.name + " is " + hitpoint + ".");
+
+            OnRecieveDamage?.Invoke();
         }
 
-        protected virtual float GetFinalAttackDamage()
-        {
-            float finalAttackDamage = AttackingDamage;
-            if (IsCritical())
-            {
-                float criticalAttackDamage = AttackingDamage * criticalAttackDamageMultiplier;
+        protected virtual float GetFinalAttackDamage() {
+            float finalAttackDamage = attackingDamage;
+            if (IsCritical()) {
+                float criticalAttackDamage = attackingDamage * criticalAttackDamageMultiplier;
                 finalAttackDamage = criticalAttackDamage;
             }
 
             return finalAttackDamage;
         }
 
-        protected virtual float Cast()
-        {
+        protected virtual float GetFinalMagicDamage() {
             float finalMagicDamage = magicDamage;
-            if (IsCritical())
-            {
+            if (IsCritical()) {
                 float criticalMagicDamage = magicDamage * criticalMagicDamageMultiplier;
                 finalMagicDamage = criticalMagicDamage;
             }
@@ -83,12 +106,19 @@ namespace y01cu
             return finalMagicDamage;
         }
 
-        bool IsCritical()
-        {
+        bool IsCritical() {
             Random randomNumberGenerator = new Random();
             int randomNumber = randomNumberGenerator.Next(1, 101);
             bool isCritical = randomNumber == 1;
             return isCritical;
+        }
+
+        public float GetHitpoint() {
+            return hitpoint;
+        }
+
+        public float GetAttackCooldown() {
+            return attackCooldown;
         }
     }
 }
