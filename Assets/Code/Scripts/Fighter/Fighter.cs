@@ -1,111 +1,107 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
+using System.Globalization;
+using Code.Scripts;
 
-public class Fighter : MonoBehaviour
-{
-    [SerializeField] private string name;
+namespace Destination.Fighters {
+    using System.Collections;
+    using System.Collections.Generic;
+    using Destination.DamagePopups;
+    using UnityEngine;
 
-    // Public fields:
-    public float hitpoint = 10;
-    public int maxHitpoint = 10;
-    public float pushRecoverySpeed = 0.2f;
+    [Obsolete("This script is not used anymore. It's replaced with NewFighter.cs script.")]
+    public class Fighter : MonoBehaviour {
+        [SerializeField] private string name;
 
-    // Immunity:
-    protected float immuneTime = 0.7f;
-    protected float lastImmune;
+        // Public fields:
+        public float hitpoint = 10;
+        public int maxHitpoint = 10;
+        public float pushRecoverySpeed = 0.2f;
 
-    // Push:
-    protected Vector3 pushDirection;
+        // Immunity:
+        protected float immuneTime = 0.7f;
+        protected float lastImmune;
 
-    // All fighters can recieve damage and die.
+        // Push:
+        protected Vector3 pushDirection;
 
-    protected virtual void RecieveDamage(Damage dmg)
-    {
-        // Make player immune, not enemy:
-        if (Time.time - lastImmune > immuneTime)
-        {
-            lastImmune = Time.time;
-            hitpoint -= dmg.attackDamageAmount;
-            pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
+        // All fighters can recieve damage and die.
 
-            bool isCriticalHit = Random.Range(0, 100) < 30;
+        protected virtual void RecieveDamage(Damage dmg) {
+            // Make player immune, not enemy:
+            if (Time.time - lastImmune > immuneTime) {
+                lastImmune = Time.time;
+                hitpoint -= dmg.attackDamageAmount;
+                pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
 
-            bool isLeftSide;
-            bool isKillingBlow;
+                bool isCriticalHit = Random.Range(0, 100) < 30;
 
-            if (hitpoint <= 0)
-            {
-                isKillingBlow = true;
-            }
-            else
-            {
-                isKillingBlow = false;
-            }
+                bool isLeftSide;
+                bool isKillingBlow;
 
-            if (dmg.origin.x > gameObject.transform.position.x)
-            {
-                // Damagepopup will go left.
-                isLeftSide = true;
-            }
-            else
-            {
-                // Damagepopup will go right.
-                isLeftSide = false;
-            }
+                if (hitpoint <= 0) {
+                    isKillingBlow = true;
+                }
+                else {
+                    isKillingBlow = false;
+                }
 
-            // bool isTargetPlayer = GetComponent<Fighter>().name == "Player";
-            bool isTargetPlayer = gameObject.name == "Player";
-            bool isTargetSkeleton = gameObject.name == "SmallEnemy";
-            bool isTargetBoss = gameObject.name == "Boss";
+                if (dmg.origin.x > gameObject.transform.position.x) {
+                    // Damagepopup will go left.
+                    isLeftSide = true;
+                }
+                else {
+                    // Damagepopup will go right.
+                    isLeftSide = false;
+                }
 
-            // Here I've shown texts instead of playing sounds that tells which sounds are required:
+                string nameOfTheGameObject = gameObject.name;
 
-            Vector3 textPositionOffset = transform.position + new Vector3(.2f, .2f, 0);
+                // bool isTargetPlayer = GetComponent<Fighter>().name == "Player";
+                bool targetIsPlayer = nameOfTheGameObject == "Player";
+                bool targetIsSkeleton = nameOfTheGameObject == "SmallEnemy";
+                bool targetIsBoss = nameOfTheGameObject == "Boss";
 
-            string playerHitText = "player";
-            string skeletonHitText = "skeleton";
-            string bossHitText = "boss";
-            string otherHitText = "other";
+                // Here I've shown texts instead of playing sounds that tells which sounds are required:
 
-            if (isTargetPlayer)
-            {
-                DamagePopup.Create(transform.position, dmg.attackDamageAmount.ToString(), "FF2B00",
-                    isLeftSide); // FF2B00 is red.
-                // DamagePopup.Create(textPositionOffset, playerHitText, "18DBB9", isLeftSide);
-            }
-            else if (isTargetSkeleton)
-            {
-                DamagePopup.Create(transform.position, dmg.attackDamageAmount.ToString(), "FFC500",
-                    isLeftSide); // FFC500 is yellow.
-                // DamagePopup.Create(textPositionOffset, skeletonHitText, "18DBB9", isLeftSide);
-            }
-            else if (isTargetBoss)
-            {
-                DamagePopup.Create(transform.position, dmg.attackDamageAmount.ToString(), "FF2B00", isLeftSide);
-                // DamagePopup.Create(textPositionOffset, bossHitText, "18DBB9", isLeftSide);
-            }
-            else
-            {
-                // Instead of using a text like "other", I can use empty text instead.
+                Vector3 textPositionOffset = transform.position + new Vector3(.2f, .2f, 0);
 
-                DamagePopup.Create(transform.position, "", "FFC500", isLeftSide);
+                string playerHitText = "player";
+                string skeletonHitText = "skeleton";
+                string bossHitText = "boss";
+                string otherHitText = "other";
 
-                SoundController.instance.audioSource.PlayOneShot(SoundController.instance.crateBreak);
+                if (targetIsPlayer) {
+                    DamagePopup.Create(transform.position, dmg.attackDamageAmount.ToString(), "FF2B00",
+                        isLeftSide); // FF2B00 is red.
+                    // DamagePopup.Create(textPositionOffset, playerHitText, "18DBB9", isLeftSide);
+                }
+                else if (targetIsSkeleton) {
+                    DamagePopup.Create(transform.position, dmg.attackDamageAmount.ToString(), "FFC500",
+                        isLeftSide); // FFC500 is yellow.
+                    // DamagePopup.Create(textPositionOffset, skeletonHitText, "18DBB9", isLeftSide);
+                }
+                else if (targetIsBoss) {
+                    DamagePopup.Create(transform.position, dmg.attackDamageAmount.ToString(), "FF2B00", isLeftSide);
+                    // DamagePopup.Create(textPositionOffset, bossHitText, "18DBB9", isLeftSide);
+                }
+                else {
+                    // Instead of using a text like "other", I can use empty text instead.
 
-                // DamagePopup.Create(textPositionOffset, "", "18DBB9", isLeftSide);
-            }
+                    DamagePopup.Create(transform.position, "", "FFC500", isLeftSide);
 
-            if (hitpoint <= 0)
-            {
-                hitpoint = 0;
-                Death();
+                    SoundController.instance.audioSource.PlayOneShot(SoundController.instance.crateBreak);
+
+                    // DamagePopup.Create(textPositionOffset, "", "18DBB9", isLeftSide);
+                }
+
+                if (hitpoint <= 0) {
+                    hitpoint = 0;
+                    Death();
+                }
             }
         }
-    }
 
-
-    protected virtual void Death()
-    {
+        protected virtual void Death() {
+        }
     }
 }

@@ -1,0 +1,668 @@
+fileFormatVersion: 2
+guid: a3285ac8ed681f147986968e8e325a0c
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Player Jab 48x48_Frame_0
+    originalName: 
+    pivot: {x: 0.7058824, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 82
+      width: 17
+      height: 31
+    spriteID: c87d66c0bab6d5e478b1931a7872a7b7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 82}
+  - name: Player Jab 48x48_Frame_1
+    originalName: 
+    pivot: {x: 0.6666667, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 82
+      width: 15
+      height: 31
+    spriteID: 5aba8b088e0fb5d439709241553ca376
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 82}
+  - name: Player Jab 48x48_Frame_2
+    originalName: 
+    pivot: {x: 0.6666667, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 121
+      width: 15
+      height: 31
+    spriteID: 1ef2454ae8e299049b17d459c73c5242
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 121}
+  - name: Player Jab 48x48_Frame_3
+    originalName: 
+    pivot: {x: 0.6666667, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 160
+      width: 15
+      height: 31
+    spriteID: 2bb262628fb60084a8f045a9691df2ac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 160}
+  - name: Player Jab 48x48_Frame_4
+    originalName: 
+    pivot: {x: 0.7692308, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 199
+      width: 13
+      height: 31
+    spriteID: 6666b2b710434c3488eeb3808da18952
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 199}
+  - name: Player Jab 48x48_Frame_5
+    originalName: 
+    pivot: {x: 0.7692308, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 97
+      y: 4
+      width: 13
+      height: 31
+    spriteID: 01a1f836e6b7938448021bfb43421e02
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 97, y: 4}
+  - name: Player Jab 48x48_Frame_6
+    originalName: 
+    pivot: {x: 0.3703704, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 82
+      width: 27
+      height: 31
+    spriteID: 99de99a65d4c21648a95ef24b3eae616
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 82}
+  - name: Player Jab 48x48_Frame_7
+    originalName: 
+    pivot: {x: 0.33333334, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 30
+      height: 31
+    spriteID: 839afb74add65ca40b19b8ee5f8f8abd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Player Jab 48x48_Frame_8
+    originalName: 
+    pivot: {x: 0.3703704, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 121
+      width: 27
+      height: 31
+    spriteID: 6084c5bcb2c784c4a8a5d6b50c4cf899
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 121}
+  - name: Player Jab 48x48_Frame_9
+    originalName: 
+    pivot: {x: 0.35714287, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 43
+      width: 28
+      height: 31
+    spriteID: 0f99cee00c319124a8aea634dce0d9e0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 43}
+  - name: Player Jab 48x48_Frame_10
+    originalName: 
+    pivot: {x: 0.3846154, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 160
+      width: 26
+      height: 31
+    spriteID: 9441a5744f9687041a5900901b2f0f31
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 160}
+  - name: Player Jab 48x48_Frame_11
+    originalName: 
+    pivot: {x: 0.3846154, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 199
+      width: 26
+      height: 31
+    spriteID: ea154d0caf823ca40b1e8272fb8d6b85
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 199}
+  - name: Player Jab 48x48_Frame_12
+    originalName: 
+    pivot: {x: 0.4545455, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 4
+      width: 22
+      height: 31
+    spriteID: 4e9207dedbeba6644ab0113d47a0129b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 4}
+  - name: Player Jab 48x48_Frame_13
+    originalName: 
+    pivot: {x: 0.5555556, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 43
+      width: 18
+      height: 31
+    spriteID: b5ef8846875f93f4bbb0c27009863d94
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 43}
+  - name: Player Jab 48x48_Frame_14
+    originalName: 
+    pivot: {x: 0.7058824, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 121
+      width: 17
+      height: 31
+    spriteID: 7f6df366846fbb041a327182711e951b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 121}
+  - name: Player Jab 48x48_Frame_15
+    originalName: 
+    pivot: {x: 0.7058824, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 160
+      width: 17
+      height: 31
+    spriteID: b77ea17effb7ceb45ab958bb9cc120cd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 160}
+  - name: Player Jab 48x48_Frame_16
+    originalName: 
+    pivot: {x: 0.7058824, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 199
+      width: 17
+      height: 31
+    spriteID: 0bbae3e2f0fa27a4dbbcb2c48df5df11
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 199}
+  - name: Player Jab 48x48_Frame_17
+    originalName: 
+    pivot: {x: 0.7058824, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 4
+      width: 17
+      height: 31
+    spriteID: a344f4d6709c3b84d8e3d81d1fa855fe
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 4}
+  - name: Player Jab 48x48_Frame_18
+    originalName: 
+    pivot: {x: 0.7058824, y: -0.2580645}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 43
+      width: 17
+      height: 31
+    spriteID: 9bf9215c4268aa148a6bc462c7b4100b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 43}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -471192246
+    name: Player Jab 48x48
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Player Jab 48x48_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 12
+        y: 8
+        width: 17
+        height: 31
+      spriteId: c87d66c0bab6d5e478b1931a7872a7b7
+    - name: Player Jab 48x48_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 14
+        y: 8
+        width: 15
+        height: 31
+      spriteId: 5aba8b088e0fb5d439709241553ca376
+    - name: Player Jab 48x48_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 14
+        y: 8
+        width: 15
+        height: 31
+      spriteId: 1ef2454ae8e299049b17d459c73c5242
+    - name: Player Jab 48x48_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 14
+        y: 8
+        width: 15
+        height: 31
+      spriteId: 2bb262628fb60084a8f045a9691df2ac
+    - name: Player Jab 48x48_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 14
+        y: 8
+        width: 13
+        height: 31
+      spriteId: 6666b2b710434c3488eeb3808da18952
+    - name: Player Jab 48x48_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 14
+        y: 8
+        width: 13
+        height: 31
+      spriteId: 01a1f836e6b7938448021bfb43421e02
+    - name: Player Jab 48x48_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 14
+        y: 8
+        width: 27
+        height: 31
+      spriteId: 99de99a65d4c21648a95ef24b3eae616
+    - name: Player Jab 48x48_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 14
+        y: 8
+        width: 30
+        height: 31
+      spriteId: 839afb74add65ca40b19b8ee5f8f8abd
+    - name: Player Jab 48x48_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 14
+        y: 8
+        width: 27
+        height: 31
+      spriteId: 6084c5bcb2c784c4a8a5d6b50c4cf899
+    - name: Player Jab 48x48_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 14
+        y: 8
+        width: 28
+        height: 31
+      spriteId: 0f99cee00c319124a8aea634dce0d9e0
+    - name: Player Jab 48x48_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 14
+        y: 8
+        width: 26
+        height: 31
+      spriteId: 9441a5744f9687041a5900901b2f0f31
+    - name: Player Jab 48x48_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 14
+        y: 8
+        width: 26
+        height: 31
+      spriteId: ea154d0caf823ca40b1e8272fb8d6b85
+    - name: Player Jab 48x48_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 14
+        y: 8
+        width: 22
+        height: 31
+      spriteId: 4e9207dedbeba6644ab0113d47a0129b
+    - name: Player Jab 48x48_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 14
+        y: 8
+        width: 18
+        height: 31
+      spriteId: b5ef8846875f93f4bbb0c27009863d94
+    - name: Player Jab 48x48_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 12
+        y: 8
+        width: 17
+        height: 31
+      spriteId: 7f6df366846fbb041a327182711e951b
+    - name: Player Jab 48x48_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 12
+        y: 8
+        width: 17
+        height: 31
+      spriteId: b77ea17effb7ceb45ab958bb9cc120cd
+    - name: Player Jab 48x48_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 12
+        y: 8
+        width: 17
+        height: 31
+      spriteId: 0bbae3e2f0fa27a4dbbcb2c48df5df11
+    - name: Player Jab 48x48_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 12
+        y: 8
+        width: 17
+        height: 31
+      spriteId: a344f4d6709c3b84d8e3d81d1fa855fe
+    - name: Player Jab 48x48_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 12
+        y: 8
+        width: 17
+        height: 31
+      spriteId: 9bf9215c4268aa148a6bc462c7b4100b
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 48, y: 48}

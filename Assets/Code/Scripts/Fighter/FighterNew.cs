@@ -2,14 +2,18 @@
 // copyright (c) y01cu. All rights reserved.
 //
 
-using UnityEngine;
-using System;
-using UnityEngine.InputSystem;
-using Random = System.Random;
 
-namespace y01cu {
+using Code.Scripts;
+using Destination.DamagePopups;
+
+namespace Destination.Fighters {
+    using UnityEngine;
+    using System;
+    using UnityEngine.InputSystem;
+    using Random = System.Random;
+
     /// <summary>
-    /// FighterNew
+    /// FighterNew class is the base class for all fighters in the game. In it we can set attributes
     /// </summary>
     public class FighterNew : MonoBehaviour {
         public event Action OnRecieveDamage;
@@ -60,7 +64,11 @@ namespace y01cu {
 
         // protected void SetAttributeValues(float attacking)
 
-        protected void RecieveDamage(Damage damage) {
+        /// <summary>
+        /// In this method upcoming damage is lowered by the target defences and then the appropriate sound effect is played.
+        /// </summary>
+        /// <param name="damage"></param>
+        protected virtual void RecieveDamage(Damage damage) {
             Debug.Log("Previous health of " + gameObject.name + " was " + hitpoint + ".");
             Debug.Log(gameObject.name + " has recieved " + damage.attackDamageAmount + " attack damage and " +
                       damage.magicDamageAmount + " magic damage.");
@@ -82,6 +90,10 @@ namespace y01cu {
                 comingAttackDamageLoweredByArmour + comingMagicDamageLoweredByMagicResistance;
             hitpoint -= totalComingDamageLoweredByDefences;
             Debug.Log("Current health of " + gameObject.name + " is " + hitpoint + ".");
+
+            bool tempBool = false;
+            DamagePopup.Create(transform.position, totalComingDamageLoweredByDefences.ToString(), "FFC500", tempBool);
+
 
             OnRecieveDamage?.Invoke();
         }
@@ -119,6 +131,14 @@ namespace y01cu {
 
         public float GetAttackCooldown() {
             return attackCooldown;
+        }
+        
+        public enum FighterType {
+            Player,
+            Enemy,
+            Boss,
+            Crate,
+            
         }
     }
 }
