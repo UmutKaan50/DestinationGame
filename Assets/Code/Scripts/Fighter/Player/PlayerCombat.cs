@@ -10,6 +10,7 @@ namespace Destination.Player {
 
     public class PlayerCombat : MonoBehaviour, IDifferentAttackPhases {
         private Player player;
+
         // protected AttackType attackType;
         protected static int attackHitCounter = 0;
 
@@ -44,9 +45,11 @@ namespace Destination.Player {
             }
         }
 
-        protected virtual bool DidAttackHitSomething() {
-            bool didAttackHitSomething = hitTargets.Length > 0 && hitTargets[0] != null;
-            return didAttackHitSomething;
+        protected virtual bool DidAttackHitATarget() {
+            bool didAttackHitATarget = hitTargets.Length > 0 && hitTargets[0] != null;
+            // bool didAttackHitATarget = hitTargets.Length > 0 && hitTargets?[0].gameObject;
+
+            return didAttackHitATarget;
         }
 
         // The approach taken is that when attack damage is sent there's no magic damage and vice versa.

@@ -36,18 +36,26 @@ namespace Destination.Enemies {
         }
 
         protected override void RecieveDamage(Damage damage) {
-            // Handle sound effects
-            bool isDamageSourcePlayer = damage.fighterType == FighterType.Player;
-            bool isPlayerAttackNormal = isDamageSourcePlayer && damage.attackType == PlayerCombat.AttackType.Normal;
-            bool isPlayerAttackPowerful = isDamageSourcePlayer && damage.attackType == PlayerCombat.AttackType.Powerful;
-            if (isPlayerAttackNormal) {
-                audioSource.PlayOneShot(SoundController.instance.jabSFX);
-            }
-            else if (isPlayerAttackPowerful) {
-                audioSource.PlayOneShot(SoundController.instance.crossSFX);
-            }
-
+            // // Handle sound effects
+            // bool isDamageSourcePlayer = damage.fighterType == FighterType.Player;
+            // bool isPlayerAttackNormal = isDamageSourcePlayer && damage.attackType == PlayerCombat.AttackType.Normal;
+            // bool isPlayerAttackPowerful = isDamageSourcePlayer && damage.attackType == PlayerCombat.AttackType.Powerful;
+            // if (isPlayerAttackNormal) {
+            //     audioSource.PlayOneShot(SoundController.instance.jabSFX);
+            // }
+            // else if (isPlayerAttackPowerful) {
+            //     audioSource.PlayOneShot(SoundController.instance.crossSFX);
+            // }
             base.RecieveDamage(damage);
+        }
+
+        private void PlayProperSoundEffect() {
+            if (hitpoint <= 0) {
+                audioSource.PlayOneShot(SoundController.instance.skeletonDeath);
+            }
+            else {
+                // audioSource.PlayOneShot(SoundController.instance.skeletonHit);
+            }
         }
     }
 }

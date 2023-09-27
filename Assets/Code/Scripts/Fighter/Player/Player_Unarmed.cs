@@ -10,6 +10,10 @@ namespace Destination.Player {
     public class Player_Unarmed : PlayerCombat {
         private Player player;
         [SerializeField] private AudioSource audioSource;
+        [SerializeField] private ParticleSystem attackEffect;
+        [SerializeField] private Transform playerAttackPointTransform;
+
+        [SerializeField] private Animator attackEffectAnimator;
         // [SerializeField] private AudioClip jabSFX;
         // [SerializeField] private AudioClip crossSFX;
         // [SerializeField] private AudioClip punchInTheAirSFX;
@@ -21,15 +25,21 @@ namespace Destination.Player {
         private int attackHitCounterLoggerIndex = 0;
 
         public override void SendAttackDamageToTheEnemyIfHit() {
-            if (DidAttackHitSomething()) {
+            if (DidAttackHitATarget()) {
+                // attackEffectAnimator.SetTrigger("Hit");
+
                 bool isNormalAttack = attackHitCounter == 0 || attackHitCounter == 1;
                 bool isPowerfulAttack = attackHitCounter == 2;
                 if (isNormalAttack) {
                     AttackNormally();
+                    PlayNormalAttackSound();
                 }
                 else if (isPowerfulAttack) {
                     AttackPowerfully();
+                    PlayPowerfulAttackSound();
                 }
+
+                CreateAttackParticleProperly();
 
                 UpdateAttackHitCounter();
             }
@@ -37,6 +47,23 @@ namespace Destination.Player {
                 float volumeScaleForPunchInTheAirSFX = 0.35f;
                 audioSource.PlayOneShot(SoundController.instance.punchInTheAirSFX, volumeScaleForPunchInTheAirSFX);
             }
+        }
+
+        private void PlayPowerfulAttackSound() {
+            audioSource.PlayOneShot(SoundController.instance.crossSFX);
+        }
+
+        private void CreateAttackParticleProperly() {
+            // Transform attackEffectTransform = attackEffect.transform;
+            // attackEffectTransform.position = new Vector3(0, 0, 0);
+            // attackEffectTransform.position = hitTargets[0].transform.position;
+            // float hitTargetsXPosition = attackEffectTransform.position.x;
+            // float hitTargetsZPosition = attackEffectTransform.position.z;
+
+            // attackEffectTransform.position = new Vector3(hitTargetsXPosition, playerAttackPointTransform.position.y,
+            // hitTargetsZPosition);
+
+            Instantiate(attackEffect, playerAttackPointTransform.position, Quaternion.identity);
         }
 
         private int normalAttackLogCounter = 0;
@@ -63,7 +90,7 @@ namespace Destination.Player {
         }
 
         private void PlayNormalAttackSound() {
-            // SoundController.instance.audioSource.PlayOneShot
+            audioSource.PlayOneShot(SoundController.instance.jabSFX);
         }
 
         private float powerfulAttackDamageMultiplier = 2f;

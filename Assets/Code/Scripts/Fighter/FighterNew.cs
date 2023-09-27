@@ -5,6 +5,7 @@
 
 using Code.Scripts;
 using Destination.DamagePopups;
+using Unity.VisualScripting;
 
 namespace Destination.Fighters {
     using UnityEngine;
@@ -132,13 +133,20 @@ namespace Destination.Fighters {
         public float GetAttackCooldown() {
             return attackCooldown;
         }
-        
+
         public enum FighterType {
             Player,
             Enemy,
             Boss,
             Crate,
-            
+        }
+
+        private void Start() {
+            // OnRecieveDamage += 
+        }
+
+        private void EnemyHurtSound() {
+            // audioSource.PlayOneShot(SoundController.instance.enemyHurtSFX);
         }
     }
 }
