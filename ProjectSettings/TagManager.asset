@@ -16,11 +16,11 @@ TagManager:
   - Water
   - UI
   - 
-  - Destroyable
+  - 
   - Blocking
   - Actor
-  - New Character
-  - Enemy
+  - 
+  - 
   - 
   - 
   - 
@@ -62,7 +62,4 @@ TagManager:
     locked: 0
   - name: Top
     uniqueID: 3986804977
-    locked: 0
-  - name: Ones That Are On Top Of Player
-    uniqueID: 1746924649
     locked: 0
