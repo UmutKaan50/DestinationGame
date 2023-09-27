@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
+using y01cu;
+using EZCameraShake;
 
 public class Weapon : Collideable {
     // Damage struct:
@@ -41,10 +43,9 @@ public class Weapon : Collideable {
 
                 Swing();
 
-
+                CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
             }
         }
-
     }
 
     //public void BasicAttack() {
@@ -53,7 +54,6 @@ public class Weapon : Collideable {
     //        Swing();
     //    }
     //}
-
 
 
     protected override void OnCollide(Collider2D coll) {
@@ -73,7 +73,6 @@ public class Weapon : Collideable {
             if (coll.name.Contains("SmallEnemy")) {
                 Debug.Log("Small Enemy hit!");
             }
-
         }
     }
 
