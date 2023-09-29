@@ -10,6 +10,7 @@ public class AnswerButton : MonoBehaviour {
     public bool isTried = false;
 
     public int requiredNumber;
+
     //public int requiredDigit;
     public int playersTry;
 
@@ -27,11 +28,12 @@ public class AnswerButton : MonoBehaviour {
 
     private void FixedUpdate() {
         if (GetComponentInChildren<Text>().text.ToString() != "") {
-
             if (requiredNumber.ToString() == GetComponentInChildren<Text>().text.ToString()) {
                 isSolved = true;
             }
-            if (int.Parse(GetComponentInChildren<Text>().text.ToString()) < 10 && int.Parse(GetComponentInChildren<Text>().text.ToString()) >= 0) {
+
+            if (int.Parse(GetComponentInChildren<Text>().text.ToString()) < 10 &&
+                int.Parse(GetComponentInChildren<Text>().text.ToString()) >= 0) {
                 isTried = true;
             }
         }
@@ -42,8 +44,8 @@ public class AnswerButton : MonoBehaviour {
         if (AnswerButton.instance != null) {
             return;
         }
-        instance = this;
 
+        instance = this;
     }
 
     // Changing button sprite based on tap:
@@ -57,7 +59,8 @@ public class AnswerButton : MonoBehaviour {
             // If empty button is pressed, hide lock panel:
             lockPanel.GetComponent<Animator>().SetTrigger("hide");
             GetComponentInChildren<Text>().transform.Translate(0, -4.4f, 0);
-        } else if (isPressed == true) {
+        }
+        else if (isPressed == true) {
             isPressed = false;
             GetComponent<Button>().image.sprite = normalButtonSprite;
             SoundManagerPlay(SoundManager.instance.buttonTap);
@@ -68,13 +71,7 @@ public class AnswerButton : MonoBehaviour {
     }
 
 
-
-
-
     public void SoundManagerPlay(AudioClip audioClip) {
         SoundManager.instance.audioSource.PlayOneShot(audioClip);
     }
-
-
 }
-

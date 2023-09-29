@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour {
 
+    // Instead of calling the audio clips from here why don't I add them as serializefields to the required places? That looks smarter.
+    
     public AudioSource audioSource;
     public AudioClip teleport;
     public AudioClip walking;
@@ -17,7 +19,6 @@ public class SoundManager : MonoBehaviour {
     public AudioClip chestClose;
     public AudioClip chestOpen;
     public AudioClip buySound;
-    public AudioClip skeletonDeath;
     public AudioClip keyPickUp;
     public AudioClip failedAttempt;
     // Temp audioclips for checking the result of calculation:
@@ -26,6 +27,10 @@ public class SoundManager : MonoBehaviour {
     public AudioClip levelUp;
     public AudioClip crateHit;
     public AudioClip crateBreak;
+    public AudioClip swordHurl;
+    public AudioClip playerHurt;
+    public AudioClip skeletonHurt;
+    public AudioClip skeletonDeath;
 
     public static SoundManager instance;
 

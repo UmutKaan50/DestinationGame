@@ -6,8 +6,40 @@
   <component name="ChangeListManager">
     <list default="true" id="0a4d0c8e-a25f-45e2-bfc0-1d469ef9f94e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DestinationGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DestinationGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Weapon.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Weapon.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/weapon_swing.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/weapon_swing.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Audio/Crate break sound.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Audio/Crate break sound.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Audio/Crate break sound.mp3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Audio/Crate break sound.mp3.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Audio/skeleton_death.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Audio/skeleton_death.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/DoubleCreate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/DoubleCreate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SingleCrate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SingleCrate.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lvl1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Lvl1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AnswerButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AnswerButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Boss.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Boss.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collectable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collectable.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collideable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collideable.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Crate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Crate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Delegate Method/DelegateMethodsImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Delegate Method/DelegateMethodsImplementation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyHitbox.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyHitbox.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fighter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fighter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.connect.share/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.connect.share/Settings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +70,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b41119cc6741409ea29f63c7f98de938172800/90/4b8fc8de/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b41119cc6741409ea29f63c7f98de938172800/df/894442c7/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../DestinationGame-Previous-89afdd6ed3299b8a00369d2b418152c20fddfb24/DestinationGame-Previous-89afdd6ed3299b8a00369d2b418152c20fddfb24/Top Dungeon Game/Assets/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/Fighter/Crates/CrateNew.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/General/ExplanatoryText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerNewInputSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.aseprite@1.0.0/Editor/Aseprite/Chunks/BaseChunk.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.aseprite@1.0.0/Editor/Aseprite/Chunks/ColorProfileChunk.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.aseprite@1.0.0/Editor/Aseprite/Chunks/ExternalFilesChunk.cs" root0="SKIP_HIGHLIGHTING" />
@@ -51,12 +82,6 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/UI/TilePaletteBrushPanelButton.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.tilemap@1.0.0/Editor/UI/TilePaletteBrushesPopup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.vscode@1.2.5/Editor/VSCodeScriptEditor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/Actions/InputActionState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/Editor/AssetImporter/InputActionImporterEditor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/InputManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/InputManagerStateMonitors.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/NativeInputRuntime.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.3/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.7.5/Runtime/Evaluation/RuntimeClip.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -225,7 +250,14 @@
       <workItem from="1695807175100" duration="650000" />
       <workItem from="1695815840468" duration="2147000" />
       <workItem from="1695818063176" duration="1548000" />
-      <workItem from="1695822613059" duration="1502000" />
+      <workItem from="1695822613059" duration="6234000" />
+      <workItem from="1695850859215" duration="3471000" />
+      <workItem from="1695890578732" duration="641000" />
+      <workItem from="1695896449259" duration="1816000" />
+      <workItem from="1695902331453" duration="3579000" />
+      <workItem from="1695914739329" duration="672000" />
+      <workItem from="1695935765252" duration="3416000" />
+      <workItem from="1695974155558" duration="894000" />
     </task>
     <servers />
   </component>

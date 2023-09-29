@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
-using y01cu;
+// using y01cu;
 using EZCameraShake;
 
 public class Weapon : Collideable {
@@ -21,9 +21,12 @@ public class Weapon : Collideable {
 
     private int collisionCount;
 
+    private AudioSource audioSource;
+
     private void Awake() {
         // Instead, you could've made spriteRenderer public and assign it in the inspector.
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     protected override void Start() {
@@ -32,6 +35,11 @@ public class Weapon : Collideable {
         // spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
+
+    [SerializeField] private float shakeMagnitude;
+    [SerializeField] private float shakeRoughness;
+    [SerializeField] private float shakeFadeInTime;
+    [SerializeField] private float shakeFadeOutTime;
 
     protected override void Update() {
         base.Update();
@@ -42,8 +50,8 @@ public class Weapon : Collideable {
                 lastSwing = Time.time;
 
                 Swing();
-
-                CameraShaker.Instance.ShakeOnce(4f, 4f, 0.1f, 1f);
+                audioSource.PlayOneShot(SoundManager.instance.swordHurl);
+                CameraShaker.Instance.ShakeOnce(shakeMagnitude, shakeRoughness, shakeFadeInTime, shakeFadeOutTime);
             }
         }
     }
@@ -55,6 +63,7 @@ public class Weapon : Collideable {
     //    }
     //}
 
+    private bool canPlaySound = false;
 
     protected override void OnCollide(Collider2D coll) {
         if (coll.tag == "Fighter") {
@@ -68,14 +77,11 @@ public class Weapon : Collideable {
                 pushForce = pushForce[weaponlevel]
             };
 
+            // Debug.Log("dmg: " + dmg);
+            // Debug.Log("col: " + coll);
             coll.SendMessage("RecieveDamage", dmg);
-
-            if (coll.name.Contains("SmallEnemy")) {
-                Debug.Log("Small Enemy hit!");
-            }
         }
     }
-
 
     private void Swing() {
         anim.SetTrigger("Swing");
