@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d98e30e090c413488573d4e3201f495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crateHit: {fileID: 8300000, guid: 37933be8bd9e4084faf46bf2f8445503, type: 3}
+  crateHit: {fileID: 8300000, guid: e035ee4a7996edb4c8dfdd7228d60bc6, type: 3}
   hitpoint: 1
 --- !u!82 &6258070199204515870
 AudioSource:

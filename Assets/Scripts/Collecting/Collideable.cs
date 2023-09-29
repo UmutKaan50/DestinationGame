@@ -10,8 +10,7 @@ public class Collideable : MonoBehaviour {
 
     protected virtual void Start() {
         boxCollider = GetComponent<BoxCollider2D>();
-    
-    } 
+    }
 
     protected virtual void Update() {
         // Collision work:
@@ -22,15 +21,12 @@ public class Collideable : MonoBehaviour {
             }
 
             OnCollide(hits[i]);
-
             // The array is not cleaned up, so we do it ourself:
             hits[i] = null;
         }
-        
     }
 
     protected virtual void OnCollide(Collider2D coll) {
         // Debug.Log("OnCollide was not implemented in " + this.name);
     }
-
 }

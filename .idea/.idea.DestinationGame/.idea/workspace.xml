@@ -6,40 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="0a4d0c8e-a25f-45e2-bfc0-1d469ef9f94e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DestinationGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DestinationGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Weapon.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Weapon.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/weapon_swing.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/weapon_swing.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Audio/Crate break sound.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Audio/Crate break sound.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Audio/Crate break sound.mp3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Audio/Crate break sound.mp3.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Audio/skeleton_death.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Audio/skeleton_death.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Death.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Death.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Player.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Weapon/Fall.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Weapon/Fall.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Weapon/Swing_1.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Weapon/Swing_1.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Skeleton/SmallEnemy.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Skeleton/SmallEnemy.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/DoubleCreate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/DoubleCreate.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SingleCrate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SingleCrate.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SmallEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SmallEnemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lvl1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Lvl1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AnswerButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AnswerButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Boss.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Boss.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chest.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collectable.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collectable.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collideable.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collideable.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Crate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Crate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Delegate Method/DelegateMethodsImplementation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Delegate Method/DelegateMethodsImplementation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyHitbox.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnemyHitbox.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fighter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fighter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collecting/Collideable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Collecting/Collideable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Portal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Portal.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.connect.share/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.connect.share/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +50,11 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/347e3e2bef8c4deb82c9790c6e198135941800/8e/32f8dd8c/EditorSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/382544b976ab43348b1d6934e99f905010000/08/3285bc86/AudioClip.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b4/393a8c0f/Action.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b41119cc6741409ea29f63c7f98de938172800/68/7378d6d0/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b41119cc6741409ea29f63c7f98de938172800/90/4b8fc8de/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b41119cc6741409ea29f63c7f98de938172800/df/894442c7/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../DestinationGame-Previous-89afdd6ed3299b8a00369d2b418152c20fddfb24/DestinationGame-Previous-89afdd6ed3299b8a00369d2b418152c20fddfb24/Top Dungeon Game/Assets/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/LightController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerNewInputSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.aseprite@1.0.0/Editor/Aseprite/Chunks/BaseChunk.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.aseprite@1.0.0/Editor/Aseprite/Chunks/ColorProfileChunk.cs" root0="SKIP_HIGHLIGHTING" />
@@ -257,7 +242,7 @@
       <workItem from="1695902331453" duration="3579000" />
       <workItem from="1695914739329" duration="672000" />
       <workItem from="1695935765252" duration="3416000" />
-      <workItem from="1695974155558" duration="894000" />
+      <workItem from="1695974155558" duration="7952000" />
     </task>
     <servers />
   </component>

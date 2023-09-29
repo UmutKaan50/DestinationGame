@@ -64,6 +64,8 @@ public class Weapon : Collideable {
     //}
 
     private bool canPlaySound = false;
+    private bool isAttackParticlesJustPlayed = false;
+    [SerializeField] private ParticleSystem attackParticles;
 
     protected override void OnCollide(Collider2D coll) {
         if (coll.tag == "Fighter") {
@@ -79,8 +81,21 @@ public class Weapon : Collideable {
 
             // Debug.Log("dmg: " + dmg);
             // Debug.Log("col: " + coll);
+            if (!isAttackParticlesJustPlayed) {
+                attackParticles.Play();
+                isAttackParticlesJustPlayed = true;
+                StartCoroutine(ReactivateAttackParticles());
+            }
+
             coll.SendMessage("RecieveDamage", dmg);
         }
+    }
+
+    private IEnumerator ReactivateAttackParticles() {
+        float reactivationDelay = 0.4f;
+        yield return new WaitForSeconds(reactivationDelay);
+
+        isAttackParticlesJustPlayed = false;
     }
 
     private void Swing() {

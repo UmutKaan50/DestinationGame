@@ -19,7 +19,7 @@ public class Enemy : Mover {
     private BoxCollider2D hitbox;
     private Collider2D[] hits = new Collider2D[10];
 
-    private AudioSource audioSource;
+    // private AudioSource audioSource;
     private Animator animator;
 
     protected override void Start() {
@@ -32,6 +32,10 @@ public class Enemy : Mover {
     }
 
     private void FixedUpdate() {
+        ChasePlayerInRange();
+    }
+
+    private void ChasePlayerInRange() {
         // Is the player in range?
         if (Vector3.Distance(playerTransform.position, startingPosition) < chaseLenght) {
             if (Vector3.Distance(playerTransform.position, startingPosition) < triggerLenght) {
@@ -71,16 +75,26 @@ public class Enemy : Mover {
 
     protected override void RecieveDamage(Damage dmg) {
         base.RecieveDamage(dmg);
-
-        animator.SetTrigger("Hurt");
+        if (hitpoint > 0) {
+            animator.SetTrigger("Hurt");
+        }
     }
 
     protected override void GetDestroyed() {
-        // SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.skeletonDeath);
+        if (hitpoint <= 0) {
+            hitpoint = 0;
+            StartCoroutine(PlayDeathAnimation());
+            // I should figure out how does rows below work even if Destroy(GameObject) command is given.
+            GameManager.instance.GrantXp(xpValue);
+            GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40,
+                1.0f);
+        }
+    }
+
+    private IEnumerator PlayDeathAnimation() {
+        float animationLength = 1;
+        animator.SetTrigger("Die");
+        yield return new WaitForSeconds(animationLength);
         Destroy(gameObject);
-        // I should figure out how does rows below work even if Destroy(GameObject) command is given.
-        GameManager.instance.GrantXp(xpValue);
-        GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40,
-            1.0f);
     }
 }

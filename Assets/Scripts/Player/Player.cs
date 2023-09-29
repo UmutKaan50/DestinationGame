@@ -15,6 +15,7 @@ public class Player : Mover {
 
     private float horizontalMove;
     private float verticalMove;
+    [SerializeField] private AudioClip deathSound;
 
     // public AudioSource audioSource;
     [SerializeField] private AudioSource additionalAudioSource;
@@ -67,6 +68,8 @@ public class Player : Mover {
             //SoundManager.instance.audioSource.Play();
         }
 
+        #region JoystickControls
+
         // With joystick:
         //if(joystick.Horizontal >= .2f) {
         //    horizontalMove = xSpeed;
@@ -86,6 +89,8 @@ public class Player : Mover {
         //    verticalMove = 0f;
         //    isVerticalMoving = false;
         //}
+
+        #endregion
     }
 
     protected override void Start() {
@@ -96,6 +101,7 @@ public class Player : Mover {
         // DontDestroyOnLoad(gameObject);
 
         animator = GetComponent<Animator>();
+        playerBoxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     public void SetHasKey() {
@@ -108,24 +114,33 @@ public class Player : Mover {
             return;
 
         base.RecieveDamage(dmg);
-        animator.SetTrigger("Hurt");
         GameManager.instance.OnHitpointChange();
+        if (hitpoint > 0) {
+            animator.SetTrigger("Hurt");
+        }
     }
 
+    private BoxCollider2D playerBoxCollider2D;
+
     protected override void GetDestroyed() {
-        isAlive = false;
-        GameManager.instance.deathMenuAnim.SetTrigger("Show");
+        if (hitpoint <= 0) {
+            hitpoint = 0;
+            playerBoxCollider2D.enabled = false;
+            additionalAudioSource.PlayOneShot(deathSound);
+            StartCoroutine(PlayDeathAnimation());
+        }
     }
 
     private IEnumerator PlayDeathAnimation() {
-        float animationLength = 1;
+        float animationLength = 1 * 4;
         animator.SetTrigger("Die");
         yield return new WaitForSeconds(animationLength);
+        GameManager.instance.deathMenuAnim.SetTrigger("Show");
     }
 
-    public void WalkSound() {
-        SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.walking);
-    }
+    // public void WalkSound() {
+    //     SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.walking);
+    // }
 
     public void SwapSprite(int skinId) {
         spriteRenderer.sprite = GameManager.instance.playerSprites[skinId];

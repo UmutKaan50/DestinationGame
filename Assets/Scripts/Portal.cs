@@ -24,8 +24,6 @@ public class Portal : Collideable {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
 
             }
-
-
             if (Time.time - lastShout > cooldown) {
                 lastShout = Time.time;
 
