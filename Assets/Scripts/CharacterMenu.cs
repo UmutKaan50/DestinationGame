@@ -23,7 +23,8 @@ public class CharacterMenu : MonoBehaviour {
                 currentCharacterSelection = 0;
 
             OnSelectionChange();
-        } else {
+        }
+        else {
             currentCharacterSelection--;
 
             // If we went too far away:
@@ -33,7 +34,6 @@ public class CharacterMenu : MonoBehaviour {
 
             OnSelectionChange();
         }
-
     }
 
     public void OnSelectionChange() {
@@ -55,9 +55,12 @@ public class CharacterMenu : MonoBehaviour {
         weaponSprite.sprite = GameManager.instance.weaponSprites[GameManager.instance.weapon.weaponlevel];
         if (GameManager.instance.weapon.weaponlevel == GameManager.instance.weaponPrices.Count) {
             upgradeCostText.text = "MAX";
-        } else {
-            upgradeCostText.text = GameManager.instance.weaponPrices[GameManager.instance.weapon.weaponlevel].ToString();
         }
+        else {
+            upgradeCostText.text =
+                GameManager.instance.weaponPrices[GameManager.instance.weapon.weaponlevel].ToString();
+        }
+
         // Meta:
         levelText.text = GameManager.instance.GetCurrentLevel().ToString();
         hitpointText.text = GameManager.instance.player.hitpoint.ToString();
@@ -65,9 +68,11 @@ public class CharacterMenu : MonoBehaviour {
         // Xp bar:
         int currLevel = GameManager.instance.GetCurrentLevel();
         if (currLevel == GameManager.instance.xpTable.Count) {
-            xpText.text = GameManager.instance.experience.ToString() + " total experience points."; // Displays total xp.
+            xpText.text =
+                GameManager.instance.experience.ToString() + " total experience points."; // Displays total xp.
             xpBar.localScale = Vector3.one;
-        } else {
+        }
+        else {
             int prevLevelXp = GameManager.instance.GetXpToLevel(currLevel - 1);
             int currLevelXp = GameManager.instance.GetXpToLevel(currLevel);
 
@@ -93,15 +98,12 @@ public class CharacterMenu : MonoBehaviour {
     private void Awake() {
         menuButton = GameObject.Find("MenuButton");
         currentChestImage = GameObject.Find("MenuButton").gameObject.GetComponent<Image>();
-
-
     }
 
     public void ChestSpriteOpen() {
         SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.chestOpen);
         currentChestImage.sprite = openedChestSprite;
         menuButton.GetComponent<Button>().interactable = false;
-
     }
 
     public void ChestSpriteClose() {
@@ -109,6 +111,7 @@ public class CharacterMenu : MonoBehaviour {
         menuButton.GetComponent<Button>().interactable = true;
         currentChestImage.sprite = closedChestSprite;
     }
+
     private IEnumerator coroutineAttackButtonSprite;
 
     //public void AttackButtonDownSprite() {
@@ -117,7 +120,7 @@ public class CharacterMenu : MonoBehaviour {
     //    coroutineAttackButtonSprite = AttackButtonSpriteChange(0.7f);
     //    StartCoroutine(coroutineAttackButtonSprite);
     //}
-    
+
     private IEnumerator AttackButtonSpriteChange(float waitTime) {
         //attackButton.SetActive(false);
         attackButton.GetComponent<Button>().interactable = false;
@@ -125,6 +128,5 @@ public class CharacterMenu : MonoBehaviour {
         attackButton.GetComponent<Button>().interactable = true;
         //attackButton.SetActive(true);
         currentAttackButtonImage.sprite = attackButtonUpSprite;
-
     }
 }

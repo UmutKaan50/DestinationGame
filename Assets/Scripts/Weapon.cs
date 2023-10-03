@@ -23,6 +23,8 @@ public class Weapon : Collideable {
 
     private AudioSource audioSource;
 
+    [SerializeField] private Player player;
+
     private void Awake() {
         // Instead, you could've made spriteRenderer public and assign it in the inspector.
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -44,7 +46,7 @@ public class Weapon : Collideable {
     protected override void Update() {
         base.Update();
         // Player attack state:
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && player.GetIsPlayerReady()) {
             if (Time.time - lastSwing > cooldown) {
                 // Assigning last swing moment:
                 lastSwing = Time.time;

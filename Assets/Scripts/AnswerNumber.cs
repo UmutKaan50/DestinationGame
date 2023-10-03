@@ -43,10 +43,9 @@ public class AnswerNumber : MonoBehaviour {
             // Seperating buttons based on the text on them:
             if (buttonValueText.text.ToString() == "Try") {
 
-                MathsManager.instance.FinishCall();
+                // MathsManager.instance.FinishCall();
                 // It's Try button.
-
-
+                
             } 
             
         } else {

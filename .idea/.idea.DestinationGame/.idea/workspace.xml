@@ -6,23 +6,52 @@
   <component name="ChangeListManager">
     <list default="true" id="0a4d0c8e-a25f-45e2-bfc0-1d469ef9f94e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DestinationGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DestinationGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Death.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Death.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Player.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/LockPanel.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/LockPanel.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/LockPanel_hidden.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/LockPanel_hidden.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/LockPanel_showing.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/LockPanel_showing.anim.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Weapon/Fall.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Weapon/Fall.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Weapon/Swing_1.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Player/Weapon/Swing_1.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Animations/Skeleton/SmallEnemy.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Artwork/Animations/Skeleton/SmallEnemy.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/DoubleCreate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/DoubleCreate.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SingleCrate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SingleCrate.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SmallEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SmallEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/Minecraft.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/Minecraft.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/Quicksand-Bold SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/Quicksand-Bold SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/Quicksand-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/Quicksand-Bold.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/SETBACK.FON" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/SETBACK.FON.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/dogica.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/dogica.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/rainyhearts SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/rainyhearts SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/rainyhearts.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/rainyhearts.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/setbackt SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/setbackt SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/setbackt.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/Others/setbackt.ttf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/SHPinscher-Regular SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/SHPinscher-Regular SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/SHPinscher-Regular.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/Fonts/SHPinscher-Regular.otf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/char_red_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/char_red_1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/char_red_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Artwork/char_red_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DamagePopups/pdDamagePopup.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DamagePopups/pdDamagePopup.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FloatingText.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FloatingText.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Lvl1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Lvl1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Collecting/Collideable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Collecting/Collideable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AnswerButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AnswerButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AnswerNumber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AnswerNumber.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chest.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/General/ExplanatoryText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/General/ExplanatoryText.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MathsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MathsManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Portal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Portal.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +84,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b41119cc6741409ea29f63c7f98de938172800/df/894442c7/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../DestinationGame-Previous-89afdd6ed3299b8a00369d2b418152c20fddfb24/DestinationGame-Previous-89afdd6ed3299b8a00369d2b418152c20fddfb24/Top Dungeon Game/Assets/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/LightController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EmptyButtons.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerNewInputSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Temp/NewMathManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.aseprite@1.0.0/Editor/Aseprite/Chunks/BaseChunk.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.aseprite@1.0.0/Editor/Aseprite/Chunks/ColorProfileChunk.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.aseprite@1.0.0/Editor/Aseprite/Chunks/ExternalFilesChunk.cs" root0="SKIP_HIGHLIGHTING" />
@@ -242,7 +273,19 @@
       <workItem from="1695902331453" duration="3579000" />
       <workItem from="1695914739329" duration="672000" />
       <workItem from="1695935765252" duration="3416000" />
-      <workItem from="1695974155558" duration="7952000" />
+      <workItem from="1695974155558" duration="11861000" />
+      <workItem from="1696040150199" duration="2009000" />
+      <workItem from="1696071325454" duration="8792000" />
+      <workItem from="1696099984641" duration="3281000" />
+      <workItem from="1696130900762" duration="5941000" />
+      <workItem from="1696151070153" duration="1980000" />
+      <workItem from="1696160040354" duration="11460000" />
+      <workItem from="1696199891938" duration="1361000" />
+      <workItem from="1696230290961" duration="440000" />
+      <workItem from="1696231584144" duration="3547000" />
+      <workItem from="1696247138754" duration="12338000" />
+      <workItem from="1696276733379" duration="7736000" />
+      <workItem from="1696304420727" duration="1923000" />
     </task>
     <servers />
   </component>

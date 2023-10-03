@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Enemy : Mover {
     // Experience:
     public int xpValue = 1;
 
     // Logic:
-    public float triggerLenght = 1;
-    public float chaseLenght = 5;
-    private bool chasing;
+    [FormerlySerializedAs("triggerLenght")] [SerializeField]
+    private float triggerLength = 1;
+
+    [FormerlySerializedAs("chaseLenght")] [SerializeField]
+    private float chaseLength = 5;
+
+    private bool isEnemyChasingPlayer;
     private bool collidingWithPlayer;
-    private Transform playerTransform;
+    [SerializeField] private Player player;
     private Vector3 startingPosition;
 
     // Hitbox
@@ -24,7 +29,7 @@ public class Enemy : Mover {
 
     protected override void Start() {
         base.Start();
-        playerTransform = GameManager.instance.player.transform;
+        // playerTransform = GameManager.instance.player.transform;
         startingPosition = transform.position;
         hitbox = transform.GetChild(0).GetComponent<BoxCollider2D>();
         audioSource = GetComponent<AudioSource>();
@@ -37,23 +42,28 @@ public class Enemy : Mover {
 
     private void ChasePlayerInRange() {
         // Is the player in range?
-        if (Vector3.Distance(playerTransform.position, startingPosition) < chaseLenght) {
-            if (Vector3.Distance(playerTransform.position, startingPosition) < triggerLenght) {
-                chasing = true;
+        bool isPlayerInChaseRange = Vector3.Distance(player.transform.position, startingPosition) < chaseLength;
+        bool isPlayerInTriggerRange = Vector3.Distance(player.transform.position, startingPosition) < triggerLength;
+        bool isPlayerAlive = player.GetIsPlayerAlive();
+        if (isPlayerInChaseRange && isPlayerAlive) {
+            if (isPlayerInTriggerRange) {
+                isEnemyChasingPlayer = true;
             }
 
-            if (chasing) {
+            if (isEnemyChasingPlayer) {
                 if (!collidingWithPlayer) {
-                    UpdateMotor((playerTransform.position - transform.position).normalized);
+                    // Chase the player:
+                    UpdateMotor((player.transform.position - transform.position).normalized);
                 }
                 else {
+                    // Stop chasing the player: (?)
                     UpdateMotor(startingPosition - transform.position);
                 }
             }
         }
         else {
             UpdateMotor(startingPosition - transform.position);
-            chasing = false;
+            isEnemyChasingPlayer = false;
         }
 
         // Chech for overlaps:

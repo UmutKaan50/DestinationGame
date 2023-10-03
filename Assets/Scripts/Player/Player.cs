@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class Player : Mover {
+    #region Variables
+
     private SpriteRenderer spriteRenderer;
     private bool isAlive = true;
     public bool hasKey = false;
@@ -26,9 +29,19 @@ public class Player : Mover {
 
     [SerializeField] private Animator weaponAnimator;
 
+    [SerializeField] private Animator entranceAnimator;
+
+    private bool isEntranceAnimationEnded = false;
+
+    #endregion
+
     private void FixedUpdate() {
         PlayerMovement();
         PlayerHit();
+    }
+
+    public bool GetIsPlayerAlive() {
+        return isAlive;
     }
 
     private void PlayerHit() {
@@ -42,59 +55,66 @@ public class Player : Mover {
         }
     }
 
+    private bool isPlayerReady;
+
+    public bool GetIsPlayerReady() {
+        return isPlayerReady;
+    }
+
     private void PlayerMovement() {
         float horizontalMove = Input.GetAxisRaw("Horizontal");
         float verticalMove = Input.GetAxisRaw("Vertical");
 
-        if (isAlive)
+        isPlayerReady = isAlive && isEntranceAnimationEnded;
+        if (isPlayerReady) {
             UpdateMotor(new Vector3(horizontalMove, verticalMove, 0));
 
-        // Stopped:
-        bool isPlayerStopped = verticalMove == 0 && horizontalMove == 0;
+            // Stopped:
+            bool isPlayerStopped = verticalMove == 0 && horizontalMove == 0;
 
-        if (isPlayerStopped) {
-            isMoving = false;
-            audioSource.Stop();
-            animator.SetBool("isPlayerWalking", false);
+            if (isPlayerStopped) {
+                isMoving = false;
+                audioSource.Stop();
+                animator.SetBool("isPlayerWalking", false);
+            }
+            else { // Walking:
+                if (!audioSource.isPlaying)
+                    audioSource.Play();
+
+                animator.SetBool("isPlayerWalking", true);
+            }
+
+            #region JoystickControls
+
+            // With joystick:
+            //if(joystick.Horizontal >= .2f) {
+            //    horizontalMove = xSpeed;
+
+            //} else if (joystick.Horizontal <= -.2f) {
+            //    horizontalMove = -xSpeed;
+            //} else {
+            //    horizontalMove = 0f;
+            //    isHorizontalMoving = false;
+            //}
+
+            //if (joystick.Vertical >= .2f) {
+            //    verticalMove = ySpeed;
+            //} else if (joystick.Vertical <= -.2f) {
+            //    verticalMove = -ySpeed;
+            //} else {
+            //    verticalMove = 0f;
+            //    isVerticalMoving = false;
+            //}
+
+            #endregion
         }
-        else { // Walking:
-            if (!audioSource.isPlaying)
-                audioSource.Play();
-
-            animator.SetBool("isPlayerWalking", true);
-
-            //SoundManager.instance.audioSource.clip = SoundManager.instance.walking;
-            //SoundManager.instance.audioSource.loop = true;
-            //SoundManager.instance.audioSource.Play();
-        }
-
-        #region JoystickControls
-
-        // With joystick:
-        //if(joystick.Horizontal >= .2f) {
-        //    horizontalMove = xSpeed;
-
-        //} else if (joystick.Horizontal <= -.2f) {
-        //    horizontalMove = -xSpeed;
-        //} else {
-        //    horizontalMove = 0f;
-        //    isHorizontalMoving = false;
-        //}
-
-        //if (joystick.Vertical >= .2f) {
-        //    verticalMove = ySpeed;
-        //} else if (joystick.Vertical <= -.2f) {
-        //    verticalMove = -ySpeed;
-        //} else {
-        //    verticalMove = 0f;
-        //    isVerticalMoving = false;
-        //}
-
-        #endregion
     }
 
     protected override void Start() {
         base.Start();
+        
+        // StartCoroutine(SetPlayerAsReadyAfterSomeTime());
+        
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
 
@@ -102,6 +122,20 @@ public class Player : Mover {
 
         animator = GetComponent<Animator>();
         playerBoxCollider2D = GetComponent<BoxCollider2D>();
+    }
+
+    [Obsolete("Will be replaced by signals in timeline.")]
+    private IEnumerator SetPlayerAsReadyAfterSomeTime() {
+        float initalDelay = 0.5f;
+        yield return new WaitForSeconds(initalDelay);
+        // float animationLength = entranceAnimator.GetCurrentAnimatorClipInfo(0).Length;
+        float entranceAnimationLength = 12f;
+        yield return new WaitForSeconds(entranceAnimationLength);
+        isEntranceAnimationEnded = true;
+    }
+    
+    public void SetAnimationEnded() {
+        isEntranceAnimationEnded = true;
     }
 
     public void SetHasKey() {
@@ -125,6 +159,7 @@ public class Player : Mover {
     protected override void GetDestroyed() {
         if (hitpoint <= 0) {
             hitpoint = 0;
+            isAlive = false;
             playerBoxCollider2D.enabled = false;
             additionalAudioSource.PlayOneShot(deathSound);
             StartCoroutine(PlayDeathAnimation());
@@ -137,10 +172,6 @@ public class Player : Mover {
         yield return new WaitForSeconds(animationLength);
         GameManager.instance.deathMenuAnim.SetTrigger("Show");
     }
-
-    // public void WalkSound() {
-    //     SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.walking);
-    // }
 
     public void SwapSprite(int skinId) {
         spriteRenderer.sprite = GameManager.instance.playerSprites[skinId];
