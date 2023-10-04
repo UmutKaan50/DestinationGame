@@ -1,15 +1,13 @@
-﻿using UnityEngine;
-using EZCameraShake;
+﻿using EZCameraShake;
+using UnityEngine;
 
-public class ShakeOnKeyPress : MonoBehaviour
-{
+public class ShakeOnKeyPress : MonoBehaviour {
     public float Magnitude = 2f;
     public float Roughness = 10f;
     public float FadeOutTime = 5f;
 
-	void Update ()
-    {
-	    if(Input.GetKeyDown(KeyCode.LeftShift))
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
             CameraShaker.Instance.ShakeOnce(Magnitude, Roughness, 0, FadeOutTime);
-	}
+    }
 }

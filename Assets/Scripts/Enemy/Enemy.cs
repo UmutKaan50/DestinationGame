@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -14,18 +13,19 @@ public class Enemy : Mover {
     [FormerlySerializedAs("chaseLenght")] [SerializeField]
     private float chaseLength = 5;
 
-    private bool isEnemyChasingPlayer;
-    private bool collidingWithPlayer;
     [SerializeField] private Player player;
-    private Vector3 startingPosition;
 
     // Hitbox
     public ContactFilter2D filter;
-    private BoxCollider2D hitbox;
-    private Collider2D[] hits = new Collider2D[10];
+    private readonly Collider2D[] hits = new Collider2D[10];
 
     // private AudioSource audioSource;
     private Animator animator;
+    private bool collidingWithPlayer;
+    private BoxCollider2D hitbox;
+
+    private bool isEnemyChasingPlayer;
+    private Vector3 startingPosition;
 
     protected override void Start() {
         base.Start();
@@ -42,23 +42,19 @@ public class Enemy : Mover {
 
     private void ChasePlayerInRange() {
         // Is the player in range?
-        bool isPlayerInChaseRange = Vector3.Distance(player.transform.position, startingPosition) < chaseLength;
-        bool isPlayerInTriggerRange = Vector3.Distance(player.transform.position, startingPosition) < triggerLength;
-        bool isPlayerAlive = player.GetIsPlayerAlive();
+        var isPlayerInChaseRange = Vector3.Distance(player.transform.position, startingPosition) < chaseLength;
+        var isPlayerInTriggerRange = Vector3.Distance(player.transform.position, startingPosition) < triggerLength;
+        var isPlayerAlive = player.GetIsPlayerAlive();
         if (isPlayerInChaseRange && isPlayerAlive) {
-            if (isPlayerInTriggerRange) {
-                isEnemyChasingPlayer = true;
-            }
+            if (isPlayerInTriggerRange) isEnemyChasingPlayer = true;
 
             if (isEnemyChasingPlayer) {
-                if (!collidingWithPlayer) {
+                if (!collidingWithPlayer)
                     // Chase the player:
                     UpdateMotor((player.transform.position - transform.position).normalized);
-                }
-                else {
+                else
                     // Stop chasing the player: (?)
                     UpdateMotor(startingPosition - transform.position);
-                }
             }
         }
         else {
@@ -69,14 +65,10 @@ public class Enemy : Mover {
         // Chech for overlaps:
         collidingWithPlayer = false;
         boxCollider.OverlapCollider(filter, hits);
-        for (int i = 0; i < hits.Length; i++) {
-            if (hits[i] == null) {
-                continue;
-            }
+        for (var i = 0; i < hits.Length; i++) {
+            if (hits[i] == null) continue;
 
-            if (hits[i].tag == "Fighter" && hits[i].name == "Player") {
-                collidingWithPlayer = true;
-            }
+            if (hits[i].tag == "Fighter" && hits[i].name == "Player") collidingWithPlayer = true;
 
             // The array isn't cleaned up so we do it ourselves:
             hits[i] = null;
@@ -85,9 +77,7 @@ public class Enemy : Mover {
 
     protected override void RecieveDamage(Damage dmg) {
         base.RecieveDamage(dmg);
-        if (hitpoint > 0) {
-            animator.SetTrigger("Hurt");
-        }
+        if (hitpoint > 0) animator.SetTrigger("Hurt");
     }
 
     protected override void GetDestroyed() {

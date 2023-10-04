@@ -1,19 +1,16 @@
 ﻿using UnityEngine;
 
-namespace EZCameraShake
-{
-    public class CameraUtilities
-    {
+namespace EZCameraShake {
+    public class CameraUtilities {
         /// <summary>
-        /// Smoothes a Vector3 that represents euler angles.
+        ///     Smoothes a Vector3 that represents euler angles.
         /// </summary>
         /// <param name="current">The current Vector3 value.</param>
         /// <param name="target">The target Vector3 value.</param>
         /// <param name="velocity">A refernce Vector3 used internally.</param>
         /// <param name="smoothTime">The time to smooth, in seconds.</param>
         /// <returns>The smoothed Vector3 value.</returns>
-        public static Vector3 SmoothDampEuler(Vector3 current, Vector3 target, ref Vector3 velocity, float smoothTime)
-        {
+        public static Vector3 SmoothDampEuler(Vector3 current, Vector3 target, ref Vector3 velocity, float smoothTime) {
             Vector3 v;
 
             v.x = Mathf.SmoothDampAngle(current.x, target.x, ref velocity.x, smoothTime);
@@ -24,10 +21,9 @@ namespace EZCameraShake
         }
 
         /// <summary>
-        /// Multiplies each element in Vector3 v by the corresponding element of w.
+        ///     Multiplies each element in Vector3 v by the corresponding element of w.
         /// </summary>
-        public static Vector3 MultiplyVectors(Vector3 v, Vector3 w)
-        {
+        public static Vector3 MultiplyVectors(Vector3 v, Vector3 w) {
             v.x *= w.x;
             v.y *= w.y;
             v.z *= w.z;

@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class NPCTextPerson : Collideable {
     //public string message;
 
     private float cooldown = 4.0f;
+
     private float lastShout = -4.0f; // Instant reply at the beginning.
     //protected override void OnCollide(Collider2D coll) {
     //    if (coll.name == "Player") {

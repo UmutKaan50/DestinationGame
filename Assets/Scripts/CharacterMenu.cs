@@ -1,17 +1,33 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CharacterMenu : MonoBehaviour {
     // Text fields:
     public Text levelText, hitpointText, moneyText, upgradeCostText, xpText;
-
-    // Logic:
-    private int currentCharacterSelection = 0;
     public Image characterSelectionSprite;
     public Image weaponSprite;
     public RectTransform xpBar;
+
+    public Sprite closedChestSprite; // sprite name: menu_0
+    public Sprite openedChestSprite; // sprite name: chest_1
+    public GameObject menuButton;
+    public GameObject attackButton;
+    public Image currentAttackButtonImage;
+    public Sprite attackButtonDownSprite;
+    public Sprite attackButtonUpSprite;
+
+    private IEnumerator coroutineAttackButtonSprite;
+
+    // Logic:
+    private int currentCharacterSelection;
+    private Image currentChestImage; // The function above acted as we can't assign public Image object inside of it.
+
+
+    private void Awake() {
+        menuButton = GameObject.Find("MenuButton");
+        currentChestImage = GameObject.Find("MenuButton").gameObject.GetComponent<Image>();
+    }
 
     // Character Selection:
     public void OnArrowClick(bool right) {
@@ -53,51 +69,34 @@ public class CharacterMenu : MonoBehaviour {
     public void UpdateMenu() {
         // Weapon:
         weaponSprite.sprite = GameManager.instance.weaponSprites[GameManager.instance.weapon.weaponlevel];
-        if (GameManager.instance.weapon.weaponlevel == GameManager.instance.weaponPrices.Count) {
+        if (GameManager.instance.weapon.weaponlevel == GameManager.instance.weaponPrices.Count)
             upgradeCostText.text = "MAX";
-        }
-        else {
+        else
             upgradeCostText.text =
                 GameManager.instance.weaponPrices[GameManager.instance.weapon.weaponlevel].ToString();
-        }
 
         // Meta:
         levelText.text = GameManager.instance.GetCurrentLevel().ToString();
         hitpointText.text = GameManager.instance.player.hitpoint.ToString();
         moneyText.text = GameManager.instance.money.ToString();
         // Xp bar:
-        int currLevel = GameManager.instance.GetCurrentLevel();
+        var currLevel = GameManager.instance.GetCurrentLevel();
         if (currLevel == GameManager.instance.xpTable.Count) {
             xpText.text =
-                GameManager.instance.experience.ToString() + " total experience points."; // Displays total xp.
+                GameManager.instance.experience + " total experience points."; // Displays total xp.
             xpBar.localScale = Vector3.one;
         }
         else {
-            int prevLevelXp = GameManager.instance.GetXpToLevel(currLevel - 1);
-            int currLevelXp = GameManager.instance.GetXpToLevel(currLevel);
+            var prevLevelXp = GameManager.instance.GetXpToLevel(currLevel - 1);
+            var currLevelXp = GameManager.instance.GetXpToLevel(currLevel);
 
-            int diff = currLevelXp - prevLevelXp;
-            int currXpIntoLevel = GameManager.instance.experience - prevLevelXp;
+            var diff = currLevelXp - prevLevelXp;
+            var currXpIntoLevel = GameManager.instance.experience - prevLevelXp;
 
-            float completionRatio = (float)currXpIntoLevel / (float)diff;
+            var completionRatio = currXpIntoLevel / (float)diff;
             xpBar.localScale = new Vector3(completionRatio, 1, 1);
-            xpText.text = currXpIntoLevel.ToString() + " / " + diff;
+            xpText.text = currXpIntoLevel + " / " + diff;
         }
-    }
-
-    public Sprite closedChestSprite; // sprite name: menu_0
-    public Sprite openedChestSprite; // sprite name: chest_1
-    private Image currentChestImage; // The function above acted as we can't assign public Image object inside of it.
-    public GameObject menuButton;
-    public GameObject attackButton;
-    public Image currentAttackButtonImage;
-    public Sprite attackButtonDownSprite;
-    public Sprite attackButtonUpSprite;
-
-
-    private void Awake() {
-        menuButton = GameObject.Find("MenuButton");
-        currentChestImage = GameObject.Find("MenuButton").gameObject.GetComponent<Image>();
     }
 
     public void ChestSpriteOpen() {
@@ -111,8 +110,6 @@ public class CharacterMenu : MonoBehaviour {
         menuButton.GetComponent<Button>().interactable = true;
         currentChestImage.sprite = closedChestSprite;
     }
-
-    private IEnumerator coroutineAttackButtonSprite;
 
     //public void AttackButtonDownSprite() {
 

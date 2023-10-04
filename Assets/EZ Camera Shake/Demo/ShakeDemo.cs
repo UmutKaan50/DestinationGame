@@ -1,29 +1,21 @@
-﻿using UnityEngine;
+﻿using EZCameraShake;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using EZCameraShake;
 
-public class ShakeDemo : MonoBehaviour 
-{
-    Vector3 posInf = new Vector3(0.25f, 0.25f, 0.25f);
-    Vector3 rotInf = new Vector3(1, 1, 1);
-    float magn = 1, rough = 1, fadeIn = 0.1f, fadeOut = 2f;
+public class ShakeDemo : MonoBehaviour {
+    private float magn = 1, rough = 1, fadeIn = 0.1f, fadeOut = 2f;
 
-    bool modValues;
-    bool showList;
+    private bool modValues;
+    private Vector3 posInf = new(0.25f, 0.25f, 0.25f);
+    private Vector3 rotInf = new(1, 1, 1);
 
-    CameraShakeInstance shake;
+    private CameraShakeInstance shake;
+    private bool showList;
 
-    delegate float Slider(float val, string prefix, float min, float max, int pad);
+    private void OnGUI() {
+        if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-	void OnGUI()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
-        Slider s = delegate(float val, string prefix, float min, float max, int pad)
-        {
+        Slider s = delegate(float val, string prefix, float min, float max, int pad) {
             GUILayout.BeginHorizontal();
             GUILayout.Label(prefix, GUILayout.MaxWidth(pad));
             val = GUILayout.HorizontalSlider(val, min, max);
@@ -56,39 +48,27 @@ public class ShakeDemo : MonoBehaviour
         GUILayout.Label("--Saved Shake Instance--");
         GUILayout.Label("You can save shake instances and modify their properties at runtime.");
 
-        if (shake == null && GUILayout.Button("Create Shake Instance"))
-        {
+        if (shake == null && GUILayout.Button("Create Shake Instance")) {
             shake = CameraShaker.Instance.StartShake(magn, rough, fadeIn);
             shake.DeleteOnInactive = false;
         }
 
-        if (shake != null)
-        {
-            if (GUILayout.Button("Delete Shake Instance"))
-            {
+        if (shake != null) {
+            if (GUILayout.Button("Delete Shake Instance")) {
                 shake.DeleteOnInactive = true;
                 shake.StartFadeOut(fadeOut);
                 shake = null;
-                
             }
 
-            if (shake != null)
-            {
+            if (shake != null) {
                 GUILayout.BeginHorizontal();
-                if (GUILayout.Button("Fade Out"))
-                {
-                    shake.StartFadeOut(fadeOut);
-                }
-                if (GUILayout.Button("Fade In"))
-                {
-                    shake.StartFadeIn(fadeIn);
-                }
+                if (GUILayout.Button("Fade Out")) shake.StartFadeOut(fadeOut);
+                if (GUILayout.Button("Fade In")) shake.StartFadeIn(fadeIn);
                 GUILayout.EndHorizontal();
 
                 modValues = GUILayout.Toggle(modValues, "Modify Instance Values");
 
-                if (modValues)
-                {
+                if (modValues) {
                     shake.ScaleMagnitude = magn;
                     shake.ScaleRoughness = rough;
                     shake.PositionInfluence = posInf;
@@ -100,9 +80,8 @@ public class ShakeDemo : MonoBehaviour
         GUILayout.Label("--Shake Once--");
         GUILayout.Label("You can simply have a shake that automatically starts and stops too.");
 
-        if (GUILayout.Button("Shake!"))
-        {
-            CameraShakeInstance c = CameraShaker.Instance.ShakeOnce(magn, rough, fadeIn, fadeOut);
+        if (GUILayout.Button("Shake!")) {
+            var c = CameraShaker.Instance.ShakeOnce(magn, rough, fadeIn, fadeOut);
             c.PositionInfluence = posInf;
             c.RotationInfluence = rotInf;
         }
@@ -123,14 +102,13 @@ public class ShakeDemo : MonoBehaviour
 
         showList = GUILayout.Toggle(showList, "Show List");
 
-        if (showList)
-        {
-            int index = 1;
-            foreach (CameraShakeInstance c in CameraShaker.Instance.ShakeInstances)
-            {
-                string state = c.CurrentState.ToString();
+        if (showList) {
+            var index = 1;
+            foreach (var c in CameraShaker.Instance.ShakeInstances) {
+                var state = c.CurrentState.ToString();
 
-                GUILayout.Label("#" + index + ": Magnitude: " + c.Magnitude.ToString("F2") + ", Roughness: " + c.Roughness.ToString("F2"));
+                GUILayout.Label("#" + index + ": Magnitude: " + c.Magnitude.ToString("F2") + ", Roughness: " +
+                                c.Roughness.ToString("F2"));
                 GUILayout.Label("      Position Influence: " + c.PositionInfluence);
                 GUILayout.Label("      Rotation Influence: " + c.RotationInfluence);
                 GUILayout.Label("      State: " + state);
@@ -138,6 +116,9 @@ public class ShakeDemo : MonoBehaviour
                 index++;
             }
         }
+
         GUILayout.EndArea();
-	}
+    }
+
+    private delegate float Slider(float val, string prefix, float min, float max, int pad);
 }

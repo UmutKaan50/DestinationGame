@@ -1,20 +1,19 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Profiling.Memory.Experimental;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using y01cu;
 
 public class MathsManager : MonoBehaviour {
     public static MathsManager instance;
+
+    public static Action ButtonClicked;
     public Animator passQuestionAnimator;
     public Animator tryButtonAnimator;
     public int firstNumber;
-    public bool firstSelected = false;
+    public bool firstSelected;
     public int secondNumber;
-    public bool secondSelected = false;
+    public bool secondSelected;
 
     public int unitedNumber;
 
@@ -27,15 +26,25 @@ public class MathsManager : MonoBehaviour {
 
     [SerializeField] private EmptyButtons emptyButtons;
 
-    public bool isQuestionSolved = false;
+    public bool isQuestionSolved;
+
+    public int controller;
+    public string newText = "";
+
+    [SerializeField] private Animator lockPanelAnimator;
+
+    public GameObject selectedButton;
+
+    public Player player;
+    public int check;
+    public GameObject tryButton;
+    public string tryButtonText = "hiding";
 
     private List<AnswerButton> tempPressedEmptyButtons;
     private List<AnswerButton> tempUnpressedEmptyButtons;
 
     private void Awake() {
-        if (MathsManager.instance != null) {
-            return;
-        }
+        if (instance != null) return;
 
         instance = this;
 
@@ -43,18 +52,9 @@ public class MathsManager : MonoBehaviour {
         tempUnpressedEmptyButtons = unpressedEmptyButtons;
     }
 
-    public void ClearValues() {
-        firstNumber = 0;
-        secondNumber = 0;
-        unitedNumber = 0;
-        firstSelected = false;
-        secondSelected = false;
+    private void Start() {
+        ButtonClicked += CheckForCalculations;
     }
-
-    public int controller = 0;
-    public string newText = "";
-
-    [SerializeField] private Animator lockPanelAnimator;
 
     private void FixedUpdate() {
         // One button can be clicked at the same time:
@@ -101,16 +101,18 @@ public class MathsManager : MonoBehaviour {
         // CheckIfAllTried();
     }
 
-    private void Start() {
-        ButtonClicked += CheckForCalculations;
+    public void ClearValues() {
+        firstNumber = 0;
+        secondNumber = 0;
+        unitedNumber = 0;
+        firstSelected = false;
+        secondSelected = false;
     }
-
-    public static Action ButtonClicked;
 
     public void InvokeButtonClickedEvent() {
         ButtonClicked?.Invoke();
     }
-    
+
     public void CheckForCalculations() {
         #region LatestAttempt
 
@@ -169,7 +171,7 @@ public class MathsManager : MonoBehaviour {
         #endregion
 
         // One button can be clicked at the same time:
-        foreach (var unselectedEmptyButton in unpressedEmptyButtons) {
+        foreach (var unselectedEmptyButton in unpressedEmptyButtons)
             if (unselectedEmptyButton.GetComponent<AnswerButton>().isPressed) {
                 // foreach below prevent two buttons can be pressed at the same time:
                 foreach (var selectedEmptyButton in pressedEmptyButtons) {
@@ -182,11 +184,9 @@ public class MathsManager : MonoBehaviour {
                 unselectedEmptyButton.GetComponentInChildren<Text>().text = newText;
                 unpressedEmptyButtons.Remove(unselectedEmptyButton);
                 pressedEmptyButtons.Add(unselectedEmptyButton);
-                continue;
             }
-            //unselectedEmptyButton.GetComponent<AnswerButton
-        }
 
+        //unselectedEmptyButton.GetComponent<AnswerButton
         foreach (var selectedEmptyButton in pressedEmptyButtons) {
             selectedEmptyButton.GetComponentInChildren<Text>().text = newText;
             if (!selectedEmptyButton.GetComponent<AnswerButton>().isPressed) {
@@ -200,12 +200,8 @@ public class MathsManager : MonoBehaviour {
         CheckIfAllTried();
     }
 
-    public GameObject selectedButton;
-
     public void Control(string numberText) {
-        if (numberText == "Try") {
-            return;
-        }
+        if (numberText == "Try") return;
 
         newText = numberText;
 
@@ -220,29 +216,21 @@ public class MathsManager : MonoBehaviour {
         //}
     }
 
-    public Player player;
-    public int check;
-    public GameObject tryButton;
-    public string tryButtonText = "hiding";
-
     // Checking if answered or not:
     public void CheckIfAllTried() {
         check = 0;
-        foreach (var item in unpressedEmptyButtons) {
+        foreach (var item in unpressedEmptyButtons)
             if (item.GetComponent<AnswerButton>().isInputCorrect ||
-                item.GetComponent<AnswerButton>().isInputIncorrect) {
+                item.GetComponent<AnswerButton>().isInputIncorrect)
                 check++;
-            }
-        }
 
-        if (check == 5) {
+        if (check == 5)
             // Make show animation once:
             if (TryButton.instance.isHidden) {
                 TryButton.instance.isHidden = false;
                 tryButtonAnimator.SetTrigger("show");
                 tryButtonAnimator.SetTrigger("stop");
             }
-        }
     }
 
     // Checking for correct answers:
@@ -289,7 +277,7 @@ public class MathsManager : MonoBehaviour {
      */
 
     public static bool IsAnyButtonSelected() {
-        bool isAnyButtonSelected = false;
+        var isAnyButtonSelected = false;
 
         // if(selectedEmptyButtons.Count > 0) {
         //     isAnyButtonSelected = true;

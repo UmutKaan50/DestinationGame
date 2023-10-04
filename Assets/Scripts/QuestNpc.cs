@@ -1,22 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestNpc : Collideable {
     public static QuestNpc instance;
 
-    private GameObject player;
-
     public Animator assuranceQuestionAnimator;
     public Animator mathQuestAnimator;
-    public bool isQuestAssurancePanelOpened = false;
-    public bool isMathQuestAssurancePanelOpened = false;
+    public bool isQuestAssurancePanelOpened;
+    public bool isMathQuestAssurancePanelOpened;
 
-    private float cooldown = 3.0f;
+    public GameObject clickLockingPanel;
+
+    private readonly float cooldown = 3.0f;
     private float lastShout = -3.0f; // Instant reply at the beginning.
+
+    private float minimumRequiredDistance = 0.2f;
 
     private float npcCurrentX;
     private float npcCurrentY;
+
+    private GameObject player;
 
     private float playerCurrentX;
     private float playerCurrentY;
@@ -24,25 +26,17 @@ public class QuestNpc : Collideable {
     private float xDistance;
     private float yDistance;
 
-    private float minimumRequiredDistance = 0.2f;
-
     // Hmm
     private void Awake() {
-        if (QuestNpc.instance != null) {
-            return;
-        }
+        if (instance != null) return;
         instance = this;
 
         player = GameObject.Find("Player");
-
-        
     }
 
 
     private void Update() {
-
         CalculateInteractDistance();
-    
     }
 
     private void CalculateInteractDistance() {
@@ -59,16 +53,15 @@ public class QuestNpc : Collideable {
         xDistance = Mathf.Abs(npcCurrentX - playerCurrentX);
         yDistance = Mathf.Abs(npcCurrentY - playerCurrentY);
 
-        float distance = Mathf.Sqrt(xDistance * xDistance + yDistance * yDistance);
+        var distance = Mathf.Sqrt(xDistance * xDistance + yDistance * yDistance);
 
-        if (distance < 0.18f && !isQuestAssurancePanelOpened) {
+        if (distance < 0.18f && !isQuestAssurancePanelOpened)
             // Triggering animation and setting next cooldown:
             if (Time.time - lastShout > cooldown) {
                 lastShout = Time.time;
                 isQuestAssurancePanelOpened = true;
                 assuranceQuestionAnimator.SetTrigger("show");
             }
-        }
     }
 
     // This can wait some time:
@@ -87,13 +80,13 @@ public class QuestNpc : Collideable {
     public void SoundManagerPlay(AudioClip audioClip) {
         SoundManager.instance.audioSource.PlayOneShot(audioClip);
     }
+
     public void CloseQuestAssurancePanel() {
         isQuestAssurancePanelOpened = false;
         assuranceQuestionAnimator.SetTrigger("hide");
         SoundManagerPlay(SoundManager.instance.buttonTap);
     }
 
-    public GameObject clickLockingPanel;
     public void OpenMathQuestPanel() {
         // Call click locking panel:
         clickLockingPanel.SetActive(true);
@@ -111,6 +104,4 @@ public class QuestNpc : Collideable {
         isQuestAssurancePanelOpened = false;
         mathQuestAnimator.SetTrigger("hide");
     }
-
-
 }

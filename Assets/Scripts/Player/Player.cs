@@ -1,39 +1,26 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class Player : Mover {
-    #region Variables
+    private bool isPlayerReady;
 
-    private SpriteRenderer spriteRenderer;
-    private bool isAlive = true;
-    public bool hasKey = false;
-    private bool isMoving;
-    private bool isVerticalMoving;
-    private bool isHorizontalMoving;
-    private Animator animator;
-    // public Joystick joystick;
+    private BoxCollider2D playerBoxCollider2D;
 
-    private float horizontalMove;
-    private float verticalMove;
-    [SerializeField] private AudioClip deathSound;
+    protected override void Start() {
+        base.Start();
 
-    // public AudioSource audioSource;
-    [SerializeField] private AudioSource additionalAudioSource;
+        // StartCoroutine(SetPlayerAsReadyAfterSomeTime());
 
-    public Portal portal;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
-    [SerializeField] private float rayCastDistance;
+        // DontDestroyOnLoad(gameObject);
 
-    [SerializeField] private Animator weaponAnimator;
-
-    [SerializeField] private Animator entranceAnimator;
-
-    private bool isEntranceAnimationEnded = false;
-
-    #endregion
+        animator = GetComponent<Animator>();
+        playerBoxCollider2D = GetComponent<BoxCollider2D>();
+    }
 
     private void FixedUpdate() {
         PlayerMovement();
@@ -45,32 +32,28 @@ public class Player : Mover {
     }
 
     private void PlayerHit() {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, rayCastDistance);
+        var hit = Physics2D.Raycast(transform.position, transform.forward, rayCastDistance);
 
-        if (hit.collider != null) {
+        if (hit.collider != null)
             Debug.DrawLine(transform.position, hit.point, Color.red);
-        }
-        else {
+        else
             Debug.DrawLine(transform.position, transform.position + transform.right * rayCastDistance, Color.green);
-        }
     }
-
-    private bool isPlayerReady;
 
     public bool GetIsPlayerReady() {
         return isPlayerReady;
     }
 
     private void PlayerMovement() {
-        float horizontalMove = Input.GetAxisRaw("Horizontal");
-        float verticalMove = Input.GetAxisRaw("Vertical");
+        var horizontalMove = Input.GetAxisRaw("Horizontal");
+        var verticalMove = Input.GetAxisRaw("Vertical");
 
         isPlayerReady = isAlive && isEntranceAnimationEnded;
         if (isPlayerReady) {
             UpdateMotor(new Vector3(horizontalMove, verticalMove, 0));
 
             // Stopped:
-            bool isPlayerStopped = verticalMove == 0 && horizontalMove == 0;
+            var isPlayerStopped = verticalMove == 0 && horizontalMove == 0;
 
             if (isPlayerStopped) {
                 isMoving = false;
@@ -110,30 +93,16 @@ public class Player : Mover {
         }
     }
 
-    protected override void Start() {
-        base.Start();
-        
-        // StartCoroutine(SetPlayerAsReadyAfterSomeTime());
-        
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        audioSource = GetComponent<AudioSource>();
-
-        // DontDestroyOnLoad(gameObject);
-
-        animator = GetComponent<Animator>();
-        playerBoxCollider2D = GetComponent<BoxCollider2D>();
-    }
-
     [Obsolete("Will be replaced by signals in timeline.")]
     private IEnumerator SetPlayerAsReadyAfterSomeTime() {
-        float initalDelay = 0.5f;
+        var initalDelay = 0.5f;
         yield return new WaitForSeconds(initalDelay);
         // float animationLength = entranceAnimator.GetCurrentAnimatorClipInfo(0).Length;
-        float entranceAnimationLength = 12f;
+        var entranceAnimationLength = 12f;
         yield return new WaitForSeconds(entranceAnimationLength);
         isEntranceAnimationEnded = true;
     }
-    
+
     public void SetAnimationEnded() {
         isEntranceAnimationEnded = true;
     }
@@ -149,12 +118,8 @@ public class Player : Mover {
 
         base.RecieveDamage(dmg);
         GameManager.instance.OnHitpointChange();
-        if (hitpoint > 0) {
-            animator.SetTrigger("Hurt");
-        }
+        if (hitpoint > 0) animator.SetTrigger("Hurt");
     }
-
-    private BoxCollider2D playerBoxCollider2D;
 
     protected override void GetDestroyed() {
         if (hitpoint <= 0) {
@@ -183,7 +148,7 @@ public class Player : Mover {
     }
 
     public void SetLevel(int level) {
-        for (int i = 0; i < level; i++)
+        for (var i = 0; i < level; i++)
             OnLevelUp();
     }
 
@@ -195,7 +160,7 @@ public class Player : Mover {
 
         if (hitpoint > maxHitpoint)
             hitpoint = maxHitpoint;
-        GameManager.instance.ShowText("+" + healingAmount.ToString() + " hp", 25, Color.green, transform.position,
+        GameManager.instance.ShowText("+" + healingAmount + " hp", 25, Color.green, transform.position,
             Vector3.up * 30, 1.0f);
         GameManager.instance.OnHitpointChange();
     }
@@ -214,4 +179,35 @@ public class Player : Mover {
     protected override void PlayHurtAudioClip() {
         additionalAudioSource.PlayOneShot(hurtAudioClip);
     }
+
+    #region Variables
+
+    private SpriteRenderer spriteRenderer;
+    private bool isAlive = true;
+    public bool hasKey;
+    private bool isMoving;
+    private bool isVerticalMoving;
+    private bool isHorizontalMoving;
+
+    private Animator animator;
+    // public Joystick joystick;
+
+    private float horizontalMove;
+    private float verticalMove;
+    [SerializeField] private AudioClip deathSound;
+
+    // public AudioSource audioSource;
+    [SerializeField] private AudioSource additionalAudioSource;
+
+    public Portal portal;
+
+    [SerializeField] private float rayCastDistance;
+
+    [SerializeField] private Animator weaponAnimator;
+
+    [SerializeField] private Animator entranceAnimator;
+
+    private bool isEntranceAnimationEnded;
+
+    #endregion
 }

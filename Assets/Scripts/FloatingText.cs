@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class FloatingText {
-
     public bool active;
-    public GameObject go;
-    public Text txt;
-    public Vector3 motion;
     public float duration;
+    public GameObject go;
     public float lastShown;
+    public Vector3 motion;
+    public Text txt;
+
     public void Show() {
         active = true;
         lastShown = Time.time;
@@ -21,14 +21,12 @@ public class FloatingText {
     }
 
     public void UpdateFloatingText() {
-        if (!active) 
+        if (!active)
             return;
-        
+
         //     10     -     7     >     2
         // Showing text long enough:
-        if (Time.time - lastShown > duration) {
-            Hide();
-        }
+        if (Time.time - lastShown > duration) Hide();
 
 
         //go.transform.position += motion * Time.deltaTime;

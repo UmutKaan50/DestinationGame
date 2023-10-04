@@ -1,45 +1,36 @@
 using UnityEngine;
-using Cursor = UnityEngine.Cursor;
 
 [RequireComponent(typeof(CharacterController))]
-public class FirstPersonController : MonoBehaviour
-{
-    [SerializeField]
-    private float m_MouseSensitivity = 100f;
-    [SerializeField]
-    private float m_MovementSpeed = 5f;
-    [SerializeField]
-    private Transform m_PlayerCamera = null;
-    [SerializeField]
-    private bool m_MoveWithMouse = true;
+public class FirstPersonController : MonoBehaviour {
+    [SerializeField] private float m_MouseSensitivity = 100f;
+
+    [SerializeField] private float m_MovementSpeed = 5f;
+
+    [SerializeField] private Transform m_PlayerCamera;
+
+    [SerializeField] private bool m_MoveWithMouse = true;
+
+    [SerializeField] private byte m_ButtonMovementFlags;
 
     private CharacterController m_CharacterController;
-    private float m_XRotation = 0f;
-    [SerializeField]
-    private byte m_ButtonMovementFlags;
+    private float m_XRotation;
 
-    void Start()
-    {
+    private void Start() {
 #if ENABLE_INPUT_SYSTEM
         Debug.Log("The FirstPersonController uses the legacy input system. Please set it in Project Settings");
         m_MoveWithMouse = false;
 #endif
-        if (m_MoveWithMouse)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        if (m_MoveWithMouse) Cursor.lockState = CursorLockMode.Locked;
         m_CharacterController = GetComponent<CharacterController>();
     }
 
-    void Update()
-    {
+    private void Update() {
         Look();
         Move();
     }
 
-    private void Look()
-    {
-        Vector2 lookInput = GetLookInput();
+    private void Look() {
+        var lookInput = GetLookInput();
 
         m_XRotation -= lookInput.y;
         m_XRotation = Mathf.Clamp(m_XRotation, -90f, 90f);
@@ -48,33 +39,29 @@ public class FirstPersonController : MonoBehaviour
         transform.Rotate(Vector3.up * lookInput.x, Space.World);
     }
 
-    private void Move()
-    {
-        Vector3 movementInput = GetMovementInput();
+    private void Move() {
+        var movementInput = GetMovementInput();
 
-        Vector3 move = transform.right * movementInput.x + transform.forward * movementInput.z;
+        var move = transform.right * movementInput.x + transform.forward * movementInput.z;
 
         m_CharacterController.Move(move * m_MovementSpeed * Time.deltaTime);
     }
 
-    private Vector2 GetLookInput()
-    {
+    private Vector2 GetLookInput() {
         float mouseX = 0;
         float mouseY = 0;
-        if (m_MoveWithMouse)
-        {
+        if (m_MoveWithMouse) {
             mouseX = Input.GetAxis("Mouse X") * m_MouseSensitivity * Time.deltaTime;
             mouseY = Input.GetAxis("Mouse Y") * m_MouseSensitivity * Time.deltaTime;
         }
+
         return new Vector2(mouseX, mouseY);
     }
 
-    private Vector3 GetMovementInput()
-    {
+    private Vector3 GetMovementInput() {
         float x = 0;
         float z = 0;
-        if (m_MoveWithMouse)
-        {
+        if (m_MoveWithMouse) {
             x = Input.GetAxis("Horizontal");
             z = Input.GetAxis("Vertical");
         }

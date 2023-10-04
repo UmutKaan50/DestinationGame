@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-public class AssuranceQuestion : MonoBehaviour {
 
+public class AssuranceQuestion : MonoBehaviour {
     //public Button substractionButton;
     //public Sprite pressedSubstractionButton;
     //public Sprite normalSubtractionButton;

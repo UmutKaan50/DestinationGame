@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -12,9 +8,9 @@ public class AnswerButton : MonoBehaviour {
     [SerializeField] private EmptyButtons emptyButtons;
 
     [FormerlySerializedAs("isCorrect")] [FormerlySerializedAs("isSolved")]
-    public bool isInputCorrect = false;
+    public bool isInputCorrect;
 
-    [FormerlySerializedAs("isTried")] public bool isInputIncorrect = false;
+    [FormerlySerializedAs("isTried")] public bool isInputIncorrect;
 
     public int requiredNumber;
 
@@ -30,43 +26,37 @@ public class AnswerButton : MonoBehaviour {
     //public bool firstSelected;
     //public bool secondSelected;
 
-    [FormerlySerializedAs("isSelected")] public bool isPressed = false;
+    [FormerlySerializedAs("isSelected")] public bool isPressed;
     public GameObject lockPanel;
 
     [SerializeField] private MathsManager mathsManager;
 
-    private void FixedUpdate() {
-        bool isTextFieldEmpty = GetComponentInChildren<Text>().text == "";
-
-        if (!isTextFieldEmpty) {
-            bool isInputMatchingWithRequiredNumber =
-                requiredNumber.ToString() == GetComponentInChildren<Text>().text;
-
-            if (isInputMatchingWithRequiredNumber) {
-                isInputCorrect = true;
-            }
-
-            int upperNumber;
-            int lowerNumber;
-            bool isInputOneDigitAndPositive =
-                (int.TryParse(GetComponentInChildren<Text>().text, out upperNumber) && upperNumber < 10) &&
-                (int.TryParse(GetComponentInChildren<Text>().text, out lowerNumber) && lowerNumber >= 0);
-            if (isInputOneDigitAndPositive) {
-                isInputIncorrect = true;
-            }
-        }
-    }
-
     private void Awake() {
-        if (AnswerButton.instance != null) {
-            return;
-        }
+        if (instance != null) return;
 
         instance = this;
     }
 
     private void Start() {
         Invoke("AddListeners", 2f);
+    }
+
+    private void FixedUpdate() {
+        var isTextFieldEmpty = GetComponentInChildren<Text>().text == "";
+
+        if (!isTextFieldEmpty) {
+            var isInputMatchingWithRequiredNumber =
+                requiredNumber.ToString() == GetComponentInChildren<Text>().text;
+
+            if (isInputMatchingWithRequiredNumber) isInputCorrect = true;
+
+            int upperNumber;
+            int lowerNumber;
+            var isInputOneDigitAndPositive =
+                int.TryParse(GetComponentInChildren<Text>().text, out upperNumber) && upperNumber < 10 &&
+                int.TryParse(GetComponentInChildren<Text>().text, out lowerNumber) && lowerNumber >= 0;
+            if (isInputOneDigitAndPositive) isInputIncorrect = true;
+        }
     }
 
     private void AddListeners() {
@@ -77,7 +67,7 @@ public class AnswerButton : MonoBehaviour {
 
 
     /// <summary>
-    /// Called when button is clicked. Updates button sprite and plays sound effect.
+    ///     Called when button is clicked. Updates button sprite and plays sound effect.
     /// </summary>
     public void ButtonSpriteAlteration() {
         // I selected 4.4f for more realistic experience.
@@ -102,7 +92,7 @@ public class AnswerButton : MonoBehaviour {
             // lockPanel.GetComponent<Animator>().SetTrigger("hide");
             // Here we're hiding the lock panel, not answer buttons.
         }
-        else if (isPressed == true) {
+        else if (isPressed) {
             isPressed = false;
             GetComponent<Button>().image.sprite = emptyButtons.unpressedSprite;
             // If empty button is released, show lock panel:

@@ -1,17 +1,11 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Crate : MonoBehaviour {
-    private AudioSource audioSource;
     [SerializeField] private AudioClip crateHit;
 
     [SerializeField] private int hitpoint;
-
-    private void Start() {
-        audioSource = GetComponent<AudioSource>();
-    }
+    private AudioSource audioSource;
 
     // protected override void GetDestroyed() {
     //     Destroy(gameObject);
@@ -33,11 +27,14 @@ public class Crate : MonoBehaviour {
     // }
 
     /// <summary>
-    /// We're forgetting about the upcoming damage since these are just crates. We'll apply our own hitpoint logic here.
+    ///     We're forgetting about the upcoming damage since these are just crates. We'll apply our own hitpoint logic here.
     /// </summary>
     /// <param name="dmg"></param>
-    ///
     private bool canBeAffected = true;
+
+    private void Start() {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void RecieveDamage(Damage dmg) {
         if (canBeAffected) {
@@ -49,14 +46,12 @@ public class Crate : MonoBehaviour {
     }
 
     private IEnumerator RecieveDamageAfterDelay() {
-        float damageDealingDelay = crateHit.length;
+        var damageDealingDelay = crateHit.length;
 
         yield return new WaitForSeconds(damageDealingDelay);
 
         hitpoint -= 1;
-        if (hitpoint == 0) {
-            Destroy(gameObject);
-        }
+        if (hitpoint == 0) Destroy(gameObject);
 
         canBeAffected = true;
     }

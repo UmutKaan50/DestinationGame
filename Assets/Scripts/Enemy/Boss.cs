@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : Enemy {
@@ -13,11 +11,12 @@ public class Boss : Enemy {
     private void Awake() {
         audioSource = GetComponent<AudioSource>();
     }
-    private void Update() {
-        for (int i = 0; i < fireballs.Length; i++) {
-            fireballs[i].position = transform.position + new Vector3(-Mathf.Cos(Time.time * fireballSpeed[i]) * distance, Mathf.Sin(Time.time * fireballSpeed[i]) * distance, 0);
 
-        }        
+    private void Update() {
+        for (var i = 0; i < fireballs.Length; i++)
+            fireballs[i].position = transform.position +
+                                    new Vector3(-Mathf.Cos(Time.time * fireballSpeed[i]) * distance,
+                                        Mathf.Sin(Time.time * fireballSpeed[i]) * distance, 0);
     }
 
     protected override void GetDestroyed() {
@@ -25,6 +24,7 @@ public class Boss : Enemy {
         Destroy(gameObject);
         // I should figure out how does rows below work even if Destroy(GameObject) command is given.
         GameManager.instance.GrantXp(xpValue);
-        GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40, 1.0f);
+        GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40,
+            1.0f);
     }
 }
