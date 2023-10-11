@@ -22,7 +22,7 @@ public class Fighter : MonoBehaviour {
     protected Vector3 pushDirection;
 
 
-    private void Awake() {
+    protected virtual void Awake() {
         audioSource = GetComponent<AudioSource>();
     }
 

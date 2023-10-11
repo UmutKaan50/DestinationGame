@@ -2,6 +2,7 @@
 // Copyright (c) Umut Kaan Özdemir. All rights reserved.
 //
 
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace y01cu {
     ///     This CanvasManger scripts will only be able to control InstructionPanel.
     /// </summary>
     public class CanvasManager : MonoBehaviour {
-        [SerializeField] private Animator instructionPanelAnimator;
+        private Animator instructionPanelAnimator;
 
         [SerializeField] private GameObject[] gameObjectsToBeActivated;
 
@@ -22,20 +23,27 @@ namespace y01cu {
         private AudioSource audioSource;
         private AudioClip interfaceClickSoundEffect;
 
+        private void Awake() {
+            instructionPanelAnimator =
+                GameObject.Find("HUD").transform.Find("InstructionPanel").GetComponent<Animator>();
+        }
+        
         private void Start() {
-            MakeSureSpecificGameObjectsAreActive();
-            MakeSureSpecificGameObjectsAreInactive();
+            Invoke("MakeSureSpecificGameObjectsAreActive", .1f);
+            Invoke("MakeSureSpecificGameObjectsAreInactive", .1f);
 
             TriggerInstructionPanelEntranceAnimation();
             audioSource = GetComponent<AudioSource>();
         }
+        
+        
 
         private void MakeSureSpecificGameObjectsAreActive() {
             foreach (var gameObjToBeActivated in gameObjectsToBeActivated) gameObjToBeActivated.SetActive(true);
         }
 
         private void MakeSureSpecificGameObjectsAreInactive() {
-            foreach (var gameObjToBeDeactivated in gameObjectsToBeDeactivated) gameObjToBeDeactivated.SetActive(true);
+            foreach (var gameObjToBeDeactivated in gameObjectsToBeDeactivated) gameObjToBeDeactivated.SetActive(false);
         }
 
         private void TriggerInstructionPanelEntranceAnimation() {
@@ -48,10 +56,7 @@ namespace y01cu {
         }
 
         private IEnumerator ActivateHelpButtonAfterSomeTime() {
-            var animatorStateInfo = instructionPanelAnimator.GetCurrentAnimatorStateInfo(0);
-            var activationDelay = animatorStateInfo.length;
-
-            yield return new WaitForSeconds(activationDelay);
+            yield return new WaitForSeconds(5f);
             helpButton.SetActive(true);
         }
     }

@@ -115,6 +115,9 @@ namespace y01cu {
             foreach (var text in texts)
                 // Change the font
                 text.font = newFontForScene;
+
+            EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+            Debug.Log("Legacy Text Fonts replaced in " + texts.Length + " objects.");
         }
 
         //------------------------------------------------------------
@@ -198,7 +201,7 @@ namespace y01cu {
                 }
             }
 
-            Debug.Log("Legacy Font replaced in prefabs.");
+            Debug.Log("Legacy Text Fonts replaced in prefabs.");
         }
 
         private void CreateDivider() {

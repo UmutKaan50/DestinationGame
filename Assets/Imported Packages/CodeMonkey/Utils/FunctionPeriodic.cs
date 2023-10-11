@@ -1,4 +1,4 @@
-/*
+/* 
     ------------------- Code Monkey -------------------
 
     Thank you for downloading the Code Monkey Utilities
@@ -13,40 +13,30 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace CodeMonkey.Utils {
+
     /*
      * Executes a Function periodically
      * */
     public class FunctionPeriodic {
-        private static List<FunctionPeriodic> funcList; // Holds a reference to all active timers
 
-        private static GameObject
-            initGameObject; // Global game object used for initializing class, is destroyed on scene change
+        /*
+         * Class to hook Actions into MonoBehaviour
+         * */
+        private class MonoBehaviourHook : MonoBehaviour {
 
-        private readonly string functionName;
+            public Action OnUpdate;
 
+            private void Update() {
+                if (OnUpdate != null) OnUpdate();
+            }
 
-        private readonly GameObject gameObject;
-        private readonly bool useUnscaledDeltaTime;
-
-        public Action action;
-        private float baseTimer;
-        public Func<bool> testDestroy;
-        private float timer;
-
-
-        private FunctionPeriodic(GameObject gameObject, Action action, float timer, Func<bool> testDestroy,
-            string functionName, bool useUnscaledDeltaTime) {
-            this.gameObject = gameObject;
-            this.action = action;
-            this.timer = timer;
-            this.testDestroy = testDestroy;
-            this.functionName = functionName;
-            this.useUnscaledDeltaTime = useUnscaledDeltaTime;
-            baseTimer = timer;
         }
+
+
+        private static List<FunctionPeriodic> funcList; // Holds a reference to all active timers
+        private static GameObject initGameObject; // Global game object used for initializing class, is destroyed on scene change
 
         private static void InitIfNeeded() {
             if (initGameObject == null) {
@@ -56,10 +46,11 @@ namespace CodeMonkey.Utils {
         }
 
 
+
         // Persist through scene loads
         public static FunctionPeriodic Create_Global(Action action, Func<bool> testDestroy, float timer) {
-            var functionPeriodic = Create(action, testDestroy, timer, "", false, false, false);
-            Object.DontDestroyOnLoad(functionPeriodic.gameObject);
+            FunctionPeriodic functionPeriodic = Create(action, testDestroy, timer, "", false, false, false);
+            MonoBehaviour.DontDestroyOnLoad(functionPeriodic.gameObject);
             return functionPeriodic;
         }
 
@@ -77,20 +68,19 @@ namespace CodeMonkey.Utils {
             return Create(action, null, timer, functionName, false, false, false);
         }
 
-        public static FunctionPeriodic Create(Action callback, Func<bool> testDestroy, float timer, string functionName,
-            bool stopAllWithSameName) {
+        public static FunctionPeriodic Create(Action callback, Func<bool> testDestroy, float timer, string functionName, bool stopAllWithSameName) {
             return Create(callback, testDestroy, timer, functionName, false, false, stopAllWithSameName);
         }
 
-        public static FunctionPeriodic Create(Action action, Func<bool> testDestroy, float timer, string functionName,
-            bool useUnscaledDeltaTime, bool triggerImmediately, bool stopAllWithSameName) {
+        public static FunctionPeriodic Create(Action action, Func<bool> testDestroy, float timer, string functionName, bool useUnscaledDeltaTime, bool triggerImmediately, bool stopAllWithSameName) {
             InitIfNeeded();
 
-            if (stopAllWithSameName) StopAllFunc(functionName);
+            if (stopAllWithSameName) {
+                StopAllFunc(functionName);
+            }
 
-            var gameObject = new GameObject("FunctionPeriodic Object " + functionName, typeof(MonoBehaviourHook));
-            var functionPeriodic = new FunctionPeriodic(gameObject, action, timer, testDestroy, functionName,
-                useUnscaledDeltaTime);
+            GameObject gameObject = new GameObject("FunctionPeriodic Object " + functionName, typeof(MonoBehaviourHook));
+            FunctionPeriodic functionPeriodic = new FunctionPeriodic(gameObject, action, timer, testDestroy, functionName, useUnscaledDeltaTime);
             gameObject.GetComponent<MonoBehaviourHook>().OnUpdate = functionPeriodic.Update;
 
             funcList.Add(functionPeriodic);
@@ -101,78 +91,86 @@ namespace CodeMonkey.Utils {
         }
 
 
+
+
         public static void RemoveTimer(FunctionPeriodic funcTimer) {
             InitIfNeeded();
             funcList.Remove(funcTimer);
         }
-
         public static void StopTimer(string _name) {
             InitIfNeeded();
-            for (var i = 0; i < funcList.Count; i++)
+            for (int i = 0; i < funcList.Count; i++) {
                 if (funcList[i].functionName == _name) {
                     funcList[i].DestroySelf();
                     return;
                 }
+            }
         }
-
         public static void StopAllFunc(string _name) {
             InitIfNeeded();
-            for (var i = 0; i < funcList.Count; i++)
+            for (int i = 0; i < funcList.Count; i++) {
                 if (funcList[i].functionName == _name) {
                     funcList[i].DestroySelf();
                     i--;
                 }
+            }
         }
-
         public static bool IsFuncActive(string name) {
             InitIfNeeded();
-            for (var i = 0; i < funcList.Count; i++)
-                if (funcList[i].functionName == name)
+            for (int i = 0; i < funcList.Count; i++) {
+                if (funcList[i].functionName == name) {
                     return true;
+                }
+            }
             return false;
         }
 
+
+
+
+        private GameObject gameObject;
+        private float timer;
+        private float baseTimer;
+        private bool useUnscaledDeltaTime;
+        private string functionName;
+        public Action action;
+        public Func<bool> testDestroy;
+
+
+        private FunctionPeriodic(GameObject gameObject, Action action, float timer, Func<bool> testDestroy, string functionName, bool useUnscaledDeltaTime) {
+            this.gameObject = gameObject;
+            this.action = action;
+            this.timer = timer;
+            this.testDestroy = testDestroy;
+            this.functionName = functionName;
+            this.useUnscaledDeltaTime = useUnscaledDeltaTime;
+            baseTimer = timer;
+        }
         public void SkipTimerTo(float timer) {
             this.timer = timer;
         }
 
-        public void SetBaseTimer(float baseTimer) {
-            this.baseTimer = baseTimer;
-        }
-
-        public float GetBaseTimer() {
-            return baseTimer;
-        }
-
-        private void Update() {
-            if (useUnscaledDeltaTime)
+        void Update() {
+            if (useUnscaledDeltaTime) {
                 timer -= Time.unscaledDeltaTime;
-            else
+            } else {
                 timer -= Time.deltaTime;
+            }
             if (timer <= 0) {
                 action();
-                if (testDestroy != null && testDestroy())
+                if (testDestroy != null && testDestroy()) {
                     //Destroy
                     DestroySelf();
-                else
+                } else {
                     //Repeat
                     timer += baseTimer;
+                }
             }
         }
-
         public void DestroySelf() {
             RemoveTimer(this);
-            if (gameObject != null) Object.Destroy(gameObject);
-        }
-
-        /*
-         * Class to hook Actions into MonoBehaviour
-         * */
-        private class MonoBehaviourHook : MonoBehaviour {
-            public Action OnUpdate;
-
-            private void Update() {
-                if (OnUpdate != null) OnUpdate();
+            if (gameObject != null) {
+                UnityEngine.Object.Destroy(gameObject);
             }
         }
     }

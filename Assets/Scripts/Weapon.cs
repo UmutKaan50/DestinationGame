@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using EZCameraShake;
 using UnityEngine;
 
@@ -64,8 +65,14 @@ public class Weapon : Collideable {
 
                 Swing();
                 audioSource.PlayOneShot(SoundManager.instance.swordHurl);
-                CameraShaker.Instance.ShakeOnce(shakeMagnitude, shakeRoughness, shakeFadeInTime, shakeFadeOutTime);
+                StartCoroutine(ShakeCamera());
             }
+    }
+
+    private IEnumerator ShakeCamera() {
+        float delayTime = 0.25f;
+        yield return new WaitForSeconds(delayTime);
+        CameraShaker.Instance.ShakeOnce(shakeMagnitude, shakeRoughness, shakeFadeInTime, shakeFadeOutTime);
     }
 
     protected override void OnCollide(Collider2D coll) {

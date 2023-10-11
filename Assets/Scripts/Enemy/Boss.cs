@@ -13,6 +13,10 @@ public class Boss : Enemy {
     }
 
     private void Update() {
+        MoveFireballs();
+    }
+
+    private void MoveFireballs() {
         for (var i = 0; i < fireballs.Length; i++)
             fireballs[i].position = transform.position +
                                     new Vector3(-Mathf.Cos(Time.time * fireballSpeed[i]) * distance,
@@ -20,11 +24,15 @@ public class Boss : Enemy {
     }
 
     protected override void GetDestroyed() {
-        audioSource.PlayOneShot(deathSound);
-        Destroy(gameObject);
-        // I should figure out how does rows below work even if Destroy(GameObject) command is given.
-        GameManager.instance.GrantXp(xpValue);
-        GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40,
-            1.0f);
+        if (hitpoint <= 0) {
+            hitpoint = 0;
+            StartCoroutine(Die());
+            
+            audioSource.PlayOneShot(deathSound);
+            // I should figure out how does rows below work even if Destroy(GameObject) command is given.
+            GameManager.instance.GrantXp(xpValue);
+            GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40,
+                1.0f);
+        }
     }
 }

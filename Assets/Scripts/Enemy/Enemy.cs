@@ -13,7 +13,7 @@ public class Enemy : Mover {
     [FormerlySerializedAs("chaseLenght")] [SerializeField]
     private float chaseLength = 5;
 
-    [SerializeField] private Player player;
+    private Player player;
 
     // Hitbox
     public ContactFilter2D filter;
@@ -27,17 +27,35 @@ public class Enemy : Mover {
     private bool isEnemyChasingPlayer;
     private Vector3 startingPosition;
 
+    protected override void Awake() {
+        base.Awake();
+    }
+
     protected override void Start() {
         base.Start();
+        isEnemyReadyToChase = false;
         // playerTransform = GameManager.instance.player.transform;
         startingPosition = transform.position;
         hitbox = transform.GetChild(0).GetComponent<BoxCollider2D>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
+        float timeDelay = 0.6f;
+        Invoke("FindPlayerAndMakeEnemyReadyToChase", timeDelay);
     }
 
+    private void FindPlayerAndMakeEnemyReadyToChase() {
+        player = GameObject.Find("Player").GetComponent<Player>();
+        if (player != null) {
+            isEnemyReadyToChase = true;
+        }
+    }
+
+    private bool isEnemyReadyToChase = false;
+
     private void FixedUpdate() {
-        ChasePlayerInRange();
+        if (isEnemyReadyToChase) {
+            ChasePlayerInRange();
+        }
     }
 
     private void ChasePlayerInRange() {
@@ -83,7 +101,7 @@ public class Enemy : Mover {
     protected override void GetDestroyed() {
         if (hitpoint <= 0) {
             hitpoint = 0;
-            StartCoroutine(PlayDeathAnimation());
+            StartCoroutine(Die());
             // I should figure out how does rows below work even if Destroy(GameObject) command is given.
             GameManager.instance.GrantXp(xpValue);
             GameManager.instance.ShowText("+" + xpValue + " xp", 30, Color.magenta, transform.position, Vector3.up * 40,
@@ -91,7 +109,12 @@ public class Enemy : Mover {
         }
     }
 
-    private IEnumerator PlayDeathAnimation() {
+    public void GetDestroyedByPuzzleSolution() {
+        hitpoint = 0;
+        StartCoroutine(Die());
+    }
+
+    protected IEnumerator Die() {
         float animationLength = 1;
         animator.SetTrigger("Die");
         yield return new WaitForSeconds(animationLength);

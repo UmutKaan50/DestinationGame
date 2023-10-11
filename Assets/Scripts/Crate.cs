@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Crate : MonoBehaviour {
     [SerializeField] private AudioClip crateHit;
+    [SerializeField] private AudioClip crateBreak;
 
     [SerializeField] private int hitpoint;
     private AudioSource audioSource;
@@ -40,18 +41,23 @@ public class Crate : MonoBehaviour {
         if (canBeAffected) {
             canBeAffected = false;
             Debug.Log("Coroutine is called.");
-            audioSource.PlayOneShot(crateHit);
             StartCoroutine(RecieveDamageAfterDelay());
         }
     }
 
+
     private IEnumerator RecieveDamageAfterDelay() {
         var damageDealingDelay = crateHit.length;
 
-        yield return new WaitForSeconds(damageDealingDelay);
 
         hitpoint -= 1;
-        if (hitpoint == 0) Destroy(gameObject);
+        if (hitpoint == 0) {
+            audioSource.PlayOneShot(crateBreak);
+            Destroy(gameObject, damageDealingDelay);
+        }
+
+        audioSource.PlayOneShot(crateHit);
+        yield return new WaitForSeconds(damageDealingDelay);
 
         canBeAffected = true;
     }

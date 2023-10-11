@@ -3,13 +3,19 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
+[Obsolete(
+    "It's ok for now to save time, but later on entrance animation must be check before letting player to move in player movement method.")]
 public class Player : Mover {
     private bool isPlayerReady;
 
     private BoxCollider2D playerBoxCollider2D;
 
+    private SpriteRenderer playerSpriteRenderer;
+
     protected override void Start() {
         base.Start();
+
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
 
         // StartCoroutine(SetPlayerAsReadyAfterSomeTime());
 
@@ -23,32 +29,17 @@ public class Player : Mover {
     }
 
     private void FixedUpdate() {
+        isPlayerReady = isAlive && !IsAnInterruptionOccuring && isEntranceAnimationEnded;
+
         PlayerMovement();
-        PlayerHit();
-    }
-
-    public bool GetIsPlayerAlive() {
-        return isAlive;
-    }
-
-    private void PlayerHit() {
-        var hit = Physics2D.Raycast(transform.position, transform.forward, rayCastDistance);
-
-        if (hit.collider != null)
-            Debug.DrawLine(transform.position, hit.point, Color.red);
-        else
-            Debug.DrawLine(transform.position, transform.position + transform.right * rayCastDistance, Color.green);
-    }
-
-    public bool GetIsPlayerReady() {
-        return isPlayerReady;
+        // PlayerHit();
+        UpdatePlayerSprite();
     }
 
     private void PlayerMovement() {
         var horizontalMove = Input.GetAxisRaw("Horizontal");
         var verticalMove = Input.GetAxisRaw("Vertical");
 
-        isPlayerReady = isAlive && isEntranceAnimationEnded;
         if (isPlayerReady) {
             UpdateMotor(new Vector3(horizontalMove, verticalMove, 0));
 
@@ -92,6 +83,66 @@ public class Player : Mover {
             #endregion
         }
     }
+
+    public void RecieveDamageFromPuzzle() {
+        Damage puzzleDamage = new Damage() {
+            damageAmount = 2,
+            origin = transform.position,
+            pushForce = 0.2f
+        };
+        RecieveDamage(puzzleDamage);
+    }
+
+    public bool GetIsPlayerAlive() {
+        return isAlive;
+    }
+
+    public float detectionWidth = 5f;
+    public float detectionHeight = 5f;
+    [SerializeField] private LayerMask detectionLayer;
+
+    private void UpdatePlayerSprite() {
+        // Physics2D.BoxCast(transform.position, new Vector2(2, 2), 0, Vector2.zero)
+        //
+        // playerSpriteRenderer.sortingLayerName = "Top";
+
+        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position,
+            new Vector2(detectionWidth, detectionHeight), 0, detectionLayer);
+        foreach (Collider2D hitCollider in hitColliders) {
+            float distance = Vector2.Distance(transform.position, hitCollider.transform.position);
+            if (distance <= Mathf.Max(detectionWidth, detectionHeight)) // replace with your "close enough" distance
+            {
+                if (transform.position.y < hitCollider.transform.position.y) {
+                    spriteRenderer.sortingOrder = 1; // or any other value to set it in front
+                }
+                else {
+                    spriteRenderer.sortingOrder = -1; // or any other value to set it behind
+                }
+            }
+        }
+    }
+
+    void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, new Vector3(detectionWidth, detectionHeight, 0));
+    }
+
+
+    private void PlayerHit() {
+        var hit = Physics2D.Raycast(transform.position, transform.forward, rayCastDistance);
+
+        if (hit.collider != null)
+            Debug.DrawLine(transform.position, hit.point, Color.red);
+        else
+            Debug.DrawLine(transform.position, transform.position + transform.right * rayCastDistance, Color.green);
+    }
+
+    public bool GetIsPlayerReady() {
+        return isPlayerReady;
+    }
+
+    public bool IsAnInterruptionOccuring { get; set; }
+
 
     [Obsolete("Will be replaced by signals in timeline.")]
     private IEnumerator SetPlayerAsReadyAfterSomeTime() {

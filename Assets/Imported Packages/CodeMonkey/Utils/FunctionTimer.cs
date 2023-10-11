@@ -1,4 +1,4 @@
-/*
+/* 
     ------------------- Code Monkey -------------------
 
     Thank you for downloading the Code Monkey Utilities
@@ -11,38 +11,32 @@
  */
 
 using System;
-using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using System.Collections.Generic;
 
 namespace CodeMonkey.Utils {
+
     /*
-     * Triggers a Action after a certain time
+     * Triggers a Action after a certain time 
      * */
     public class FunctionTimer {
-        private static List<FunctionTimer> timerList; // Holds a reference to all active timers
 
-        private static GameObject
-            initGameObject; // Global game object used for initializing class, is destroyed on scene change
+        /*
+         * Class to hook Actions into MonoBehaviour
+         * */
+        private class MonoBehaviourHook : MonoBehaviour {
 
-        private readonly Action action;
-        private readonly string functionName;
+            public Action OnUpdate;
 
+            private void Update() {
+                if (OnUpdate != null) OnUpdate();
+            }
 
-        private readonly GameObject gameObject;
-        private readonly bool useUnscaledDeltaTime;
-        private bool active;
-        private float timer;
-
-
-        public FunctionTimer(GameObject gameObject, Action action, float timer, string functionName,
-            bool useUnscaledDeltaTime) {
-            this.gameObject = gameObject;
-            this.action = action;
-            this.timer = timer;
-            this.functionName = functionName;
-            this.useUnscaledDeltaTime = useUnscaledDeltaTime;
         }
+
+
+        private static List<FunctionTimer> timerList; // Holds a reference to all active timers
+        private static GameObject initGameObject; // Global game object used for initializing class, is destroyed on scene change
 
         private static void InitIfNeeded() {
             if (initGameObject == null) {
@@ -52,116 +46,125 @@ namespace CodeMonkey.Utils {
         }
 
 
+
+
         public static FunctionTimer Create(Action action, float timer) {
             return Create(action, timer, "", false, false);
         }
-
         public static FunctionTimer Create(Action action, float timer, string functionName) {
             return Create(action, timer, functionName, false, false);
         }
-
         public static FunctionTimer Create(Action action, float timer, string functionName, bool useUnscaledDeltaTime) {
             return Create(action, timer, functionName, useUnscaledDeltaTime, false);
         }
-
-        public static FunctionTimer Create(Action action, float timer, string functionName, bool useUnscaledDeltaTime,
-            bool stopAllWithSameName) {
+        public static FunctionTimer Create(Action action, float timer, string functionName, bool useUnscaledDeltaTime, bool stopAllWithSameName) {
             InitIfNeeded();
 
-            if (stopAllWithSameName) StopAllTimersWithName(functionName);
+            if (stopAllWithSameName) {
+                StopAllTimersWithName(functionName);
+            }
 
-            var obj = new GameObject("FunctionTimer Object " + functionName, typeof(MonoBehaviourHook));
-            var funcTimer = new FunctionTimer(obj, action, timer, functionName, useUnscaledDeltaTime);
+            GameObject obj = new GameObject("FunctionTimer Object "+functionName, typeof(MonoBehaviourHook));
+            FunctionTimer funcTimer = new FunctionTimer(obj, action, timer, functionName, useUnscaledDeltaTime);
             obj.GetComponent<MonoBehaviourHook>().OnUpdate = funcTimer.Update;
 
             timerList.Add(funcTimer);
 
             return funcTimer;
         }
-
         public static void RemoveTimer(FunctionTimer funcTimer) {
             InitIfNeeded();
             timerList.Remove(funcTimer);
         }
-
         public static void StopAllTimersWithName(string functionName) {
             InitIfNeeded();
-            for (var i = 0; i < timerList.Count; i++)
+            for (int i = 0; i < timerList.Count; i++) {
                 if (timerList[i].functionName == functionName) {
                     timerList[i].DestroySelf();
                     i--;
                 }
+            }
         }
-
         public static void StopFirstTimerWithName(string functionName) {
             InitIfNeeded();
-            for (var i = 0; i < timerList.Count; i++)
+            for (int i = 0; i < timerList.Count; i++) {
                 if (timerList[i].functionName == functionName) {
                     timerList[i].DestroySelf();
                     return;
                 }
+            }
+        }
+
+
+
+
+
+        private GameObject gameObject;
+        private float timer;
+        private string functionName;
+        private bool active;
+        private bool useUnscaledDeltaTime;
+        private Action action;
+
+
+
+        public FunctionTimer(GameObject gameObject, Action action, float timer, string functionName, bool useUnscaledDeltaTime) {
+            this.gameObject = gameObject;
+            this.action = action;
+            this.timer = timer;
+            this.functionName = functionName;
+            this.useUnscaledDeltaTime = useUnscaledDeltaTime;
         }
 
         private void Update() {
-            if (useUnscaledDeltaTime)
+            if (useUnscaledDeltaTime) {
                 timer -= Time.unscaledDeltaTime;
-            else
+            } else {
                 timer -= Time.deltaTime;
+            }
             if (timer <= 0) {
                 // Timer complete, trigger Action
                 action();
                 DestroySelf();
             }
         }
-
         private void DestroySelf() {
             RemoveTimer(this);
-            if (gameObject != null) Object.Destroy(gameObject);
-        }
-
-        // Create a Object that must be manually updated through Update();
-        public static FunctionTimerObject CreateObject(Action callback, float timer) {
-            return new FunctionTimerObject(callback, timer);
-        }
-
-        /*
-         * Class to hook Actions into MonoBehaviour
-         * */
-        private class MonoBehaviourHook : MonoBehaviour {
-            public Action OnUpdate;
-
-            private void Update() {
-                if (OnUpdate != null) OnUpdate();
+            if (gameObject != null) {
+                UnityEngine.Object.Destroy(gameObject);
             }
         }
+
+
 
 
         /*
          * Class to trigger Actions manually without creating a GameObject
          * */
         public class FunctionTimerObject {
-            private readonly Action callback;
 
             private float timer;
+            private Action callback;
 
             public FunctionTimerObject(Action callback, float timer) {
                 this.callback = callback;
                 this.timer = timer;
             }
 
-            public bool Update() {
-                return Update(Time.deltaTime);
+            public void Update() {
+                Update(Time.deltaTime);
             }
-
-            public bool Update(float deltaTime) {
+            public void Update(float deltaTime) {
                 timer -= deltaTime;
                 if (timer <= 0) {
                     callback();
-                    return true;
                 }
-
-                return false;
             }
+        }
+
+        // Create a Object that must be manually updated through Update();
+        public static FunctionTimerObject CreateObject(Action callback, float timer) {
+            return new FunctionTimerObject(callback, timer);
         }
     }
 }

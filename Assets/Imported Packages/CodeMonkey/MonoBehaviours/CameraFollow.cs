@@ -1,6 +1,6 @@
-﻿/*
+﻿/* 
     ------------------- Code Monkey -------------------
-
+    
     Thank you for downloading the Code Monkey Utilities
     I hope you find them useful in your projects
     If you have any questions use the contact form
@@ -9,46 +9,40 @@
                unitycodemonkey.com
     --------------------------------------------------
  */
-
+ 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CodeMonkey.MonoBehaviours {
+
     /*
      * Script to handle Camera Movement and Zoom
      * Place on Camera GameObject
      * */
     public class CameraFollow : MonoBehaviour {
+
+        private Camera myCamera;
         private Func<Vector3> GetCameraFollowPositionFunc;
         private Func<float> GetCameraZoomFunc;
 
-        private Camera myCamera;
-
-        public static CameraFollow Instance { get; private set; }
-
-        private void Awake() {
-            Instance = this;
-            myCamera = transform.GetComponent<Camera>();
-        }
-
-
-        private void Update() {
-            HandleMovement();
-            HandleZoom();
-        }
-
-        public void Setup(Func<Vector3> GetCameraFollowPositionFunc, Func<float> GetCameraZoomFunc,
-            bool teleportToFollowPosition, bool instantZoom) {
+        public void Setup(Func<Vector3> GetCameraFollowPositionFunc, Func<float> GetCameraZoomFunc, bool teleportToFollowPosition, bool instantZoom) {
             this.GetCameraFollowPositionFunc = GetCameraFollowPositionFunc;
             this.GetCameraZoomFunc = GetCameraZoomFunc;
 
             if (teleportToFollowPosition) {
-                var cameraFollowPosition = GetCameraFollowPositionFunc();
+                Vector3 cameraFollowPosition = GetCameraFollowPositionFunc();
                 cameraFollowPosition.z = transform.position.z;
                 transform.position = cameraFollowPosition;
             }
 
-            if (instantZoom) myCamera.orthographicSize = GetCameraZoomFunc();
+            if (instantZoom) {
+                myCamera.orthographicSize = GetCameraZoomFunc();
+            }
+        }
+
+        private void Start() {
+            myCamera = transform.GetComponent<Camera>();
         }
 
         public void SetCameraFollowPosition(Vector3 cameraFollowPosition) {
@@ -67,24 +61,30 @@ namespace CodeMonkey.MonoBehaviours {
             this.GetCameraZoomFunc = GetCameraZoomFunc;
         }
 
+
+        private void Update() {
+            HandleMovement();
+            HandleZoom();
+        }
+
         private void HandleMovement() {
             if (GetCameraFollowPositionFunc == null) return;
-            var cameraFollowPosition = GetCameraFollowPositionFunc();
+            Vector3 cameraFollowPosition = GetCameraFollowPositionFunc();
             cameraFollowPosition.z = transform.position.z;
 
-            var cameraMoveDir = (cameraFollowPosition - transform.position).normalized;
-            var distance = Vector3.Distance(cameraFollowPosition, transform.position);
-            var cameraMoveSpeed = 3f;
+            Vector3 cameraMoveDir = (cameraFollowPosition - transform.position).normalized;
+            float distance = Vector3.Distance(cameraFollowPosition, transform.position);
+            float cameraMoveSpeed = 3f;
 
             if (distance > 0) {
-                var newCameraPosition =
-                    transform.position + cameraMoveDir * distance * cameraMoveSpeed * Time.deltaTime;
+                Vector3 newCameraPosition = transform.position + cameraMoveDir * distance * cameraMoveSpeed * Time.deltaTime;
 
-                var distanceAfterMoving = Vector3.Distance(newCameraPosition, cameraFollowPosition);
+                float distanceAfterMoving = Vector3.Distance(newCameraPosition, cameraFollowPosition);
 
-                if (distanceAfterMoving > distance)
+                if (distanceAfterMoving > distance) {
                     // Overshot the target
                     newCameraPosition = cameraFollowPosition;
+                }
 
                 transform.position = newCameraPosition;
             }
@@ -92,19 +92,23 @@ namespace CodeMonkey.MonoBehaviours {
 
         private void HandleZoom() {
             if (GetCameraZoomFunc == null) return;
-            var cameraZoom = GetCameraZoomFunc();
+            float cameraZoom = GetCameraZoomFunc();
 
-            var cameraZoomDifference = cameraZoom - myCamera.orthographicSize;
-            var cameraZoomSpeed = 1f;
+            float cameraZoomDifference = cameraZoom - myCamera.orthographicSize;
+            float cameraZoomSpeed = 1f;
 
             myCamera.orthographicSize += cameraZoomDifference * cameraZoomSpeed * Time.deltaTime;
 
             if (cameraZoomDifference > 0) {
-                if (myCamera.orthographicSize > cameraZoom) myCamera.orthographicSize = cameraZoom;
-            }
-            else {
-                if (myCamera.orthographicSize < cameraZoom) myCamera.orthographicSize = cameraZoom;
+                if (myCamera.orthographicSize > cameraZoom) {
+                    myCamera.orthographicSize = cameraZoom;
+                }
+            } else {
+                if (myCamera.orthographicSize < cameraZoom) {
+                    myCamera.orthographicSize = cameraZoom;
+                }
             }
         }
     }
+
 }

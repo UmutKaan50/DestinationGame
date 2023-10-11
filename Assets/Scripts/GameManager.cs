@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
+using y01cu;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
@@ -15,11 +18,10 @@ public class GameManager : MonoBehaviour {
     public Player player;
     public Weapon weapon;
     public FloatingTextManager floatingTextManager;
-    public RectTransform hitpointBar;
+    private RectTransform hitpointBar;
     public Animator deathMenuAnim;
-    public GameObject hud;
-
-    public GameObject menu;
+    [SerializeField] private GameObject HUD;
+    [SerializeField] private GameObject Menu;
 
     // Logic: 
     public int money;
@@ -31,17 +33,30 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
             Destroy(player.gameObject);
             Destroy(floatingTextManager);
-            Destroy(hud);
-            Destroy(menu);
+            Destroy(HUD);
+            Destroy(Menu);
             return;
         }
+
+        FindAndAssignSomeGameObjectsAndComponents();
 
         instance = this;
         SceneManager.sceneLoaded += LoadState;
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        player = GameObject.Find("Player").GetComponent<Player>();
         //DontDestroyOnLoad(gameObject);
+
+
+        Invoke("SpawnFullScreenMessage", 7f);
+        Invoke("SpawnFullScreenMessage", 11f);
+    }
+
+    private void FindAndAssignSomeGameObjectsAndComponents() {
+        HUD = GameObject.Find("HUD");
+        hitpointBar = HUD.transform.Find("HealthBar").transform.Find("Health").GetComponent<RectTransform>();
+        Menu = GameObject.Find("Menu");
+        player = GameObject.Find("Player").GetComponent<Player>();
+        deathMenuAnim = HUD.transform.Find("DeathMenu").GetComponent<Animator>();
     }
 
     // Floating text:
@@ -114,6 +129,7 @@ public class GameManager : MonoBehaviour {
 
     public void OnSceneLoaded(Scene s, LoadSceneMode mode) {
         player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+        FindAndAssignSomeGameObjectsAndComponents();
     }
 
     // Save state:
@@ -127,8 +143,18 @@ public class GameManager : MonoBehaviour {
     // Death menu and respawn:
     public void Respawn() {
         deathMenuAnim.SetTrigger("Hide");
-        SceneManager.LoadScene("Main");
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         player.Respawn();
+    }
+
+    [SerializeField] private GameObject pfMessagePanel;
+
+    private void SpawnFullScreenMessage() {
+        MessagePanel messagePanel =
+            Instantiate(pfMessagePanel, pfMessagePanel.transform.position, Quaternion.identity)
+                .GetComponent<MessagePanel>();
+        messagePanel.SetMessage("Don't forget to toggle on fullscreen in order to play the game properly.");
     }
 
     public void SaveState() {

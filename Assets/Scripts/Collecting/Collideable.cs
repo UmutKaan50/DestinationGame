@@ -13,6 +13,7 @@ public class Collideable : MonoBehaviour {
     protected virtual void Update() {
         // Collision work:
         boxCollider.OverlapCollider(filter, hits);
+
         for (var i = 0; i < hits.Length; i++) {
             if (hits[i] == null) continue;
 

@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using y01cu;
 
 public class Portal : Collideable {
     public string[] sceneNames;
     public bool canTransfer;
     public GameObject finishScreen;
-    public string message;
+    [SerializeField] private string message;
 
     [SerializeField] private Animator animator;
 
@@ -29,10 +30,20 @@ public class Portal : Collideable {
             if (Time.time - lastShout > cooldown) {
                 lastShout = Time.time;
 
-                animator.SetTrigger("show");
+                SendMessage(message);
 
+                // animator.SetTrigger("show");
                 //GameManager.instance.ShowText(message, 25, Color.white, transform.position + new Vector3(0, 0.16f, 0), Vector3.zero, cooldown);
             }
         }
+    }
+
+    [SerializeField] private GameObject pfMessagePanel;
+
+    private void SendMessage(string message) {
+        MessagePanel messagePanel =
+            Instantiate(pfMessagePanel, pfMessagePanel.transform.position, Quaternion.identity)
+                .GetComponent<MessagePanel>();
+        messagePanel.SetMessage(message);
     }
 }

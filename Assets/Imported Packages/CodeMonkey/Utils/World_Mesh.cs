@@ -1,4 +1,4 @@
-﻿/*
+﻿/* 
     ------------------- Code Monkey -------------------
 
     Thank you for downloading the Code Monkey Utilities
@@ -10,28 +10,60 @@
     --------------------------------------------------
  */
 
-using System;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace CodeMonkey.Utils {
+
     /*
      * Mesh in the World
      * */
     public class World_Mesh {
+        
         private const int sortingOrderDefault = 5000;
-        private readonly Material material;
-        private readonly Mesh mesh;
-        private readonly int[] triangles;
-        private readonly Vector3[] vertices;
 
         public GameObject gameObject;
         public Transform transform;
+        private Material material;
+        private Vector3[] vertices;
         private Vector2[] uv;
+        private int[] triangles;
+        private Mesh mesh;
 
 
-        public World_Mesh(Transform parent, Vector3 localPosition, Vector3 localScale, float eulerZ, float meshWidth,
-            float meshHeight, Material material, UVCoords uvCoords, int sortingOrderOffset) {
+        public static World_Mesh Create(Vector3 position, float eulerZ, float meshWidth, float meshHeight, Material material, UVCoords uvCoords, int sortingOrderOffset = 0) {
+            return new World_Mesh(null, position, Vector3.one, eulerZ, meshWidth, meshHeight, material, uvCoords, sortingOrderOffset);
+        }
+
+        public static World_Mesh Create(Vector3 lowerLeftCorner, float width, float height, Material material, UVCoords uvCoords, int sortingOrderOffset = 0) {
+            return Create(lowerLeftCorner, lowerLeftCorner + new Vector3(width, height), material, uvCoords, sortingOrderOffset);
+        }
+
+        public static World_Mesh Create(Vector3 lowerLeftCorner, Vector3 upperRightCorner, Material material, UVCoords uvCoords, int sortingOrderOffset = 0) {
+            float width = upperRightCorner.x - lowerLeftCorner.x;
+            float height = upperRightCorner.y - lowerLeftCorner.y;
+            Vector3 localScale = upperRightCorner - lowerLeftCorner;
+            Vector3 position = lowerLeftCorner + localScale * .5f;
+            return new World_Mesh(null, position, Vector3.one, 0f, width, height, material, uvCoords, sortingOrderOffset);
+        }
+
+
+        private static int GetSortingOrder(Vector3 position, int offset, int baseSortingOrder = sortingOrderDefault) {
+            return (int)(baseSortingOrder - position.y) + offset;
+        }
+
+
+        public class UVCoords {
+            public int x, y, width, height;
+            public UVCoords(int x, int y, int width, int height) {
+                this.x = x;
+                this.y = y;
+                this.width = width;
+                this.height = height;
+            }
+        }
+
+
+        public World_Mesh(Transform parent, Vector3 localPosition, Vector3 localScale, float eulerZ, float meshWidth, float meshHeight, Material material, UVCoords uvCoords, int sortingOrderOffset) {
             this.material = material;
 
             vertices = new Vector3[4];
@@ -43,20 +75,20 @@ namespace CodeMonkey.Utils {
              * 0,0
              * 1,0
              */
+            
+            float meshWidthHalf  = meshWidth  / 2f;
+            float meshHeightHalf = meshHeight / 2f;
 
-            var meshWidthHalf = meshWidth / 2f;
-            var meshHeightHalf = meshHeight / 2f;
-
-            vertices[0] = new Vector3(-meshWidthHalf, meshHeightHalf);
-            vertices[1] = new Vector3(meshWidthHalf, meshHeightHalf);
+            vertices[0] = new Vector3(-meshWidthHalf,  meshHeightHalf);
+            vertices[1] = new Vector3( meshWidthHalf,  meshHeightHalf);
             vertices[2] = new Vector3(-meshWidthHalf, -meshHeightHalf);
-            vertices[3] = new Vector3(meshWidthHalf, -meshHeightHalf);
-
-            if (uvCoords == null)
+            vertices[3] = new Vector3( meshWidthHalf, -meshHeightHalf);
+            
+            if (uvCoords == null) {
                 uvCoords = new UVCoords(0, 0, material.mainTexture.width, material.mainTexture.height);
+            }
 
-            var uvArray = GetUVRectangleFromPixels(uvCoords.x, uvCoords.y, uvCoords.width, uvCoords.height,
-                material.mainTexture.width, material.mainTexture.height);
+            Vector2[] uvArray = GetUVRectangleFromPixels(uvCoords.x, uvCoords.y, uvCoords.width, uvCoords.height, material.mainTexture.width, material.mainTexture.height);
 
             ApplyUVToUVArray(uvArray, ref uv);
 
@@ -87,85 +119,17 @@ namespace CodeMonkey.Utils {
             SetSortingOrderOffset(sortingOrderOffset);
         }
 
-        public World_Mesh(Transform parent, Vector3 localPosition, Vector3 localScale, float eulerZ, Material material,
-            Vector3[] vertices, Vector2[] uv, int[] triangles, int sortingOrderOffset) {
-            this.material = material;
-            this.vertices = vertices;
-            this.uv = uv;
-            this.triangles = triangles;
-
-            mesh = new Mesh();
-
-            mesh.vertices = vertices;
-            mesh.uv = uv;
-            mesh.triangles = triangles;
-
-            gameObject = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
-            gameObject.transform.parent = parent;
-            gameObject.transform.localPosition = localPosition;
-            gameObject.transform.localScale = localScale;
-            gameObject.transform.localEulerAngles = new Vector3(0, 0, eulerZ);
-
-            gameObject.GetComponent<MeshFilter>().mesh = mesh;
-            gameObject.GetComponent<MeshRenderer>().material = material;
-
-            transform = gameObject.transform;
-
-            SetSortingOrderOffset(sortingOrderOffset);
-        }
-
-
-        public static World_Mesh CreateEmpty(Vector3 position, float eulerZ, Material material,
-            int sortingOrderOffset = 0) {
-            return new World_Mesh(null, position, Vector3.one, eulerZ, material, new Vector3[0], new Vector2[0],
-                new int[0], sortingOrderOffset);
-        }
-
-        public static World_Mesh Create(Vector3 position, float eulerZ, Material material, Vector3[] vertices,
-            Vector2[] uv, int[] triangles, int sortingOrderOffset = 0) {
-            return new World_Mesh(null, position, Vector3.one, eulerZ, material, vertices, uv, triangles,
-                sortingOrderOffset);
-        }
-
-        public static World_Mesh Create(Vector3 position, float eulerZ, float meshWidth, float meshHeight,
-            Material material, UVCoords uvCoords, int sortingOrderOffset = 0) {
-            return new World_Mesh(null, position, Vector3.one, eulerZ, meshWidth, meshHeight, material, uvCoords,
-                sortingOrderOffset);
-        }
-
-        public static World_Mesh Create(Vector3 lowerLeftCorner, float width, float height, Material material,
-            UVCoords uvCoords, int sortingOrderOffset = 0) {
-            return Create(lowerLeftCorner, lowerLeftCorner + new Vector3(width, height), material, uvCoords,
-                sortingOrderOffset);
-        }
-
-        public static World_Mesh Create(Vector3 lowerLeftCorner, Vector3 upperRightCorner, Material material,
-            UVCoords uvCoords, int sortingOrderOffset = 0) {
-            var width = upperRightCorner.x - lowerLeftCorner.x;
-            var height = upperRightCorner.y - lowerLeftCorner.y;
-            var localScale = upperRightCorner - lowerLeftCorner;
-            var position = lowerLeftCorner + localScale * .5f;
-            return new World_Mesh(null, position, Vector3.one, 0f, width, height, material, uvCoords,
-                sortingOrderOffset);
-        }
-
-
-        private static int GetSortingOrder(Vector3 position, int offset, int baseSortingOrder = sortingOrderDefault) {
-            return (int)(baseSortingOrder - position.y) + offset;
-        }
-
         private Vector2 ConvertPixelsToUVCoordinates(int x, int y, int textureWidth, int textureHeight) {
             return new Vector2((float)x / textureWidth, (float)y / textureHeight);
         }
 
-        private Vector2[] GetUVRectangleFromPixels(int x, int y, int width, int height, int textureWidth,
-            int textureHeight) {
+        private Vector2[] GetUVRectangleFromPixels(int x, int y, int width, int height, int textureWidth, int textureHeight) {
             /* 0, 1
              * 1, 1
              * 0, 0
              * 1, 0
              * */
-            return new[] {
+            return new Vector2[] { 
                 ConvertPixelsToUVCoordinates(x, y + height, textureWidth, textureHeight),
                 ConvertPixelsToUVCoordinates(x + width, y + height, textureWidth, textureHeight),
                 ConvertPixelsToUVCoordinates(x, y, textureWidth, textureHeight),
@@ -174,7 +138,7 @@ namespace CodeMonkey.Utils {
         }
 
         private void ApplyUVToUVArray(Vector2[] uv, ref Vector2[] mainUV) {
-            if (uv == null || uv.Length < 4 || mainUV == null || mainUV.Length < 4) throw new Exception();
+            if (uv == null || uv.Length < 4 || mainUV == null || mainUV.Length < 4) throw new System.Exception();
             mainUV[0] = uv[0];
             mainUV[1] = uv[1];
             mainUV[2] = uv[2];
@@ -182,8 +146,7 @@ namespace CodeMonkey.Utils {
         }
 
         public void SetUVCoords(UVCoords uvCoords) {
-            var uvArray = GetUVRectangleFromPixels(uvCoords.x, uvCoords.y, uvCoords.width, uvCoords.height,
-                material.mainTexture.width, material.mainTexture.height);
+            Vector2[] uvArray = GetUVRectangleFromPixels(uvCoords.x, uvCoords.y, uvCoords.width, uvCoords.height, material.mainTexture.width, material.mainTexture.height);
             ApplyUVToUVArray(uvArray, ref uv);
             mesh.uv = uv;
         }
@@ -216,10 +179,6 @@ namespace CodeMonkey.Utils {
             return gameObject.GetComponent<Renderer>().sortingOrder;
         }
 
-        public Mesh GetMesh() {
-            return mesh;
-        }
-
         public void Show() {
             gameObject.SetActive(true);
         }
@@ -232,19 +191,5 @@ namespace CodeMonkey.Utils {
             Object.Destroy(gameObject);
         }
 
-        public static void CreateMesh() {
-        }
-
-
-        public class UVCoords {
-            public int x, y, width, height;
-
-            public UVCoords(int x, int y, int width, int height) {
-                this.x = x;
-                this.y = y;
-                this.width = width;
-                this.height = height;
-            }
-        }
     }
 }

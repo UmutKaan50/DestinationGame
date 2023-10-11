@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ public class CharacterMenu : MonoBehaviour {
 
     public Sprite closedChestSprite; // sprite name: menu_0
     public Sprite openedChestSprite; // sprite name: chest_1
-    public GameObject menuButton;
+    public Button menuButton;
     public GameObject attackButton;
     public Image currentAttackButtonImage;
     public Sprite attackButtonDownSprite;
@@ -21,12 +22,26 @@ public class CharacterMenu : MonoBehaviour {
 
     // Logic:
     private int currentCharacterSelection;
-    private Image currentChestImage; // The function above acted as we can't assign public Image object inside of it.
-
+    public Image currentChestImage; // The function above acted as we can't assign public Image object inside of it.
 
     private void Awake() {
-        menuButton = GameObject.Find("MenuButton");
-        currentChestImage = GameObject.Find("MenuButton").gameObject.GetComponent<Image>();
+        InvokeRepeating("FindAndAssignComponentsAndGameObjects", 2f, 1);
+        // TODO: Find the best way to detect gameobjects in similar conditions like above and stick to it till you find a better one.
+    }
+
+    private CharacterMenu characterMenu;
+
+    private void FindAndAssignComponentsAndGameObjects() {
+        characterMenu = GameObject.Find("Canvas_CharacterMenu").GetComponent<CharacterMenu>();
+        menuButton = GameObject.Find("MenuButton").GetComponent<Button>();
+
+        currentChestImage = menuButton.GetComponent<Image>();
+
+        menuButton.onClick.AddListener(() => {
+            characterMenu.GetComponent<Animator>().SetTrigger("show");
+            characterMenu.UpdateMenu();
+            characterMenu.ChestSpriteOpen();
+        });
     }
 
     // Character Selection:
@@ -101,8 +116,8 @@ public class CharacterMenu : MonoBehaviour {
 
     public void ChestSpriteOpen() {
         SoundManager.instance.audioSource.PlayOneShot(SoundManager.instance.chestOpen);
-        currentChestImage.sprite = openedChestSprite;
         menuButton.GetComponent<Button>().interactable = false;
+        currentChestImage.sprite = openedChestSprite;
     }
 
     public void ChestSpriteClose() {
